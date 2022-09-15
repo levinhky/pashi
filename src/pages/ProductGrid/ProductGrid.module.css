@@ -1,0 +1,47 @@
+.wrapper {
+  margin: 8% auto 0;
+  max-width: 110.7rem;
+  width: 100%;
+}
+
+.product-pagination ul {
+  text-align: right;
+  padding-top: 3rem;
+  margin-bottom: 4rem;
+  border-top: 0.1rem solid #e5e5e5;
+}
+
+.product-pagination ul li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.product-pagination ul li button {
+  background: var(--white-color);
+  border: 0.1rem solid #ededed;
+  color: var(--black-color);
+  font-size: 1.5rem;
+  display: block;
+  height: 4.2rem;
+  width: 4.2rem;
+  line-height: 4rem;
+  padding: 0 0.8rem;
+  text-align: center;
+}
+
+.product-pagination ul li button.active {
+  background: var(--black-color);
+  color: var(--white-color);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+  .wrapper {
+    margin-top: 20%;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .wrapper {
+    margin-top: 10%;
+  }
+}

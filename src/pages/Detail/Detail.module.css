@@ -1,0 +1,140 @@
+.wrapper {
+  max-width: 110.7rem;
+  width: 100%;
+  margin: 8% auto 5rem;
+  display: flex;
+}
+
+.box-right .image img {
+  width: 55.5rem;
+  padding-right: 2.5rem;
+}
+
+.info .price,
+.info h2 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  position: relative;
+}
+
+.info h2 {
+  text-transform: capitalize;
+}
+
+.info h2::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.1rem;
+  background: var(--black-color);
+  margin: 2rem 0;
+}
+
+.info .price {
+  margin-bottom: 1.5rem;
+}
+
+.info .status {
+  font-size: 1.4rem;
+  color: #1c1c1c;
+  margin-bottom: 1.5rem;
+}
+
+.info .status span {
+  margin-left: 0.5rem;
+}
+
+.info .desc {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+  margin: 1rem 0 0 3rem;
+}
+
+.action {
+  border-top: 0.1rem solid var(--snow-color);
+  border-bottom: 0.1rem solid var(--snow-color);
+  padding: 3rem 0;
+  display: flex;
+}
+
+.action form button,
+.action form input {
+  border-left: 0.1rem solid var(--snow-color);
+  outline: none;
+  height: 5rem;
+  width: 5rem;
+  text-align: center;
+  margin-right: 0.5rem;
+  border: 0.1rem solid var(--snow-color);
+  border-radius: 0.5rem;
+  background: var(--white-color);
+  color: #909090;
+  font-size: 1.8rem;
+}
+
+.action .add-cart button {
+  font-size: 1.2rem;
+  color: var(--white-color);
+  padding: 0 3rem;
+  background: var(--black-color);
+  border: 0.1rem solid;
+  border-color: var(--black-color);
+  display: inline-block;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  border-radius: 5rem;
+  text-transform: uppercase;
+  margin-left: 5rem;
+}
+
+.addtion {
+  padding-top: 2.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.addtion .product-id span {
+  color: #545454;
+  margin-left: 1rem;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .wrapper {
+    padding: 0 1.5rem;
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .wrapper {
+    padding: 0 1.5rem;
+    margin-top: 10%;
+    flex-wrap: wrap;
+  }
+
+  .box-right {
+    width: 100%;
+  }
+
+  .box-right .image img {
+    width: 100%;
+    padding: 0;
+  }
+
+  .info {
+    margin-top: 3rem; 
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .wrapper {
+    padding: 0 1.5rem;
+    margin-top: 20%;
+    flex-wrap: wrap;
+  }
+
+  .box-right .image img {
+    width: 100%;
+    padding: 0;
+  }
+}

@@ -1,0 +1,100 @@
+.news-email-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.news-email-box p {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+.news-email-form > form {
+  display: flex;
+}
+
+.news-email-form > form > input {
+  background: var(--white-color);
+  border: none;
+  border-bottom: 0.1rem solid #e5e5e5;
+  color: var(--gray-color);
+  height: 4.8rem;
+  line-height: 4.8rem;
+  max-width: 100%;
+  padding: 0 10px;
+  position: relative;
+  width: 43.5rem;
+  border-radius: 0.5rem;
+  font-family: "Mukta", sans-serif;
+}
+
+.news-email-form > form > input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 0.1rem solid #e5e5e5;
+}
+
+.news-email-form > form > button {
+  padding: 0 3.2rem;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  border-radius: 0.5rem;
+  font-family: "Mukta", sans-serif;
+  margin-left: 2rem;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+}
+
+.title-heading {
+  font-family: SVN-Veneer;
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 5rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.title-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2rem;
+  width: 100%;
+  height: 0.3rem;
+  background: #3a3a3a;
+  margin: 0 auto;
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .news-email-box {
+    padding: 0 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .news-email-box {
+    padding: 0 1.5rem;
+  }
+
+  .news-email-box p {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .news-email-form > form > button {
+    padding: 0 2rem;
+    margin-left: 1rem;
+  }
+
+  .news-email-form > form > input {
+   width: 25rem;
+  }
+}

@@ -1,0 +1,157 @@
+.container {
+  width: 100%;
+  max-width: 110.7rem;
+  margin: 0 auto;
+}
+
+.carousel img {
+  width: 100%;
+  height: 80rem;
+  margin-top: 5.5rem;
+}
+
+.model {
+  display: flex;
+  gap: 0 3rem;
+  margin-top: 5rem;
+}
+
+.model .item {
+  position: relative;
+}
+
+.model .item img {
+  max-width: 100%;
+  transition: all 0.3s ease;
+}
+
+.model .item img:hover {
+  transform: scale(1.05);
+}
+
+.model .item .caption {
+  pointer-events: none;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white-color);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.title {
+  text-align: center;
+}
+
+.title-heading {
+  font-family: SVN-Veneer;
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 5rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.title-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2rem;
+  width: 100%;
+  height: 0.3rem;
+  background: #3a3a3a;
+  margin: 0 auto;
+}
+
+.arrivals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem 3rem;
+}
+
+.arrivals .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.arrivals .item .info {
+  margin-top: auto;
+}
+
+.arrivals .image img {
+  max-width: 100%;
+  transition: all 0.3 ease-in-out;
+}
+
+.arrivals .image img:hover {
+  transform: scale(1.02);
+}
+
+.arrivals .item .info .name {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: var(--black-color);
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .carousel img {
+    height: 50rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .model {
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .arrivals {
+    gap: 1rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .carousel img {
+    height: 50rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .model {
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .arrivals {
+    gap: 1rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .carousel img {
+    height: 25rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .model {
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .arrivals {
+    gap: 1rem 1rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
