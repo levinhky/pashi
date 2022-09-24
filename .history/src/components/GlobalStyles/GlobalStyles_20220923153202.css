@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import "normalize.css";
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
 
@@ -61,12 +58,12 @@ body {
 
 @media only screen and (max-width: 1024px) {
   html {
-    font-size: 9px;
+      font-size: 9px;
   }
 }
 
 @media only screen and (max-width: 768px) {
   html {
-    font-size: 8px;
+      font-size: 8px;
   }
 }

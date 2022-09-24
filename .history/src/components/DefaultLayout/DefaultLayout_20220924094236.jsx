@@ -18,8 +18,8 @@ function DefaultLayout({ children }) {
       <Header />
       <div className={styles["container"]}>
         {children}
-        <Partner />
         <Inbox />
+        <Partner />
       </div>
       <Footer />
     </div>

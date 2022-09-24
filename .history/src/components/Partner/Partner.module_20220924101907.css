@@ -1,0 +1,41 @@
+.title {
+  text-align: center;
+}
+
+.title-heading {
+  font-family: SVN-Veneer;
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 5rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.title-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2rem;
+  width: 100%;
+  height: 0.3rem;
+  background: #3a3a3a;
+  margin: 0 auto;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.slider-children {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  translatey: -50%;
+}
