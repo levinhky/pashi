@@ -81,7 +81,7 @@ function Header() {
           <img
             src="https://i.imgur.com/qw71dy2.jpg"
             alt="shebyshi_logo"
-            className="h-[60px]"
+            // className="h-[40px]"
           />
         </Link>
         <ul className={styles["menu"]}>

@@ -14,14 +14,14 @@ function Header() {
   const [searchValue, setSearchValue] = useState("");
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [isOpenSubMenu, setIsOpenSubMenu] = useState(false);
+  const [isOpenMenu,setIsOpenMenu] = useState(false);
+  const [isOpenSubMenu,setIsOpenSubMenu] = useState(false);
   const [checked, setChecked] = useState(false);
   const dispath = useDispatch();
 
   const handleMenu = () => {
     const btn = document.getElementById("hamburger-menu");
-    btn.classList.toggle(styles["active"]);
+    btn.classList.toggle(styles['active']);
     setIsOpenMenu(!isOpenMenu);
   };
 
@@ -55,33 +55,25 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    const menulinks = document.querySelectorAll("#responsive-menu li a");
+    const menulinks = document.querySelectorAll('#responsive-menu li a');
 
     // document.body.addEventListener('click', (e) => setIsOpenMenu(false));
 
-    menulinks.forEach((item) =>
-      item.addEventListener("click", () => {
-        setIsOpenMenu(false);
-        setChecked(true);
-        document
-          .getElementById("hamburger-menu")
-          .classList.remove(styles["active"]);
-      })
-    );
-  }, []);
+    menulinks.forEach(item => item.addEventListener("click", () => {
+      setIsOpenMenu(false);
+      setChecked(true);
+      document.getElementById("hamburger-menu").classList.remove(styles['active']);
+    }));
+
+  },[])
 
   return (
     <div className={styles["wrapper"]}>
       <div className={styles["inner"]}>
         <Link className={styles["logo"]} to="/">
-          {/* <img
+          <img
             src="https://theme.hstatic.net/1000370235/1000472578/14/logo.png?v=837"
             alt="shebyshi_logo"
-          /> */}
-          <img
-            src="https://i.imgur.com/qw71dy2.jpg"
-            alt="shebyshi_logo"
-            className="h-[60px]"
           />
         </Link>
         <ul className={styles["menu"]}>
@@ -102,7 +94,7 @@ function Header() {
             </ul>
           </li>
           <li>
-            <Link to={`/collections/hot-products/?page=1`}>Best seller</Link>
+            <Link    to={`/collections/hot-products/?page=1`}>Best seller</Link>
           </li>
           {userInfo.accessToken ? (
             <li>
@@ -154,128 +146,105 @@ function Header() {
             <Link
               className={`${styles["action"]} ${styles["cart"]}`}
               to="/cart"
-              style={{ position: "relative" }}
+              style={{position:'relative'}}
             >
               <i className="bx bx-cart"></i>
               <span className={styles["cart-count"]}>{cartItems.length}</span>
             </Link>
           </li>
         </ul>
-        <div className={styles["responsive-navbar"]}>
-          <div
-            className={styles["hamburger-menu"]}
+    <div className={styles['responsive-navbar']}>
+             <div
+            className={styles['hamburger-menu']}
             id="hamburger-menu"
             onClick={handleMenu}
           >
-            <div className={styles["hamburger"]}></div>
+            <div className={styles['hamburger']}></div>
           </div>
-          <ul
-            id="responsive-menu"
-            className={
-              isOpenMenu
-                ? `${styles["menu"]} ${styles["active"]}`
-                : styles["menu"]
-            }
-          >
+          <ul id="responsive-menu" className={isOpenMenu ? `${styles['menu']} ${styles['active']}` : styles['menu']}>
+          <li>
+            <Link to={`/collections/new-arrivals/?page=1`}>New Arrivals</Link>
+          </li> 
+          <li className={styles["dropdown"]}>
+            <Link to={`/collections/all/?page=1`}>Products</Link>
+            <b className={styles["sub-menu-icon"]} onClick={() => {
+              console.log(isOpenSubMenu);
+              setIsOpenSubMenu(!isOpenSubMenu)
+            }}><i className='bx bx-chevron-down'></i></b>
+            <ul className={isOpenSubMenu ? `${styles["responsive-sub-menu"]} ${styles["active-menu"]}` : styles["responsive-sub-menu"]}>
+              {categories &&
+                categories.map((category) => (
+                  <li key={category.id}>
+                    <Link onClick={() => setIsOpenMenu(false)} to={`/collections/${category.id}`}>
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </li>
+          <li>
+            <Link    to={`/collections/hot-products/?page=1`}>Best seller</Link>
+          </li>
+          {userInfo.accessToken ? (
             <li>
-              <Link to={`/collections/new-arrivals/?page=1`}>New Arrivals</Link>
-            </li>
-            <li className={styles["dropdown"]}>
-              <Link to={`/collections/all/?page=1`}>Products</Link>
-              <b
-                className={styles["sub-menu-icon"]}
+              <span
                 onClick={() => {
-                  console.log(isOpenSubMenu);
-                  setIsOpenSubMenu(!isOpenSubMenu);
+                  authSignOut();
+                  dispath(setLogOut());
                 }}
               >
-                <i className="bx bx-chevron-down"></i>
-              </b>
-              <ul
-                className={
-                  isOpenSubMenu
-                    ? `${styles["responsive-sub-menu"]} ${styles["active-menu"]}`
-                    : styles["responsive-sub-menu"]
-                }
-              >
-                {categories &&
-                  categories.map((category) => (
-                    <li key={category.id}>
-                      <Link
-                        onClick={() => setIsOpenMenu(false)}
-                        to={`/collections/${category.id}`}
-                      >
-                        {category.name}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
+                Hello:{" "}
+                {userInfo.email.substring(0, userInfo.email.indexOf("@"))}
+              </span>
             </li>
+          ) : (
             <li>
-              <Link to={`/collections/hot-products/?page=1`}>Best seller</Link>
+              <Link to="/account/login">Đăng ký / đăng nhập</Link>
             </li>
-            {userInfo.accessToken ? (
-              <li>
-                <span
-                  onClick={() => {
-                    authSignOut();
-                    dispath(setLogOut());
-                  }}
-                >
-                  Hello:{" "}
-                  {userInfo.email.substring(0, userInfo.email.indexOf("@"))}
-                </span>
-              </li>
-            ) : (
-              <li>
-                <Link to="/account/login">Đăng ký / đăng nhập</Link>
-              </li>
+          )}
+        <div className={styles["nav-action"]}>
+        <li className={styles["search-btn"]}>
+            <button
+              className={`${styles["action"]} search-btn`}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <i className="bx bx-search"></i>
+            </button>
+            {isOpen && (
+              <div className={`${styles["search-box"]} search-box`}>
+                <div className={`${styles["form"]}`}>
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm..."
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                  />
+                  <Link
+                    to={`/collections/all/?q=${searchValue}`}
+                    onClick={() => {
+                      setSearchValue("");
+                      setIsOpenMenu(false);
+                      setIsOpen(false);
+                    }}
+                  >
+                    <i className="bx bx-search"></i>
+                  </Link>
+                </div>
+              </div>
             )}
-            <div className={styles["nav-action"]}>
-              <li className={styles["search-btn"]}>
-                <button
-                  className={`${styles["action"]} search-btn`}
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  <i className="bx bx-search"></i>
-                </button>
-                {isOpen && (
-                  <div className={`${styles["search-box"]} search-box`}>
-                    <div className={`${styles["form"]}`}>
-                      <input
-                        type="text"
-                        placeholder="Tìm kiếm..."
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                      />
-                      <Link
-                        to={`/collections/all/?q=${searchValue}`}
-                        onClick={() => {
-                          setSearchValue("");
-                          setIsOpenMenu(false);
-                          setIsOpen(false);
-                        }}
-                      >
-                        <i className="bx bx-search"></i>
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </li>
-              <li>
-                <Link
-                  className={`${styles["action"]} ${styles["cart"]}`}
-                  to="/cart"
-                >
-                  <i className="bx bx-cart"></i>
-                  <span className={styles["cart-count"]}>
-                    {cartItems.length}
-                  </span>
-                </Link>
-              </li>
-            </div>
-          </ul>
+          </li>
+          <li>
+            <Link
+              className={`${styles["action"]} ${styles["cart"]}`}
+              to="/cart"
+            >
+              <i className="bx bx-cart"></i>
+              <span className={styles["cart-count"]}>{cartItems.length}</span>
+            </Link>
+          </li>
         </div>
+        </ul>
+    </div>
       </div>
     </div>
   );

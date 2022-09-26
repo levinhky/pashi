@@ -74,14 +74,13 @@ function Header() {
     <div className={styles["wrapper"]}>
       <div className={styles["inner"]}>
         <Link className={styles["logo"]} to="/">
-          {/* <img
+          <img
             src="https://theme.hstatic.net/1000370235/1000472578/14/logo.png?v=837"
             alt="shebyshi_logo"
-          /> */}
+          />
           <img
-            src="https://i.imgur.com/qw71dy2.jpg"
+            src="../../assets/config/logo/LOGO_PASHI_2.png"
             alt="shebyshi_logo"
-            className="h-[60px]"
           />
         </Link>
         <ul className={styles["menu"]}>
