@@ -87,6 +87,43 @@
   margin-left: 5rem;
 }
 
+.variants .title {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+.variants .sizes {
+  display: flex;
+  align-items: center;
+}
+
+.variants .sizes .size {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 0.1rem solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.variants .sizes .size img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: none;
+}
+
+.variants .sizes .size-checked {
+  border: 1px solid #e4393c;
+}
+
+.variants .sizes .size-checked img {
+  display: block;
+}
+
 .addtion {
   padding-top: 2.5rem;
   font-size: 1.4rem;
@@ -122,7 +159,7 @@
   }
 
   .info {
-    margin-top: 3rem; 
+    margin-top: 3rem;
   }
 }
 

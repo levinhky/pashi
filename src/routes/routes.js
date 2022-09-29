@@ -4,8 +4,6 @@ import Home from "components/Home/Home";
 import ProductGrid from "pages/ProductGrid/ProductGrid";
 import Login from "pages/Login/Login";
 import Cart from "pages/Cart/Cart";
-import List from "pages/admin/List";
-import Add from "pages/admin/Add";
 const Detail = React.lazy(() => import("pages/Detail/Detail"));
 
 export const routes = [
@@ -14,6 +12,4 @@ export const routes = [
   { path: "collections/:category", element: <ProductGrid /> },
   { path: "account/login", element: <Login /> },
   { path: "cart", element: <Cart /> },
-  { path: "admin/list", element: <List /> },
-  { path: "admin/add", element: <Add /> },
 ]

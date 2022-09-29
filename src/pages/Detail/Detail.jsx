@@ -43,6 +43,20 @@ function Detail(props) {
     toastSuccess("Thêm sản phẩm thành công!");
   };
 
+  useEffect(() => {
+    const checkSizes = document.querySelectorAll(`.${styles["size"]}`);
+    checkSizes.forEach((size) => {
+      size.addEventListener("click", () => {
+        const sizeChecked = document.querySelector(
+          `.${styles["size"]}.${styles["size-checked"]}`
+        );
+        if (sizeChecked)
+          sizeChecked.classList.remove(`${styles["size-checked"]}`);
+        size.classList.add(`${styles["size-checked"]}`);
+      });
+    });
+  }, []);
+
   return (
     <>
       {productDetail && (
@@ -95,6 +109,32 @@ function Detail(props) {
                 >
                   Thêm vào giỏ
                 </button>
+              </div>
+            </div>
+            <div className={styles["variants"]}>
+              <div className={styles["title"]}>Size</div>
+              <div className={styles["sizes"]}>
+                <div className={styles["size"]}>
+                  <label>S</label>
+                  <img
+                    alt="img"
+                    src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
+                  />
+                </div>
+                <div className={styles["size"]}>
+                  <label>M</label>
+                  <img
+                    alt="img"
+                    src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
+                  />
+                </div>
+                <div className={styles["size"]}>
+                  <label>L</label>
+                  <img
+                    alt="img"
+                    src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
+                  />
+                </div>
               </div>
             </div>
             <div className={styles["addtion"]}>
