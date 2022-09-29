@@ -13,6 +13,7 @@ function Detail(props) {
 
   const [productDetail, setProductDetail] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [sizeValue, setSizeValue] = useState("");
 
   const dispath = useDispatch();
 
@@ -47,15 +48,20 @@ function Detail(props) {
     const checkSizes = document.querySelectorAll(`.${styles["size"]}`);
     checkSizes.forEach((size) => {
       size.addEventListener("click", () => {
+        const value = size.querySelector(".size-value").value;
         const sizeChecked = document.querySelector(
           `.${styles["size"]}.${styles["size-checked"]}`
         );
         if (sizeChecked)
           sizeChecked.classList.remove(`${styles["size-checked"]}`);
         size.classList.add(`${styles["size-checked"]}`);
+
+        if (value) setSizeValue(value);
       });
     });
   }, []);
+
+  console.log(sizeValue);
 
   return (
     <>
@@ -120,6 +126,7 @@ function Detail(props) {
                     alt="img"
                     src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                   />
+                  <input className="size-value" type="hidden" value="S" />
                 </div>
                 <div className={styles["size"]}>
                   <label>M</label>
@@ -127,6 +134,7 @@ function Detail(props) {
                     alt="img"
                     src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                   />
+                  <input className="size-value" type="hidden" value="M" />
                 </div>
                 <div className={styles["size"]}>
                   <label>L</label>
@@ -134,6 +142,7 @@ function Detail(props) {
                     alt="img"
                     src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                   />
+                  <input className="size-value" type="hidden" value="L" />
                 </div>
               </div>
             </div>

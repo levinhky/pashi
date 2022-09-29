@@ -109,6 +109,11 @@
   cursor: pointer;
 }
 
+.variants .sizes .size label {
+  cursor: pointer;
+  user-select: none;
+}
+
 .variants .sizes .size img {
   position: absolute;
   bottom: 0;
