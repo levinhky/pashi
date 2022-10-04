@@ -1,21 +1,18 @@
-import { vnd } from "configs/functions";
 import { Link } from "react-router-dom";
 
 function Information(props) {
   return (
     <>
       <div className="main-header">
-        <a href="/" className="logo">
-          <h1 className="logo-text">She by Shj</h1>
-        </a>
+        <Link to="/" className="logo">
+          <h1 className="logo-text">Pashi</h1>
+        </Link>
         <ul className="breadcrumb">
           <li className="breadcrumb-item">
-            {" "}
-            <a href="/cart">Giỏ hàng</a>{" "}
+            <Link to="/cart">Giỏ hàng</Link>
           </li>
           <li className="breadcrumb-item breadcrumb-item-current">
-            {" "}
-            Thông tin giao hàng{" "}
+            Thông tin giao hàng
           </li>
           <li className="breadcrumb-item"> Phương thức thanh toán </li>
         </ul>
@@ -50,9 +47,9 @@ function Information(props) {
                 </div>
                 <p className="section-content-text">
                   Bạn đã có tài khoản?
-                  <a href="/account/login?urlredirect=%2Fcheckouts%2F4cb7ad9379fc45ff9fa53554a09e819a%3Fstep%3D1">
+                  <Link className="k-a" to="/account/login">
                     Đăng nhập
-                  </a>
+                  </Link>
                 </p>
                 <div className="fieldset">
                   <div className="field field-required">
@@ -152,7 +149,6 @@ function Information(props) {
                               className="field-label"
                               htmlFor="customer_shipping_province"
                             >
-                              {" "}
                               Tỉnh / thành{" "}
                             </label>
                             <select
@@ -257,212 +253,24 @@ function Information(props) {
             </div>
           </div>
           <div className="step-footer">
-            <form id="form_next_step" acceptCharset="UTF-8" method="post">
+            <form id="form_next_step">
               <input name="utf8" type="hidden" value="✓" />
               <button
-                type="submit"
+                type="button"
                 className="dark step-footer-continue-btn btn"
               >
                 <span className="btn-content">
-                  Tiếp tục đến phương thức thanh toán
+                  <Link to="/checkout/payment">
+                    Tiếp tục đến phương thức thanh toán
+                  </Link>
                 </span>
                 <i className="btn-spinner icon icon-button-spinner"></i>
               </button>
             </form>
-            <a className="step-footer-previous-link" href="/cart">
+            <Link className="step-footer-previous-link k-a" to="/cart">
               Giỏ hàng
-            </a>
+            </Link>
           </div>
-
-          {/* Thanh toán */}
-          <div id="section-shipping-rate" className="section">
-            <div className="section-header">
-              <h2 className="section-title">Phương thức vận chuyển</h2>
-            </div>
-            <div className="section-content">
-              <div className="content-box">
-                <div className="content-box-row">
-                  <div className="radio-wrapper">
-                    <label
-                      className="radio-label"
-                      htmlFor="shipping_rate_id_1000095079"
-                    >
-                      <div className="radio-input">
-                        <input
-                          id="shipping_rate_id_1000095079"
-                          className="input-radio"
-                          type="radio"
-                          name="shipping_rate_id"
-                          value="1000095079"
-                          defaultChecked
-                        />
-                      </div>
-                      <span className="radio-label-primary">
-                        Giao hàng tận nơi
-                      </span>
-                      <span className="radio-accessory content-box-emphasis">
-                        40,000₫
-                      </span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="section-payment-method" className="section">
-            <div className="section-header">
-              <h2 className="section-title">Phương thức thanh toán</h2>
-            </div>
-            <div className="section-content">
-              <div className="content-box">
-                <div className="radio-wrapper content-box-row">
-                  <label
-                    className="two-page"
-                    htmlFor="payment_method_id_1000746393"
-                  >
-                    <div className="radio-input payment-method-checkbox">
-                      <input
-                        type-id="1"
-                        id="payment_method_id_1000746393"
-                        className="input-radio"
-                        name="payment_method_id"
-                        type="radio"
-                        value="1000746393"
-                        defaultChecked
-                      />
-                    </div>
-
-                    <div className="radio-content-input">
-                      <img
-                        className="main-img"
-                        src="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1"
-                      />
-                      <div className="content-wrapper">
-                        <span className="radio-label-primary">
-                          Thanh toán khi giao hàng (COD)
-                        </span>
-                        <span className="quick-tagline hidden"></span>
-                        <span className="quick-tagline  hidden ">
-                          Buy Now, Pay Later
-                        </span>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-                <div className="radio-wrapper content-box-row">
-                  <label
-                    className="two-page"
-                    htmlFor="payment_method_id_1002351320"
-                  >
-                    <div className="radio-input payment-method-checkbox">
-                      <input
-                        type-id="21"
-                        id="payment_method_id_1002351320"
-                        className="input-radio"
-                        name="payment_method_id"
-                        type="radio"
-                        value="1002351320"
-                      />
-                    </div>
-
-                    <div className="radio-content-input">
-                      <img
-                        className="main-img"
-                        src="https://hstatic.net/0/0/global/design/seller/image/payment/momo.svg?v=1"
-                      />
-                      <div className="content-wrapper">
-                        <span className="radio-label-primary">Ví Momo</span>
-                        <span className="quick-tagline hidden"></span>
-                        <span className="quick-tagline  hidden ">
-                          Buy Now, Pay Later
-                        </span>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-                <div className="radio-wrapper content-box-row">
-                  <label
-                    className="two-page"
-                    htmlFor="payment_method_id_1002492004"
-                  >
-                    <div className="radio-input payment-method-checkbox">
-                      <input
-                        type-id="8"
-                        id="payment_method_id_1002492004"
-                        className="input-radio"
-                        name="payment_method_id"
-                        type="radio"
-                        value="1002492004"
-                      />
-                    </div>
-
-                    <div className="radio-content-input">
-                      <img
-                        className="main-img"
-                        src="https://hstatic.net/0/0/global/design/seller/image/payment/vnpay_new.svg?v=1"
-                      />
-                      <div className="content-wrapper">
-                        <span className="radio-label-primary">
-                          Thẻ ATM/Visa/Master/JCB/QR Pay qua cổng VNPAY
-                        </span>
-                        <span className="quick-tagline hidden"></span>
-                        <span className="quick-tagline  hidden ">
-                          Buy Now, Pay Later
-                        </span>
-
-                        <img
-                          className="child-img"
-                          src="https://hstatic.net/0/0/global/design/seller/image/payment/atm_visa_master_jcb.svg?v=1"
-                        />
-                      </div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="step-footer">
-          <form id="form_next_step" acceptCharset="UTF-8" method="post">
-            <input name="utf8" type="hidden" value="✓" />
-            <button type="submit" className="step-footer-continue-btn btn">
-              <span className="btn-content">Hoàn tất đơn hàng</span>
-              <i className="btn-spinner icon icon-button-spinner"></i>
-            </button>
-          </form>
-          <a
-            href="/checkouts/4cb7ad9379fc45ff9fa53554a09e819a?step=1"
-            className="step-footer-previous-link"
-          >
-            Quay lại thông tin giao hàng
-          </a>
-        </div>
-      </div>
-
-      <div className="hrv-coupons-popup">
-        <div className="hrv-title-coupons-popup">
-          <p>
-            Chọn giảm giá <span className="count-coupons">123</span>
-          </p>
-          <div className="hrv-coupons-close-popup">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.1663 2.4785L15.5213 0.833496L8.99968 7.35516L2.47801 0.833496L0.833008 2.4785L7.35468 9.00016L0.833008 15.5218L2.47801 17.1668L8.99968 10.6452L15.5213 17.1668L17.1663 15.5218L10.6447 9.00016L17.1663 2.4785Z"
-                fill="#424242"
-              ></path>
-            </svg>
-          </div>
-        </div>
-        <div className="hrv-content-coupons-code">
-          <h3 className="coupon_heading">Mã giảm giá của shop</h3>
-          <div className="hrv-discount-code-web"></div>
-          <div className="hrv-discount-code-external"></div>
         </div>
       </div>
     </>

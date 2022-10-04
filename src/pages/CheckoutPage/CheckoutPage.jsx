@@ -1,10 +1,13 @@
 import { vnd } from "configs/functions";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import styles from "./CheckoutPage.css";
 
 const CheckoutPage = ({ children }) => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartTotal = useSelector((state) => state.cart.cartTotal);
+  console.log(cartItems);
+
   return (
     <div className="bao">
       <div className="content">
@@ -18,59 +21,50 @@ const CheckoutPage = ({ children }) => {
                 <div className="order-summary-sections">
                   <div className="order-summary-section order-summary-section-product-list">
                     <table className="product-table">
-                      <thead>
-                        <tr>
-                          <th scope="col">
-                            <span className="visually-hidden">Hình ảnh</span>
-                          </th>
-                          <th scope="col">
-                            <span className="visually-hidden">Mô tả</span>
-                          </th>
-                          <th scope="col">
-                            <span className="visually-hidden">Số lượng</span>
-                          </th>
-                          <th scope="col">
-                            <span className="visually-hidden">Giá</span>
-                          </th>
-                        </tr>
-                      </thead>
                       <tbody>
-                        <tr className="product" data-product-id="1040710178">
-                          <td className="product-image">
-                            <div className="product-thumbnail">
-                              <div className="product-thumbnail-wrapper">
-                                <img
-                                  className="product-thumbnail-image"
-                                  alt="Blue Dara Top"
-                                  src="//product.hstatic.net/1000370235/product/0501_a0e6803ba5de4066936a50e118c7be03_small.jpg"
-                                />
-                              </div>
-                              <span
-                                className="product-thumbnail-quantity"
-                                aria-hidden="true"
-                              >
-                                1
-                              </span>
-                            </div>
-                          </td>
-                          <td className="product-description">
-                            <span className="product-description-name order-summary-emphasis">
-                              Blue Dara Top
-                            </span>
+                        {cartItems.length > 0 &&
+                          cartItems.map((product) => (
+                            <tr
+                              className="product"
+                              data-product-id="1040710178"
+                              key={product.id}
+                            >
+                              <td className="product-image">
+                                <div className="product-thumbnail">
+                                  <div className="product-thumbnail-wrapper">
+                                    <img
+                                      className="product-thumbnail-image"
+                                      alt={product.name}
+                                      src={product.thumbnail}
+                                    />
+                                  </div>
+                                  <span
+                                    className="product-thumbnail-quantity"
+                                    aria-hidden="true"
+                                  >
+                                    {product.quantity}
+                                  </span>
+                                </div>
+                              </td>
+                              <td className="product-description">
+                                <span className="product-description-name order-summary-emphasis">
+                                  {product.name}
+                                </span>
 
-                            <span className="product-description-variant order-summary-small-text">
-                              S
-                            </span>
-                          </td>
-                          <td className="product-quantity visually-hidden">
-                            1
-                          </td>
-                          <td className="product-price">
-                            <span className="order-summary-emphasis">
-                              203,000₫
-                            </span>
-                          </td>
-                        </tr>
+                                <span className="product-description-variant order-summary-small-text">
+                                  S
+                                </span>
+                              </td>
+                              <td className="product-quantity visually-hidden">
+                                1
+                              </td>
+                              <td className="product-price">
+                                <span className="order-summary-emphasis">
+                                  {vnd(product.price)}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
                       </tbody>
                     </table>
                   </div>
@@ -131,7 +125,7 @@ const CheckoutPage = ({ children }) => {
                           <td className="total-line-name">Tạm tính</td>
                           <td className="total-line-price">
                             <span className="order-summary-emphasis">
-                              203,000₫
+                              {vnd(cartTotal)}
                             </span>
                           </td>
                         </tr>
@@ -151,8 +145,10 @@ const CheckoutPage = ({ children }) => {
                             </span>
                           </td>
                           <td className="total-line-name payment-due">
-                            <span className="payment-due-currency">VND</span>
-                            <span className="payment-due-price">203,000₫</span>
+                            {/* <span className="payment-due-currency">VND</span> */}
+                            <span className="payment-due-price">
+                              {vnd(cartTotal)}
+                            </span>
                           </td>
                         </tr>
                       </tfoot>

@@ -157,7 +157,7 @@ tbody tr:nth-child(2) td:first-child {
   color: var(--black-color);
 }
 
-textarea {
+.k-note {
   width: 100%;
   resize: none;
   padding: 1rem;
@@ -240,7 +240,7 @@ textarea:focus-within {
     flex-wrap: wrap;
   }
 
-  tbody tr:nth-child(2) td:first-child  {
+  tbody tr:nth-child(2) td:first-child {
     width: 20rem;
   }
 

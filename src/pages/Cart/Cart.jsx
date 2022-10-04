@@ -105,12 +105,15 @@ function Cart(props) {
                     <span>{vnd(cartTotal)}</span>
                   </div>
                   <div className={styles["pay"]}>
-                    <a href="/checkout">Thanh toán</a>
+                    <Link to="/checkout/information">Thanh toán</Link>
                   </div>
                 </div>
                 <div className={styles["note-item"]}>
                   <label>Ghi chú</label>
-                  <textarea placeholder="Bạn muốn mô tả rõ hơn về đơn hàng..."></textarea>
+                  <textarea
+                    className={styles["k-note"]}
+                    placeholder="Bạn muốn mô tả rõ hơn về đơn hàng..."
+                  ></textarea>
                 </div>
               </div>
             </div>
