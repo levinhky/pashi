@@ -4,9 +4,7 @@ import Home from "components/Home/Home";
 import ProductGrid from "pages/ProductGrid/ProductGrid";
 import Login from "pages/Login/Login";
 import Cart from "pages/Cart/Cart";
-import CheckoutPage from "pages/CheckoutPage/CheckoutPage";
 import Information from "components/Checkout/Information";
-import DefaultLayout from "components/DefaultLayout/DefaultLayout";
 const Detail = React.lazy(() => import("pages/Detail/Detail"));
 
 export const routes = [
