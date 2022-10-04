@@ -105,7 +105,7 @@ function Cart(props) {
                     <span>{vnd(cartTotal)}</span>
                   </div>
                   <div className={styles["pay"]}>
-                    <a href="/Checkout">Thanh toán</a>
+                    <a href="/checkout">Thanh toán</a>
                   </div>
                 </div>
                 <div className={styles["note-item"]}>
