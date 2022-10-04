@@ -18,6 +18,14 @@ function ProductGrid(props) {
   const page = new URLSearchParams(search).get("page");
 
   useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+
+  useEffect(() => {
     const getProductList = async () => {
       let data = null;
       if (category === "all") {
@@ -58,7 +66,7 @@ function ProductGrid(props) {
 
     getProductList();
   }, [category, limit, page, searchValue]);
-  console.log('page',page);
+  console.log("page", page);
 
   return (
     <div className={styles["wrapper"]}>
@@ -91,8 +99,8 @@ function ProductGrid(props) {
               <button
                 className={number == page ? styles["active"] : ""}
                 onClick={() => {
-                  console.log('number',number);
-                  navigate(`/collections/all/?page=${number}`)
+                  console.log("number", number);
+                  navigate(`/collections/all/?page=${number}`);
                   window.scroll({
                     top: 0,
                     left: 0,
@@ -107,7 +115,9 @@ function ProductGrid(props) {
           <li>
             <button
               onClick={() => {
-                navigate(`/collections/all/?page=${Math.min(page + 1, totalPages)}`);
+                navigate(
+                  `/collections/all/?page=${Math.min(page + 1, totalPages)}`
+                );
                 window.scroll({
                   top: 0,
                   left: 0,

@@ -803,9 +803,6 @@ select {
   margin-top: 2px;
 }
 
-.fieldset .field .field-input-wrapper.field-input-wrapper-select {
-}
-
 .fieldset .field .field-input-wrapper.field-input-wrapper-select::before {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDIxIDE5Ij48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMDAwIj48Zz48cGF0aCBkPSJNMCAwaDF2MTlIMFYweiIgaWQ9IlNoYXBlIiBmaWxsLW9wYWNpdHk9Ii4xNSIvPjxwYXRoIGQ9Ik0xMSA4aDEwbC01IDUtNS01eiIgZmlsbC1vcGFjaXR5PSIuNSIvPjwvZz48L2c+PC9nPjwvc3ZnPg=="),
     none;
@@ -833,14 +830,8 @@ select {
   color: #ff6d6d;
 }
 
-.fieldset .field.field-active {
-}
-
 .fieldset .field.field-active .field-input-wrapper .field-label {
   color: #737373;
-}
-
-.fieldset .field.field-show-floating-label {
 }
 
 .fieldset .field.field-show-floating-label .field-input-wrapper .field-label {
@@ -882,12 +873,6 @@ select {
   .field-input-wrapper
   .field-input::-ms-input-placeholder {
   color: transparent;
-}
-
-.fieldset .field.field-error {
-}
-
-.fieldset .field.field-error .field-input-wrapper {
 }
 
 .fieldset .field.field-error .field-message.field-message-error {
@@ -932,15 +917,6 @@ display: table;
   box-shadow: 0 -1px 0 #e1e1e1 inset;
 }
 
-.sidebar .sidebar-content {
-}
-
-.sidebar .sidebar-content .order-summary {
-}
-
-.sidebar .sidebar-content .order-summary .order-summary-sections {
-}
-
 .sidebar
   .sidebar-content
   .order-summary
@@ -970,9 +946,6 @@ display: table;
   color: #969696;
 }
 
-.sidebar .sidebar-content .order-summary .product {
-}
-
 .sidebar .sidebar-content .order-summary .product:first-child td {
   padding-top: 0;
 }
@@ -983,9 +956,6 @@ display: table;
 
 .order-summary-section-product-list {
   margin-top: 2rem;
-}
-
-.sidebar .sidebar-content .order-summary .product .product-image {
 }
 
 .sidebar
@@ -1117,9 +1087,6 @@ display: table;
   display: none;
 }
 
-.main .main-header .breadcrumb {
-}
-
 .main .main-header .breadcrumb .breadcrumb-item {
   display: inline-block;
   font-size: 0.85714em;
@@ -1176,9 +1143,6 @@ display: table;
   padding-left: 10px;
 }
 
-.total-line {
-}
-
 .total-line td {
   padding-top: 0.75em;
 }
@@ -1196,9 +1160,6 @@ display: table;
   left: 0;
   width: 100%;
   height: 1px;
-}
-
-.payment-due-label {
 }
 
 .payment-due-label .payment-due-label-total {
@@ -1443,9 +1404,6 @@ display: table;
 }
 
 @media (max-width: 999px) {
-  .content {
-  }
-
   .content.content-second {
     display: block;
   }
