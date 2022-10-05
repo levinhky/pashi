@@ -1,3 +1,4 @@
+import Loading from "components/Loading/Loading";
 import ProductList from "components/ProductList/ProductList";
 import axiosClient from "configs/api";
 import { useEffect, useState } from "react";
@@ -8,6 +9,7 @@ function ProductGrid(props) {
   const [productList, setProductList] = useState([]);
   const [limit, setLimit] = useState(8);
   const [totalPages, setTotalPages] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const { search } = useLocation();
   const { category } = useParams();
@@ -62,6 +64,7 @@ function ProductGrid(props) {
 
       setTotalPages(Math.ceil(data.pagination._totalRows / limit));
       setProductList(data.data);
+      setLoading(false);
     };
 
     getProductList();
@@ -69,38 +72,22 @@ function ProductGrid(props) {
   console.log("page", page);
 
   return (
-    <div className={styles["wrapper"]}>
-      <ProductList
-        products={productList}
-        isNav={true}
-        page={page}
-        limit={limit}
-        setProductList={setProductList}
-      />
+    <>
+      <div className={styles["wrapper"]}>
+        <ProductList
+          products={productList}
+          isNav={true}
+          page={page}
+          limit={limit}
+          setProductList={setProductList}
+        />
 
-      <div className={styles["product-pagination"]}>
-        <ul>
-          <li>
-            <button
-              onClick={() => {
-                navigate(`/collections/all/?page=${Math.max(page - 1, 1)}`);
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: "smooth",
-                });
-              }}
-            >
-              <i className="bx bx-chevrons-left"></i>
-            </button>
-          </li>
-          {pageNumbers.map((number, index) => (
-            <li key={index}>
+        <div className={styles["product-pagination"]}>
+          <ul>
+            <li>
               <button
-                className={number == page ? styles["active"] : ""}
                 onClick={() => {
-                  console.log("number", number);
-                  navigate(`/collections/all/?page=${number}`);
+                  navigate(`/collections/all/?page=${Math.max(page - 1, 1)}`);
                   window.scroll({
                     top: 0,
                     left: 0,
@@ -108,29 +95,48 @@ function ProductGrid(props) {
                   });
                 }}
               >
-                {number}
+                <i className="bx bx-chevrons-left"></i>
               </button>
             </li>
-          ))}
-          <li>
-            <button
-              onClick={() => {
-                navigate(
-                  `/collections/all/?page=${Math.min(page + 1, totalPages)}`
-                );
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: "smooth",
-                });
-              }}
-            >
-              <i className="bx bx-chevrons-right"></i>
-            </button>
-          </li>
-        </ul>
+            {pageNumbers.map((number, index) => (
+              <li key={index}>
+                <button
+                  className={number == page ? styles["active"] : ""}
+                  onClick={() => {
+                    console.log("number", number);
+                    navigate(`/collections/all/?page=${number}`);
+                    window.scroll({
+                      top: 0,
+                      left: 0,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  {number}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button
+                onClick={() => {
+                  navigate(
+                    `/collections/all/?page=${Math.min(page + 1, totalPages)}`
+                  );
+                  window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                <i className="bx bx-chevrons-right"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+      {loading && <Loading />}
+    </>
   );
 }
 

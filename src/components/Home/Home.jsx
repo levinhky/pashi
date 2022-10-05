@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosClient from "configs/api";
 import { vnd } from "configs/functions";
+import Loading from "components/Loading/Loading";
 
 function Home(props) {
   const slides = [
@@ -31,6 +32,7 @@ function Home(props) {
   ];
 
   const [arrivals, setArrivals] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   SwiperCore.use([Autoplay, Navigation]);
 
@@ -38,6 +40,7 @@ function Home(props) {
     const getArrivals = async () => {
       const res = await axiosClient.get("products", { params: { _limit: 6 } });
       setArrivals(res.data);
+      setLoading(false);
     };
 
     getArrivals();
@@ -115,6 +118,7 @@ function Home(props) {
           ))}
         </div>
       </div>
+      {loading && <Loading />}
     </>
   );
 }
