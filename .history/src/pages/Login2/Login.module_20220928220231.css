@@ -1,0 +1,175 @@
+.wrapper {
+  margin: 8% auto 0;
+  max-width: 110.7rem;
+  width: 100%;
+}
+
+.social-login {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.social-login h4 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--gray-color);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.social-login button {
+  margin: 0 0.5rem;
+  padding-right: 1rem;
+  text-indent: 3rem;
+  line-height: 2.4rem;
+  border-radius: 1.2rem;
+  color: var(--white-color);
+}
+
+.social-login button:first-child {
+  background: #546ea6
+    url(//theme.hstatic.net/1000370235/1000472578/14/facebook.png?v=837)
+    no-repeat 0 center;
+}
+
+.social-login button:nth-child(2) {
+  background: #df5656
+    url(//theme.hstatic.net/1000370235/1000472578/14/googleplus.png?v=837)
+    no-repeat 0 center;
+}
+
+.line {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.line span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -1.4rem;
+  background: var(--white-color);
+  display: inline-block;
+  padding: 0.5rem;
+  color: #999;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.account-login {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.register-form,
+.login-form {
+  width: 50%;
+}
+
+.account-login .title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--gray-color);
+  text-transform: uppercase;
+  margin: 2rem 0;
+  font-weight: 400;
+}
+
+.form {
+  width: 41rem;
+  margin: 0 auto;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group i {
+  font-size: 2.2rem;
+  display: inline-block;
+  position: absolute;
+  top: 0.9rem;
+  left: 1.2rem;
+  color: #777;
+}
+
+.form-group input {
+  height: 4rem;
+  border-radius: 0;
+  font-weight: normal;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4.2rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background: #f2f2f2;
+  color: #777;
+}
+
+.form-group button {
+  width: 100%;
+  margin-bottom: 2rem;
+  display: block;
+  height: 4rem;
+  border: 0.1rem solid #6f6a60;
+  background: transparent;
+  color: #6f6a60;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group button:hover {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+.form-group-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-group .forgot {
+  text-decoration: underline;
+  font-size: 1.4rem;
+  color: #484848;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .wrapper {
+    margin-top: 15%;
+    padding: 0 1.5rem;
+  }
+
+  .register-form,
+  .login-form {
+  width:100%;
+  }
+
+  .form {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+  .wrapper {
+    margin-top: 20%;
+    padding: 0 1.5rem;
+  }
+
+  .register-form,
+  .login-form {
+  width: 100%;
+  }
+
+  .form {
+    width: 100%;
+  }
+}
