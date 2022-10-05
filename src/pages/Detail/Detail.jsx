@@ -1,3 +1,4 @@
+import Loading from "components/Loading/Loading";
 import axiosClient from "configs/api";
 import { vnd } from "configs/functions";
 import { toastSuccess } from "configs/toast";
@@ -14,6 +15,7 @@ function Detail(props) {
   const [productDetail, setProductDetail] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [sizeValue, setSizeValue] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const dispath = useDispatch();
 
@@ -27,6 +29,7 @@ function Detail(props) {
     const getProductDetail = async () => {
       const data = await axiosClient.get("products", { params: { id: id } });
       setProductDetail(data[0]);
+      setLoading(false);
     };
 
     getProductDetail();
@@ -62,6 +65,7 @@ function Detail(props) {
   }, []);
 
   console.log(sizeValue);
+  console.log(productDetail);
 
   return (
     <>
@@ -154,6 +158,7 @@ function Detail(props) {
           </div>
         </div>
       )}
+      {loading && <Loading />}
     </>
   );
 }

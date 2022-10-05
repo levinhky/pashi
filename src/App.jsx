@@ -6,12 +6,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { routes } from "routes/routes";
 import DefaultLayout from "components/DefaultLayout/DefaultLayout";
 import CheckoutPage from "pages/CheckoutPage/CheckoutPage";
+import Loading from "components/Loading/Loading";
 
 function App() {
   return (
-    <React.Suspense
-      fallback={<h1 style={{ textAlign: "center" }}>Loading...</h1>}
-    >
+    <React.Suspense fallback={<Loading />}>
       <Routes>
         {routes.map((route, index) => {
           const Layout =
