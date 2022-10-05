@@ -159,6 +159,9 @@ function Information(props) {
                               <option data-code="null" value="null">
                                 Chọn tỉnh / thành{" "}
                               </option>
+                              <option data-code="null" value="null">
+                                ?
+                              </option>
                             </select>
                           </div>
                         </div>
@@ -260,7 +263,7 @@ function Information(props) {
                 className="dark step-footer-continue-btn btn"
               >
                 <span className="btn-content">
-                  <Link to="/checkout/payment">
+                  <Link className="k-c-hover" to="/checkout/payment">
                     Tiếp tục đến phương thức thanh toán
                   </Link>
                 </span>

@@ -34,8 +34,8 @@
 table {
   margin-bottom: 2rem;
   width: 100%;
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
+  border-bottom: 1px solid #d1d1d1;
+  border-top: 1px solid #d1d1d1;
   border-spacing: 0;
   border-collapse: collapse;
 }
@@ -45,12 +45,12 @@ table tr:first-child th {
   color: #333;
   text-align: left;
   font-weight: 400;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #d1d1d1;
 }
 
 table .item td:first-child {
   padding: 1rem 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #d1d1d1;
 }
 
 tbody tr:first-child th:first-child {
@@ -84,15 +84,15 @@ tbody tr:nth-child(2) td:first-child {
   border-radius: 5rem;
   overflow: hidden;
   display: inline-block;
-  border: 0.1rem solid #eee;
+  border: 0.1rem solid #d1d1d1;
 }
 
 .qty-number input {
-  border-left: 1px solid #eee;
+  border-left: 1px solid #d1d1d1;
   height: 5rem;
   text-align: center;
   width: 5rem;
-  border-right: 1px solid #eee;
+  border-right: 1px solid #d1d1d1;
   background: #fff;
 }
 
@@ -113,7 +113,7 @@ tbody tr:nth-child(2) td:first-child {
 }
 
 .total-cart {
-  border: 1px solid #eee;
+  border: 1px solid #d1d1d1;
   margin-bottom: 2rem;
 }
 
@@ -128,10 +128,10 @@ tbody tr:nth-child(2) td:first-child {
 
 .total-cart .pay {
   background: #fafafa;
-  color: #333;
+  color: #d1d1d1;
   font-size: 16px;
   padding: 25px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #d1d1d1;
   text-align: center;
 }
 
@@ -146,7 +146,7 @@ tbody tr:nth-child(2) td:first-child {
   font-size: 1.4rem;
   line-height: 4.5rem;
   transition: all 0.3s;
-  color: #333;
+  color: #d1d1d1;
   text-transform: uppercase;
   font-weight: 300;
   color: var(--white-color);

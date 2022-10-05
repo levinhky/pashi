@@ -171,7 +171,9 @@ const Payment = () => {
             <input name="utf8" type="hidden" value="✓" />
             <button type="button" className="step-footer-continue-btn btn">
               <span className="btn-content">
-                <Link to="/checkout/success">Hoàn tất đơn hàng</Link>
+                <Link className="k-c-hover" to="/checkout/success">
+                  Hoàn tất đơn hàng
+                </Link>
               </span>
               <i className="btn-spinner icon icon-button-spinner"></i>
             </button>

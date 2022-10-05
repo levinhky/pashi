@@ -8,7 +8,7 @@
   text-align: right;
   padding-top: 3rem;
   margin-bottom: 4rem;
-  border-top: 0.1rem solid #e5e5e5;
+  border-top: 0.1rem solid #d1d1d1;
 }
 
 .product-pagination ul li {
@@ -18,7 +18,7 @@
 
 .product-pagination ul li button {
   background: var(--white-color);
-  border: 0.1rem solid #ededed;
+  border: 0.1rem solid #d1d1d1;
   color: var(--black-color);
   font-size: 1.5rem;
   display: block;
@@ -34,7 +34,7 @@
   color: var(--white-color);
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px){
+@media only screen and (min-width: 320px) and (max-width: 480px) {
   .wrapper {
     margin-top: 20%;
   }

@@ -2,7 +2,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #d1d1d1;
   padding-bottom: 1rem;
 }
 
@@ -19,7 +19,7 @@ nav .title {
 .filter-box {
   background-color: var(--white-color);
   border-radius: 0.5rem;
-  border: solid 0.1rem #e8e8e8;
+  border: solid 0.1rem #d1d1d1;
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
@@ -141,7 +141,6 @@ nav .title {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
-  
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
