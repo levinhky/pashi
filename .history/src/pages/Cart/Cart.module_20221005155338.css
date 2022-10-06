@@ -1,0 +1,263 @@
+.wrapper {
+  margin: 8% auto 0;
+  max-width: 110.7rem;
+  width: 100%;
+}
+
+.title {
+  text-align: left;
+}
+
+.title-heading {
+  font-family: SVN-Veneer;
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.cart {
+  display: flex;
+}
+
+.cart .left {
+  flex: 1;
+}
+
+.cart .right {
+  width: 39rem;
+  margin-left: 3rem;
+}
+
+table {
+  margin-bottom: 2rem;
+  width: 100%;
+  border-bottom: 1px solid #d1d1d1;
+  border-top: 1px solid #d1d1d1;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table tr:first-child th {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: left;
+  font-weight: 400;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+table .item td:first-child {
+  padding: 1rem 0;
+  border-top: 1px solid #d1d1d1;
+}
+
+tbody tr:first-child th:first-child {
+  padding: 1rem 0;
+}
+
+.product {
+  display: flex;
+}
+
+tbody tr:nth-child(2) td:first-child {
+  width: 30rem;
+}
+
+.product img {
+  width: 15rem;
+}
+
+.product .info {
+  margin-left: 2rem;
+  margin-top: 3rem;
+  color: var(--black-color);
+}
+
+.product .info h4 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.qty-number {
+  border-radius: 5rem;
+  overflow: hidden;
+  display: inline-block;
+  border: 0.1rem solid #d1d1d1;
+}
+
+.qty-number input {
+  border-left: 1px solid #d1d1d1;
+  height: 5rem;
+  text-align: center;
+  width: 5rem;
+  border-right: 1px solid #d1d1d1;
+  background: #fff;
+}
+
+.qty-number input[type="button"] {
+  width: 4rem;
+  cursor: pointer;
+}
+
+.item td:nth-child(3) b {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.total-cart {
+  border: 1px solid #d1d1d1;
+  margin-bottom: 2rem;
+}
+
+.sub-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #787878;
+  font-size: 1.6rem;
+  padding: 1rem 2.5rem;
+}
+
+.total-cart .pay {
+  background: #fafafa;
+  color: #d1d1d1;
+  font-size: 16px;
+  padding: 25px;
+  border-top: 1px solid #d1d1d1;
+  text-align: center;
+}
+
+.total-cart .pay a {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-color: var(--black-color);
+  background: var(--black-color);
+  height: 4.5rem;
+  padding: 0 3rem;
+  border-radius: 5rem;
+  font-size: 1.4rem;
+  line-height: 4.5rem;
+  transition: all 0.3s;
+  color: #d1d1d1;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: var(--white-color);
+}
+
+.total-cart .pay a:hover {
+  background: var(--white-color);
+  color: var(--black-color);
+}
+
+.k-note {
+  width: 100%;
+  resize: none;
+  padding: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.42857;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  outline: none;
+}
+
+textarea:focus-within {
+  border-color: #3399ff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 0.8rem 2rem;
+}
+
+.item td:last-child span {
+  cursor: pointer;
+}
+
+.empty-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.continue-btn {
+  padding: 2rem 0;
+}
+
+.continue-btn a {
+  display: inline-block;
+  background: #000;
+  height: 5rem;
+  padding: 0 4rem;
+  border-radius: 5rem;
+  font-size: 1.6rem;
+  text-decoration: none;
+  line-height: 5rem;
+  transition: all 0.3s;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .wrapper {
+    padding: 0 1.5rem;
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .wrapper {
+    padding: 0 1.5rem;
+    margin-top: 10%;
+  }
+
+  .cart {
+    flex-wrap: wrap;
+  }
+
+  .cart .right {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .wrapper {
+    padding: 0 1.5rem;
+    margin-top: 20%;
+  }
+
+  .cart {
+    flex-wrap: wrap;
+  }
+
+  tbody tr:nth-child(2) td:first-child {
+    width: 20rem;
+  }
+
+  .product img {
+    width: 8rem;
+  }
+
+  .cart .right {
+    margin: 0;
+    width: 100%;
+  }
+
+  .qty-number input[type="button"] {
+    width: 3rem;
+  }
+
+  .qty-number input {
+    width: 3.5rem;
+  }
+}
