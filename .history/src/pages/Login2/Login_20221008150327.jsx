@@ -144,7 +144,7 @@ const Login = () => {
               <Input
                 type="password"
                 control={control}
-                name="password"
+                name="passwordlogin"
                 placeholder="Mật khẩu"
               ></Input>
             </div>

@@ -67,10 +67,6 @@ const Login = () => {
       setTimeout(() => {
         resolve();
         console.log(value);
-        reset({
-          email: "",
-          password: "",
-        });
       }, 5000);
     });
   };
@@ -109,6 +105,7 @@ const Login = () => {
       {/* =========================================== FORM =========================================== */}
       <div className="flex flex-row justify-between">
         <form
+          action=""
           className="login-form col-sm-6 col-xs-12"
           onSubmit={handleSubmit(onSubmitLogin)}
         >
@@ -124,7 +121,7 @@ const Login = () => {
               <Input
                 type="email"
                 control={control}
-                name="email"
+                name="emaillogin"
                 placeholder="Nhập email của bạn"
               ></Input>
             </div>
@@ -144,7 +141,7 @@ const Login = () => {
               <Input
                 type="password"
                 control={control}
-                name="password"
+                name="passwordlogin"
                 placeholder="Mật khẩu"
               ></Input>
             </div>

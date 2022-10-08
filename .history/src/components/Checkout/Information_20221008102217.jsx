@@ -23,11 +23,7 @@ const dataSelect = [
   },
 ];
 const Information = () => {
-  const {
-    control,
-    setValue,
-    formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
-  } = useForm({});
+  const { control, setValue } = useForm({});
 
   return (
     <div className="flex flex-row-reverse">
@@ -128,15 +124,9 @@ const Information = () => {
             Giỏ hàng
           </Link>
           {/* <form action=""></form> */}
-          <button
-            className="text-white font-medium transition-all hover:brightness-125 bg-[#338dbc] text-center rounded-lg px-3 py-6"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <div className="w-8 h-8 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
-            ) : (
-              "Tiếp tục đến phương thức thanh toán"
-            )}
+          <button className="text-white font-medium transition-all hover:brightness-125 bg-[#338dbc] text-center rounded-lg px-3 py-6">
+            {/* Tiếp tục đến phương thức thanh toán */}
+            <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
           </button>
         </div>
       </div>

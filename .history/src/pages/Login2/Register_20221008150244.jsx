@@ -86,7 +86,7 @@ const Register = () => {
           <Input
             type="text"
             control={control}
-            name="username"
+            name="usename"
             placeholder="Họ và tên"
           ></Input>
         </div>

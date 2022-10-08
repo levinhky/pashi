@@ -1,33 +1,29 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight, AiFillCaretDown } from "react-icons/ai";
 import Input from "./components/Input";
 import Select from "./components/Select";
 
 const dataSelect = [
   {
     id: 1,
-    text: "TP.HCM",
-    value: "hcm",
+    text: "Teacher",
+    value: "teacher",
   },
   {
     id: 2,
-    text: "Hà Nội",
-    value: "hanoi",
+    text: "Developer",
+    value: "developer",
   },
   {
     id: 3,
-    text: "Thừa Thiên Huế",
-    value: "hue",
+    text: "Doctor",
+    value: "doctor",
   },
 ];
 const Information = () => {
-  const {
-    control,
-    setValue,
-    formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
-  } = useForm({});
+  const { control, setValue } = useForm({});
 
   return (
     <div className="flex flex-row-reverse">
@@ -128,15 +124,8 @@ const Information = () => {
             Giỏ hàng
           </Link>
           {/* <form action=""></form> */}
-          <button
-            className="text-white font-medium transition-all hover:brightness-125 bg-[#338dbc] text-center rounded-lg px-3 py-6"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <div className="w-8 h-8 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
-            ) : (
-              "Tiếp tục đến phương thức thanh toán"
-            )}
+          <button className="text-white font-medium transition-all hover:brightness-125 bg-[#338dbc] text-center rounded-lg px-3 py-6">
+            Tiếp tục đến phương thức thanh toán
           </button>
         </div>
       </div>

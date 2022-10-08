@@ -11,7 +11,7 @@ import * as yup from "yup";
 import Input from "./components/input/Input";
 
 const schema = yup.object({
-  username: yup.string().required("Please enter your username"),
+  username: yup.string().required("Vui lòng nhập họ tên của bạn"),
   email: yup
     .string()
     .email(
@@ -51,7 +51,6 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
-    reValidateMode: "onChange",
   });
   console.log(isSubmitting);
   console.log(errors);
@@ -86,7 +85,7 @@ const Register = () => {
           <Input
             type="text"
             control={control}
-            name="username"
+            name="usename"
             placeholder="Họ và tên"
           ></Input>
         </div>

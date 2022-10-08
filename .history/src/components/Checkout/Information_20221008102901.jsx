@@ -135,7 +135,7 @@ const Information = () => {
             {isSubmitting ? (
               <div className="w-8 h-8 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
             ) : (
-              "Tiếp tục đến phương thức thanh toán"
+              " Tiếp tục đến phương thức thanh toán"
             )}
           </button>
         </div>

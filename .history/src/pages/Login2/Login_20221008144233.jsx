@@ -124,7 +124,7 @@ const Login = () => {
               <Input
                 type="email"
                 control={control}
-                name="email"
+                name="emaillogin"
                 placeholder="Nhập email của bạn"
               ></Input>
             </div>
@@ -144,7 +144,7 @@ const Login = () => {
               <Input
                 type="password"
                 control={control}
-                name="password"
+                name="passwordlogin"
                 placeholder="Mật khẩu"
               ></Input>
             </div>
