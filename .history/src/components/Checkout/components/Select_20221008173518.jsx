@@ -25,6 +25,7 @@ const Select = ({ control, setValue, name, data, selectLabel, ...props }) => {
       className="relative focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all focus:ring-2 focus:border-transparent select-none"
       ref={nodeRef}
     >
+      {/* focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all */}
       <div
         className="flex items-center justify-between p-3 bg-white border border-gray-100 rounded-lg cursor-pointer"
         onClick={() => setShow(!show)}

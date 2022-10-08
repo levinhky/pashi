@@ -9,7 +9,7 @@ const CheckoutPage = ({ children }) => {
   console.log(cartItems);
 
   return (
-    <div className="h-auto">
+    <div className="h-auto md:flex-col">
       <div className="flex flex-row-reverse flex-[1_0_auto] py-0 px-[5%] mx-auto w-[90%] h-auto max-w-screen-xl">
         <div className="sidebar w-[44%] relative bg-[#fafafa]">
           <div className="sidebar-content pl-[8%] pt-20">

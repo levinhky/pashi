@@ -22,7 +22,7 @@ const Select = ({ control, setValue, name, data, selectLabel, ...props }) => {
 
   return (
     <div
-      className="relative focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all focus:ring-2 focus:border-transparent select-none"
+      className="relative focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all"
       ref={nodeRef}
     >
       <div
@@ -35,7 +35,7 @@ const Select = ({ control, setValue, name, data, selectLabel, ...props }) => {
         </span>
       </div>
       <div
-        className={`absolute top-full left-0 w-full rounded-lg border bg-white ${
+        className={`absolute top-full left-0 w-full rounded-lg bg-white ${
           show ? "" : "opacity-0 invisible"
         }`}
       >
