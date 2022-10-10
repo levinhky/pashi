@@ -22,7 +22,7 @@ const Select = ({ control, setValue, name, data, selectLabel, ...props }) => {
 
   return (
     <div
-      className="relative focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all focus:ring-2 focus:border-transparent select-none mb-4"
+      className="relative focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all focus:ring-2 focus:border-transparent select-none"
       ref={nodeRef}
     >
       <div

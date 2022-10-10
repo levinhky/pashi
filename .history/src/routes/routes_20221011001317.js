@@ -25,11 +25,11 @@ export const routes = [
     element: <Information />,
     layout: "checkout",
   },
-  // {
-  //   path: "checkout/informationlogin",
-  //   element: <InformationLogin />,
-  //   layout: "checkout",
-  // },
+  {
+    path: "checkout/informationlogin",
+    element: <InformationLogin />,
+    layout: "checkout",
+  },
   // { path: "checkout/payment", element: <Payment />, layout: "checkout" },
   // { path: "checkout/success", element: <Success />, layout: "checkout" },
 ];

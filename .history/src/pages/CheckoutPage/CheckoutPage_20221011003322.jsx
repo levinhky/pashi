@@ -57,7 +57,7 @@ const CheckoutPage = ({ children }) => {
                 />
                 <label
                   for="discount-code"
-                  className="absolute top-0 flex items-center pl-0 my-[17px] text-2xl transition-all transform left-8 group-focus-within:text-base peer-valid:text-base group-focus-within:h-1.5 peer-valid:h-1.5 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0 cursor-text"
+                  className="absolute top-0 flex items-center pl-0 my-[16px] text-2xl transition-all transform left-8 group-focus-within:text-base peer-valid:text-base group-focus-within:h-1.5 peer-valid:h-1.5 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0 cursor-text"
                 >
                   Mã giảm giá
                 </label>

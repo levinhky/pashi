@@ -20,16 +20,16 @@ export const routes = [
   },
   { path: "account/login", element: <Login />, layout: "default" },
   { path: "cart", element: <Cart />, layout: "default" },
-  {
-    path: "checkout/information",
-    element: <Information />,
-    layout: "checkout",
-  },
   // {
-  //   path: "checkout/informationlogin",
-  //   element: <InformationLogin />,
+  //   path: "checkout/information",
+  //   element: <Information />,
   //   layout: "checkout",
   // },
+  {
+    path: "checkout/informationlogin",
+    element: <InformationLogin />,
+    layout: "checkout",
+  },
   // { path: "checkout/payment", element: <Payment />, layout: "checkout" },
   // { path: "checkout/success", element: <Success />, layout: "checkout" },
 ];

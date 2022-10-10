@@ -22,7 +22,7 @@ const Select = ({ control, setValue, name, data, selectLabel, ...props }) => {
 
   return (
     <div
-      className="relative focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all focus:ring-2 focus:border-transparent select-none mb-4"
+      className="relative focus:shadow-[0_0_0_2px_#338dbc] focus:outline-none focus:ring-sky-500 delay-200 shadow-md transition-all focus:ring-2 focus:border-transparent select-none"
       ref={nodeRef}
     >
       <div
@@ -30,8 +30,8 @@ const Select = ({ control, setValue, name, data, selectLabel, ...props }) => {
         onClick={() => setShow(!show)}
       >
         <span>{label}</span>
-        <span className="flex items-center place-content-center gap-x-4 icon">
-          <div className="h-[20px] line border-[#e1e1e1] border-r-2 border-y-0 border-l-0 w-1 line"></div>
+        <div className="h-[20px] line border-black border-right border-y-0 border-l-0 w-1 line"></div>
+        <span className="place-content-center icon">
           <AiFillCaretDown className=""></AiFillCaretDown>
         </span>
       </div>
