@@ -1,7 +1,6 @@
 import { vnd } from "configs/functions";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./CheckoutPage.module.css";
 
 const CheckoutPage = ({ children }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
