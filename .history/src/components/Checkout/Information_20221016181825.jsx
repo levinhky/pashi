@@ -39,15 +39,15 @@ const schema = yup.object({
   province: yup
     .string()
     .required("Vui lòng chọn tỉnh / thành")
-    .oneOf(["hcm", "hanoi", "hue"]),
+    .oneOf(["TP.HCM", "Hà Nội", "Thừa Thiên Huế"]),
   district: yup
     .string()
     .required("Vui lòng chọn quận / huyện")
-    .oneOf(["hcm", "hanoi", "hue"]),
+    .oneOf(["TP.HCM", "Hà Nội", "Thừa Thiên Huế"]),
   wards: yup
     .string()
     .required("Vui lòng chọn phường / xã")
-    .oneOf(["hcm", "hanoi", "hue"]),
+    .oneOf(["TP.HCM", "Hà Nội", "Thừa Thiên Huế"]),
 });
 
 const Information = () => {

@@ -39,15 +39,7 @@ const schema = yup.object({
   province: yup
     .string()
     .required("Vui lòng chọn tỉnh / thành")
-    .oneOf(["hcm", "hanoi", "hue"]),
-  district: yup
-    .string()
-    .required("Vui lòng chọn quận / huyện")
-    .oneOf(["hcm", "hanoi", "hue"]),
-  wards: yup
-    .string()
-    .required("Vui lòng chọn phường / xã")
-    .oneOf(["hcm", "hanoi", "hue"]),
+    .oneOf(dataSelect, "Vui lòng chọn tỉnh / thành"),
 });
 
 const Information = () => {
@@ -196,20 +188,18 @@ const Information = () => {
                     </p>
                   )}
                 </div>
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="wards"
-                    data={dataSelect}
-                    selectLabel="Chọn phường / xã"
-                  ></Select>
-                  {errors.wards && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.wards.message}
-                    </p>
-                  )}
-                </div>
+                <Select
+                  control={control}
+                  setValue={setValue}
+                  name="wards"
+                  data={dataSelect}
+                  selectLabel="Chọn phường / xã"
+                ></Select>
+                {errors.wards && (
+                  <p className="mb-4 text-2xl text-red-500">
+                    {errors.wards.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>

@@ -24,6 +24,14 @@ const dataSelect = [
     value: "hue",
   },
 ];
+// const phoneRegExp =
+//   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+const phoneSchema = yup.string().phone("VN").required();
+
+(async () => {
+  console.log(await phoneSchema.isValid("+919876543210")); // → true
+})();
 
 const schema = yup.object({
   username: yup.string().required("Vui lòng nhập họ tên của bạn."),
@@ -31,23 +39,13 @@ const schema = yup.object({
     .string()
     .email("Vui lòng nhập địa chỉ email hợp lệ")
     .required("Hãy điền địa chỉ email của bạn"),
-  phoneNumber: yup
-    .string()
-    .phone("VN", true, "Vui lòng nhập đúng số điện thoại của bạn.")
-    .required("Vui lòng nhập đúng số điện thoại của bạn."),
-  address: yup.string().required("Vui lòng nhập địa chỉ của bạn."),
-  province: yup
-    .string()
-    .required("Vui lòng chọn tỉnh / thành")
-    .oneOf(["hcm", "hanoi", "hue"]),
-  district: yup
-    .string()
-    .required("Vui lòng chọn quận / huyện")
-    .oneOf(["hcm", "hanoi", "hue"]),
-  wards: yup
-    .string()
-    .required("Vui lòng chọn phường / xã")
-    .oneOf(["hcm", "hanoi", "hue"]),
+  phoneNumber: yup.string().phone().required(),
+  // .number()
+  // .typeError("Đây không phải là một số.")
+  // .positive("Số điện thoại không được bắt đầu bằng dấu trừ")
+  // .integer("Số điện thoại không được bao gồm dấu thập phân")
+  // .min(10, "Vui lòng nhập đúng số điện thoại của bạn.")
+  // .required("Vui lòng nhập số điện thoại của bạn."),
 });
 
 const Information = () => {
@@ -168,48 +166,42 @@ const Information = () => {
                 </p>
               )}
               <div className="grid grid-cols-3 gap-x-2 select">
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="province"
-                    data={dataSelect}
-                    selectLabel="Chọn tỉnh / thành"
-                  ></Select>
-                  {errors.province && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.province.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="district"
-                    data={dataSelect}
-                    selectLabel="Chọn quận / huyện"
-                  ></Select>
-                  {errors.district && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.district.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="wards"
-                    data={dataSelect}
-                    selectLabel="Chọn phường / xã"
-                  ></Select>
-                  {errors.wards && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.wards.message}
-                    </p>
-                  )}
-                </div>
+                <Select
+                  control={control}
+                  setValue={setValue}
+                  name="province"
+                  data={dataSelect}
+                  selectLabel="Chọn tỉnh / thành"
+                ></Select>
+                {errors.province && (
+                  <p className="mb-4 text-2xl text-red-500">
+                    {errors.province.message}
+                  </p>
+                )}
+                <Select
+                  control={control}
+                  setValue={setValue}
+                  name="district"
+                  data={dataSelect}
+                  selectLabel="Chọn quận / huyện"
+                ></Select>
+                {errors.district && (
+                  <p className="mb-4 text-2xl text-red-500">
+                    {errors.district.message}
+                  </p>
+                )}
+                <Select
+                  control={control}
+                  setValue={setValue}
+                  name="wards"
+                  data={dataSelect}
+                  selectLabel="Chọn phường / xã"
+                ></Select>
+                {errors.wards && (
+                  <p className="mb-4 text-2xl text-red-500">
+                    {errors.wards.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>

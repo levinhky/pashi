@@ -95,6 +95,7 @@ const CheckoutPage = ({ children }) => {
 
         <div className="flex flex-column w-[56%] pr-[6%] pt-20">{children}</div>
       </div>
+      <p></p>
     </div>
   );
 };

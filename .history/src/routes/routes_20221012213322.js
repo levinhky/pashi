@@ -20,11 +20,11 @@ export const routes = [
   },
   { path: "account/login", element: <Login />, layout: "default" },
   { path: "cart", element: <Cart />, layout: "default" },
-  {
-    path: "checkout/information",
-    element: <Information />,
-    layout: "checkout",
-  },
+  // {
+  //   path: "checkout/information",
+  //   element: <Information />,
+  //   layout: "checkout",
+  // },
   {
     path: "checkout/informationlogin",
     element: <InformationLogin />,

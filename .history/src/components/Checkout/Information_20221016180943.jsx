@@ -38,16 +38,8 @@ const schema = yup.object({
   address: yup.string().required("Vui lòng nhập địa chỉ của bạn."),
   province: yup
     .string()
-    .required("Vui lòng chọn tỉnh / thành")
-    .oneOf(["hcm", "hanoi", "hue"]),
-  district: yup
-    .string()
-    .required("Vui lòng chọn quận / huyện")
-    .oneOf(["hcm", "hanoi", "hue"]),
-  wards: yup
-    .string()
-    .required("Vui lòng chọn phường / xã")
-    .oneOf(["hcm", "hanoi", "hue"]),
+    .required("Please select your job")
+    .oneOf(dataSelect, "Vui lòng chọn tỉnh / thành"),
 });
 
 const Information = () => {
@@ -168,48 +160,42 @@ const Information = () => {
                 </p>
               )}
               <div className="grid grid-cols-3 gap-x-2 select">
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="province"
-                    data={dataSelect}
-                    selectLabel="Chọn tỉnh / thành"
-                  ></Select>
-                  {errors.province && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.province.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="district"
-                    data={dataSelect}
-                    selectLabel="Chọn quận / huyện"
-                  ></Select>
-                  {errors.district && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.district.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="wards"
-                    data={dataSelect}
-                    selectLabel="Chọn phường / xã"
-                  ></Select>
-                  {errors.wards && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.wards.message}
-                    </p>
-                  )}
-                </div>
+                <Select
+                  control={control}
+                  setValue={setValue}
+                  name="province"
+                  data={dataSelect}
+                  selectLabel="Chọn tỉnh / thành"
+                ></Select>
+                {errors.province && (
+                  <p className="mb-4 text-2xl text-red-500">
+                    {errors.province.message}
+                  </p>
+                )}
+                <Select
+                  control={control}
+                  setValue={setValue}
+                  name="district"
+                  data={dataSelect}
+                  selectLabel="Chọn quận / huyện"
+                ></Select>
+                {errors.district && (
+                  <p className="mb-4 text-2xl text-red-500">
+                    {errors.district.message}
+                  </p>
+                )}
+                <Select
+                  control={control}
+                  setValue={setValue}
+                  name="wards"
+                  data={dataSelect}
+                  selectLabel="Chọn phường / xã"
+                ></Select>
+                {errors.wards && (
+                  <p className="mb-4 text-2xl text-red-500">
+                    {errors.wards.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>
