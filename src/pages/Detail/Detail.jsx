@@ -1,7 +1,7 @@
 import Loading from "components/Loading/Loading";
 import axiosClient from "configs/api";
 import { vnd } from "configs/functions";
-import { toastSuccess } from "configs/toast";
+import { toastError, toastSuccess } from "configs/toast";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -64,7 +64,10 @@ function Detail(props) {
     });
   }, []);
 
-  console.log(sizeValue);
+  if (sizeValue) {
+    productDetail.size = sizeValue;
+  }
+
   console.log(productDetail);
 
   return (
@@ -113,8 +116,14 @@ function Detail(props) {
               <div className={styles["add-cart"]}>
                 <button
                   onClick={() => {
-                    dispath(addToCart({ ...productDetail, quantity }));
-                    addSuccess();
+                    if (sizeValue == "") {
+                      toastError(
+                        "Vui lòng chọn kích cỡ trước khi thêm vào giỏ hàng!"
+                      );
+                    } else {
+                      dispath(addToCart({ ...productDetail, quantity }));
+                      addSuccess();
+                    }
                   }}
                 >
                   Thêm vào giỏ

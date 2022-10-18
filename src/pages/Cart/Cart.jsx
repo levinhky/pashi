@@ -18,7 +18,7 @@ function Cart(props) {
   useEffect(() => {
     dispath(caculateTotal());
   }, [cartItems]);
-
+  console.log(cartItems);
   return (
     <div className={styles["wrapper"]}>
       <div className={styles["title"]}>
@@ -46,6 +46,7 @@ function Cart(props) {
                             <div className={styles["info"]}>
                               <h4>{product.name}</h4>
                               <span>{vnd(product.price)}</span>
+                              <h3>Size: {product.size}</h3>
                             </div>
                           </div>
                         </a>
