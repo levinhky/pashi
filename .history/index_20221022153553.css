@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-radio {
+  width: 10px;
+  height: 10px;
+}
+
+.custom-radio > div {
+  box-shadow: 0 0 0 5px white;
+}
+
+.custom-radio input:checked + div {
+  @apply bg-blue-500;
+  box-shadow: 0 0 2.5px white, 0 0 5px rgb(59 130 246 / var(--tw-bg-opacity));
+}
