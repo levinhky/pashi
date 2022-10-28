@@ -1,6 +1,7 @@
 import Footer from "components/Footer/Footer";
 import Header from "components/Header/Header";
 import Inbox from "components/Inbox/Inbox";
+import RequencyProduct from "components/requencyProduct/requencyProduct";
 import { useEffect } from "react";
 import styles from "./DefaultLayout.module.css";
 
@@ -17,6 +18,7 @@ function DefaultLayout({ children }) {
       <Header />
       <div className={styles["container"]}>
         {children}
+        <RequencyProduct />
         <Inbox />
       </div>
       <Footer />
