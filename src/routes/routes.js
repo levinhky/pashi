@@ -42,6 +42,11 @@ export const routes = [
     element: <Success />,
     layout: "checkout",
   },
+  { 
+    path: "account/account_detail",
+    element: <Account_detail />, 
+    layout: "default", 
+  },
   // { path: "checkout/payment", element: <Payment />, layout: "checkout" },
   // { path: "checkout/success", element: <Success />, layout: "checkout" },
 ];
