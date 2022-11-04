@@ -1,5 +1,6 @@
 import Loading from "components/Loading/Loading";
 import RequencyProduct from "components/requencyProduct/requencyProduct";
+import SizeChartcmt from "components/SizeChartCmt/SizeChartCmt";
 import axiosClient from "configs/api";
 import { vnd } from "configs/functions";
 import { toastError, toastSuccess } from "configs/toast";
@@ -168,6 +169,7 @@ function Detail(props) {
           </div>
         </div>
       )}
+       <SizeChartcmt />
       <RequencyProduct />
       {loading && <Loading />}
     </>
