@@ -1,32 +1,32 @@
 import './qwerty.css';
-
+import styles from "./thongtin.module.css";
 function ThongTinChung() {
     return (
         <div>
-            <div className='flex'>
-                <div className='flex-1'>
-                    <div className="title">BẢNG THÔNG TIN CỦA TÔI</div>
-                    <p className='titles'>Thông tin tài khoản</p>
+            <div className={styles['flex']}>
+                <div className={styles['flex-1']}>
+                    <div className={styles["title"]}>BẢNG THÔNG TIN CỦA TÔI</div>
+                    <p className={styles['titles']}>Thông tin tài khoản</p>
                     <div>
-                        <p className='text'>Họ và tên: WD Kyr</p>
-                        <p className='text'>Email: abc@gmail.com</p>
+                        <p className={styles['text']}>Họ và tên: WD Kyr</p>
+                        <p className={styles['text']}>Email: abc@gmail.com</p>
                     </div>
                 </div>
-                <div className='flex-2'>
+                <div className={styles['flex-2']}>
                     <a href=''>Đăng xuất</a>
                 </div>
             </div>
-            <div className='flex_table'>
-                <div className='titles_table'>
+            <div className={styles['flex_table']}>
+                <div className={styles['titles_table']}>
                     Các đơn hàng vừa đặt
                 </div>
-                <div className='end-all'>
+                <div className={styles['end-all']}>
                     <a href=''>Xem tất cả</a>
                 </div>
             </div>
 
 
-            <table class="table">
+            <table class={styles["table"]}>
 
                 <thead>
 
@@ -51,31 +51,31 @@ function ThongTinChung() {
                 </tbody>
             </table>
 
-            <div className='flex_3'>
-                <div className='flex_left'>
+            <div className={styles['flex_3']}>
+                <div className={styles['flex_left']}>
                     Sổ địa chỉ
                 </div>
-                <div className='end-all'>
+                <div className={styles['end-all']}>
                     <a >Xem tất cả</a>
                 </div>
             </div>
-            <div className='flex_box'>
-                <div className='flex_box_left'>
-                    <p className='bord'>WD Kyr<a>Mặc định</a></p>
+            <div className={styles['flex_box']}>
+                <div className={styles['flex_box_left']}>
+                    <p className={styles['bord']}>WD Kyr<a>Mặc định</a></p>
                     <p>Địa chỉ, VietNam</p>
                     <p>Điện thoại:</p>
-                    <div className='box'>
-                        <div className='Sua'>Sửa</div>
-                        <div className='Xoa'>Xóa</div>
+                    <div className={styles['box']}>
+                        <div className={styles['Sua']}>Sửa</div>
+                        <div className={styles['Xoa']}>Xóa</div>
                     </div>
                 </div>
-                <div className='flex_box_right'>
-                    <p className='bord'>rock<a>Mặc định</a></p>
+                <div className={styles['flex_box_right']}>
+                    <p className={styles['bord']}>rock<a>Mặc định</a></p>
                     <p>Địa chỉ: Q9.TP.HCM</p>
                     <p>Điện thoại: 0376297865</p>
-                    <div className='box_2'>
-                        <div className='Sua'>Sửa</div>
-                        <div className='Xoa'>Xóa</div>
+                    <div className={styles['box_2']}>
+                        <div className={styles['Sua']}>Sửa</div>
+                        <div className={styles['Xoa']}>Xóa</div>
                     </div>
                 </div>
             </div>
