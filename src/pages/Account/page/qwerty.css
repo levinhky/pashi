@@ -1,0 +1,150 @@
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-2 {
+  /* width: 550px; */
+  text-align: right;
+}
+
+a {
+  margin-top: 20px;
+  font-weight: bold;
+  /* text-decoration: underline; */
+}
+
+.table_flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.titles {
+  font-size: 20px;
+  margin-top: 20px;
+
+}
+
+.end-all a {
+  width: 240px;
+  text-align: right;
+
+}
+
+.flex_table {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.titles_table {
+  width: 400px;
+}
+
+.flex_3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.flex_left {
+  width: 400px;
+
+}
+
+.flex_box {
+  display: flex;
+  flex-wrap: wrap;
+  height: 200px;
+
+}
+
+.flex_box .flex_box_left {
+  border: 1px solid black;
+  border-style: dotted;
+  width: 300px;
+  /* margin-top: 5px; */
+  padding: 5px;
+}
+
+.flex_box .flex_box_left .bord {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.flex_box .flex_box_left .box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.flex_box .flex_box_left .box .Sua {
+  border: 1px solid grey;
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  width: 50px;
+  text-align: center;
+}
+
+.flex_box .flex_box_left .box .Xoa {
+  border: 1px solid gray;
+  padding: 5px;
+  margin-left: 15px;
+  border-radius: 5px;
+  width: 50px;
+  text-align: center;
+}
+
+.flex_box .flex_box_right {
+  border: 1px solid black;
+  border-style: groove;
+  margin-left: 50px;
+  width: 300px;
+
+}
+
+.flex_box .flex_box_left a {
+  margin-left: 170px;
+}
+
+.flex_box .flex_box_left p {
+  margin-top: 15px;
+}
+
+.flex_box_right p {
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.flex_box_right .bord {
+  font-weight: bold;
+  /* margin-top: 5px; */
+}
+
+.flex_box_right .box_2{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex_box_right .box_2 .Sua {
+  border: 1px solid grey;
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  width: 50px;
+  text-align: center;
+}
+
+.flex_box_right .box_2 .Xoa {
+  border: 1px solid grey;
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  width: 50px;
+  text-align: center;
+}
