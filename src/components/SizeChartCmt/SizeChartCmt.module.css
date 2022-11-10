@@ -260,6 +260,7 @@
 }
 .desc-tab {
 	/* padding-top: 35px; */
+	width: 550px;
 }
 .desc-tab p {
 	color: #666;

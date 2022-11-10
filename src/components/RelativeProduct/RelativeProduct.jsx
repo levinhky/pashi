@@ -1,5 +1,5 @@
 import react, { useState } from "react";
-import styles from "./requencyProduct.module.css";
+import styles from "./RelativeProduct.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { A11y, Autoplay, Lazy, Navigation } from "swiper";
 import "swiper/css";
@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "swiper/css/lazy";
 
-function RequencyProduct() {
+function RelativeProduct() {
   const productData = [
       {
         name : "ao", 
@@ -69,4 +69,4 @@ function RequencyProduct() {
     </div>
   );
 }
-export default RequencyProduct;
+export default RelativeProduct;
