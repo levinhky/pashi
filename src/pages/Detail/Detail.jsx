@@ -181,38 +181,15 @@ function Detail(props) {
                                         {userInfo.uid && <span className={styles['send-icon']}><i
                                             className='bx bxs-send'></i></span>}
                                         <div className={styles['comment-content']}>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
-                                            <div className={styles['comment-item']}>
-                                                <span className={styles['name']}>Mr.kyle: </span>
-                                                <span className={styles['content']}>Hehehehe</span>
-                                            </div>
+                                            {/*<div className={styles['comment-item']}>*/}
+                                            {/*        <div className={styles['thumbnail']}>*/}
+                                            {/*            <img src={userInfo.photoUrl} alt={userInfo.displayName} />*/}
+                                            {/*        </div>*/}
+                                            {/*   <div className={styles['content']}>*/}
+                                            {/*       <div className={styles['name']}>{userInfo.displayName} </div>*/}
+                                            {/*       <div className={styles['text']}>Hehehehe</div>*/}
+                                            {/*   </div>*/}
+                                            {/*</div>*/}
                                         </div>
                                     </div>}
                             </div>

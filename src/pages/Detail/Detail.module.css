@@ -231,7 +231,7 @@
 .comment-section textarea {
   width: 100%;
   border: 1px solid #000;
-  padding: 10px 10px 10px 40px;
+  padding: 10px 10px 10px 45px;
   resize: none;
   border-radius: 0.3rem;
   transition: 0.3s ease-in-out;
@@ -248,6 +248,19 @@
 .comment-content {
   height: 10rem;
   overflow-y: scroll;
+}
+
+.comment-content .comment-item {
+  display: flex;
+}
+
+.comment-content .comment-item .thumbnail img {
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.comment-content .comment-item .content {
+  margin-left: 1rem;
 }
 
 .comment-content::-webkit-scrollbar {
