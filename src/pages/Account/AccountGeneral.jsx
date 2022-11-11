@@ -20,7 +20,7 @@ const AccountGeneral = () => {
             if (user) {
                 const userInfo = {
                     uid: user.uid,
-                    photoUrl: user.photoUrl,
+                    photoUrl: user.photoURL,
                     phoneNumber: user.phoneNumber,
                     email: user.email,
                     displayName: user.displayName,

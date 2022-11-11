@@ -5,10 +5,13 @@ import {vnd} from "configs/functions";
 import {toastError, toastSuccess} from "configs/toast";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import {addToCart, caculateTotal} from "slices/cartSlice";
 import styles from "./Detail.module.css";
+import {onAuthStateChanged} from "firebase/auth";
+import {auth} from "../../configs/firebase";
+import {getUserInfo} from "../../slices/authSlice";
 
 function Detail(props) {
     const {id} = useParams();
@@ -17,8 +20,8 @@ function Detail(props) {
     const [quantity, setQuantity] = useState(1);
     const [sizeValue, setSizeValue] = useState("");
     const [loading, setLoading] = useState(true);
-    const [isSizeShow, setIsSizeShow] = useState(true);
-    const [isCmtShow, setIsCmtShow] = useState(false);
+    const [tabActive, setTabActive] = useState(1);
+    const {userInfo} = useSelector((state) => state.auth);
 
     const dispath = useDispatch();
 
@@ -46,10 +49,30 @@ function Detail(props) {
         });
     }, []);
 
+    //auth
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const userInfo = {
+                    uid: user.uid,
+                    photoUrl: user.photoURL,
+                    phoneNumber: user.phoneNumber,
+                    email: user.email,
+                    displayName: user.displayName,
+                    accessToken: user.accessToken,
+                };
+                dispath(getUserInfo(userInfo));
+            } else {
+                console.log("User signed out");
+            }
+        });
+    }, [dispath, auth]);
+
     const addSuccess = () => {
         toastSuccess("Thêm sản phẩm thành công!");
     };
 
+    console.log(userInfo)
     useEffect(() => {
         const checkSizes = document.querySelectorAll(`.${styles["size"]}`);
         checkSizes.forEach((size) => {
@@ -71,8 +94,6 @@ function Detail(props) {
         productDetail.size = sizeValue;
     }
 
-    console.log(productDetail);
-
     return (
         <>
             {productDetail && (
@@ -84,20 +105,22 @@ function Detail(props) {
                         <div className={styles['user-helper']}>
                             <div className={styles['tabs']}>
                                 <div onClick={() => {
-                                    setIsSizeShow(true)
-                                    setIsCmtShow(false)
-                                }} className={`${styles['tab-item']} ${styles['active']}`}>
+                                    setTabActive(1)
+                                }} className={
+                                    tabActive === 1 ? `${styles['tab-item']} ${styles['active']}` : `${styles['tab-item']}`
+                                }>
                                     Hướng dẫn chọn size
                                 </div>
                                 <div onClick={() => {
-                                    setIsSizeShow(false)
-                                    setIsCmtShow(true)
-                                }} className={`${styles['tab-item']}`}>
+                                    setTabActive(2)
+                                }} className={
+                                    tabActive === 2 ? `${styles['tab-item']} ${styles['active']}` : `${styles['tab-item']}`
+                                }>
                                     Bình luận
                                 </div>
                             </div>
                             <div className={styles["tab-content"]}>
-                                {isSizeShow && <div className={`${styles['tab-pane']} ${styles['size-table']}`}>
+                                {tabActive === 1 && <div className={`${styles['tab-pane']} ${styles['size-table']}`}>
                                     <table>
                                         <tbody>
                                         <tr>
@@ -108,7 +131,7 @@ function Detail(props) {
                                             <td>Eo (cm)</td>
                                             <td>Mông (cm)</td>
                                         </tr>
-                                        <tr style={{backgroundColor:"#eee"}}>
+                                        <tr style={{backgroundColor: "#eee"}}>
                                             <td>S</td>
                                             <td>150 - 155</td>
                                             <td>-</td>
@@ -124,7 +147,7 @@ function Detail(props) {
                                             <td>64 - 66</td>
                                             <td>90 - 92</td>
                                         </tr>
-                                        <tr style={{backgroundColor:"#eee"}}>
+                                        <tr style={{backgroundColor: "#eee"}}>
                                             <td>L</td>
                                             <td>160 - 164</td>
                                             <td>-</td>
@@ -140,46 +163,58 @@ function Detail(props) {
                                             <td>58 - 73</td>
                                             <td>86 - 98</td>
                                         </tr>
-                                        </tbody></table>
+                                        </tbody>
+                                    </table>
                                 </div>}
-                                {isCmtShow &&  <div className={`${styles['tab-pane']} ${styles['comment-section']}`}>
-                                   <textarea name="comment-box" rows="2" cols="50" placeholder={'Nhập bình luận của bạn ở đây...'}></textarea>
-                                    <span className={styles['send-icon']}><i className='bx bxs-send'></i></span>
-                                    <div className={styles['comment-content']}>
-                                        <div className={styles['comment-item']}>
-                                            <span className={styles['name']}>Mr.kyle: </span>
-                                            <span className={styles['content']}>Hehehehe</span>
+                                {tabActive === 2 &&
+                                    <div className={`${styles['tab-pane']} ${styles['comment-section']}`}>
+                                        {userInfo.uid ?
+                                            <div>
+                                                <div id={styles['user-icon']}>
+                                                    <img src={userInfo.photoUrl} alt={userInfo.displayName} />
+                                                </div>
+                                                <textarea name="comment-box" rows="1" cols="50"
+                                                          placeholder={'Nhập bình luận của bạn ở đây...'}></textarea>
+                                            </div> :
+                                            <h3 id={styles['login-warn']}>Vui lòng <Link to='/account/login'>đăng nhập</Link> để bình luận</h3>
+                                        }
+                                        {userInfo.uid && <span className={styles['send-icon']}><i
+                                            className='bx bxs-send'></i></span>}
+                                        <div className={styles['comment-content']}>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
+                                            <div className={styles['comment-item']}>
+                                                <span className={styles['name']}>Mr.kyle: </span>
+                                                <span className={styles['content']}>Hehehehe</span>
+                                            </div>
                                         </div>
-                                        <div className={styles['comment-item']}>
-                                            <span className={styles['name']}>Mr.kyle: </span>
-                                            <span className={styles['content']}>Hehehehe</span>
-                                        </div>  <div className={styles['comment-item']}>
-                                        <span className={styles['name']}>Mr.kyle: </span>
-                                        <span className={styles['content']}>Hehehehe</span>
-                                    </div>  <div className={styles['comment-item']}>
-                                        <span className={styles['name']}>Mr.kyle: </span>
-                                        <span className={styles['content']}>Hehehehe</span>
-                                    </div>  <div className={styles['comment-item']}>
-                                        <span className={styles['name']}>Mr.kyle: </span>
-                                        <span className={styles['content']}>Hehehehe</span>
-                                    </div>  <div className={styles['comment-item']}>
-                                        <span className={styles['name']}>Mr.kyle: </span>
-                                        <span className={styles['content']}>Hehehehe</span>
-                                    </div>  <div className={styles['comment-item']}>
-                                        <span className={styles['name']}>Mr.kyle: </span>
-                                        <span className={styles['content']}>Hehehehe</span>
-                                    </div>  <div className={styles['comment-item']}>
-                                        <span className={styles['name']}>Mr.kyle: </span>
-                                        <span className={styles['content']}>Hehehehe</span>
-                                    </div>
-
-
-
-
-
-
-                                    </div>
-                                </div>}
+                                    </div>}
                             </div>
                         </div>
                     </div>
