@@ -145,6 +145,40 @@ function Detail(props) {
                                 {isCmtShow &&  <div className={`${styles['tab-pane']} ${styles['comment-section']}`}>
                                    <textarea name="comment-box" rows="2" cols="50" placeholder={'Nhập bình luận của bạn ở đây...'}></textarea>
                                     <span className={styles['send-icon']}><i className='bx bxs-send'></i></span>
+                                    <div className={styles['comment-content']}>
+                                        <div className={styles['comment-item']}>
+                                            <span className={styles['name']}>Mr.kyle: </span>
+                                            <span className={styles['content']}>Hehehehe</span>
+                                        </div>
+                                        <div className={styles['comment-item']}>
+                                            <span className={styles['name']}>Mr.kyle: </span>
+                                            <span className={styles['content']}>Hehehehe</span>
+                                        </div>  <div className={styles['comment-item']}>
+                                        <span className={styles['name']}>Mr.kyle: </span>
+                                        <span className={styles['content']}>Hehehehe</span>
+                                    </div>  <div className={styles['comment-item']}>
+                                        <span className={styles['name']}>Mr.kyle: </span>
+                                        <span className={styles['content']}>Hehehehe</span>
+                                    </div>  <div className={styles['comment-item']}>
+                                        <span className={styles['name']}>Mr.kyle: </span>
+                                        <span className={styles['content']}>Hehehehe</span>
+                                    </div>  <div className={styles['comment-item']}>
+                                        <span className={styles['name']}>Mr.kyle: </span>
+                                        <span className={styles['content']}>Hehehehe</span>
+                                    </div>  <div className={styles['comment-item']}>
+                                        <span className={styles['name']}>Mr.kyle: </span>
+                                        <span className={styles['content']}>Hehehehe</span>
+                                    </div>  <div className={styles['comment-item']}>
+                                        <span className={styles['name']}>Mr.kyle: </span>
+                                        <span className={styles['content']}>Hehehehe</span>
+                                    </div>
+
+
+
+
+
+
+                                    </div>
                                 </div>}
                             </div>
                         </div>
