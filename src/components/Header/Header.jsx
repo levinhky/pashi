@@ -102,15 +102,14 @@ function Header() {
           </li>
           {userInfo.accessToken ? (
             <li>
-              <span
-                onClick={() => {
-                  authSignOut();
-                  dispath(setLogOut());
-                }}
+              <Link to='/account'
+                // onClick={() => {
+                //   authSignOut();
+                //   dispath(setLogOut());
+                // }}
               >
-                Hello:{" "}
                 {userInfo.email.substring(0, userInfo.email.indexOf("@"))}
-              </span>
+              </Link>
             </li>
           ) : (
             <li>
@@ -211,16 +210,14 @@ function Header() {
               <Link to={`/collections/hot-products/?page=1`}>Best seller</Link>
             </li>
             {userInfo.accessToken ? (
+                // onClick={() => {
+                //   authSignOut();
+                //   dispath(setLogOut());
+                // }}
               <li>
-                <span
-                  onClick={() => {
-                    authSignOut();
-                    dispath(setLogOut());
-                  }}
-                >
-                  Hello:{" "}
+                <Link to='/account'>
                   {userInfo.email.substring(0, userInfo.email.indexOf("@"))}
-                </span>
+                </Link>
               </li>
             ) : (
               <li>
