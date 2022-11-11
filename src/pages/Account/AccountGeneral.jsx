@@ -4,13 +4,15 @@ import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../../configs/firebase";
 import {getUserInfo, setLogOut} from "../../slices/authSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {authSignOut} from "../../configs/auth";
+import {toastSuccess} from "../../configs/toast";
 
 const AccountGeneral = () => {
     const [activeTab, setActiveTab] = useState(1);
     const {userInfo} = useSelector((state) => state.auth);
     const dispath = useDispatch();
+    const navigate = useNavigate();
 
     //auth
     useEffect(() => {
@@ -69,6 +71,7 @@ const AccountGeneral = () => {
                         onClick={() => {
                             authSignOut();
                             dispath(setLogOut());
+                            navigate('/');
                         }}>Đăng xuất</span>
                 </div>
                 {activeTab === 1 && <div className={styles['info']}>

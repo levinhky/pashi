@@ -55,6 +55,7 @@
 .account-main-content .head span {
     text-decoration: underline;
     font-size: 1.4rem;
+    cursor: pointer;
 }
 
 .account-main-content .info {
