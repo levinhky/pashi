@@ -5,27 +5,31 @@ import {vnd} from "configs/functions";
 import {toastError, toastSuccess} from "configs/toast";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import {addToCart, caculateTotal} from "slices/cartSlice";
 import styles from "./Detail.module.css";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../../configs/firebase";
 import {getUserInfo} from "../../slices/authSlice";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 function Detail(props) {
     const {id} = useParams();
 
     const [productDetail, setProductDetail] = useState({});
+    const [sizes,setSizes] = useState([]);
+    const [images,setImages] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [sizeValue, setSizeValue] = useState("");
     const [loading, setLoading] = useState(true);
     const [tabActive, setTabActive] = useState(1);
     const {userInfo} = useSelector((state) => state.auth);
-
+    const {search} = useLocation();
     const dispath = useDispatch();
-
     const {cartItems} = useSelector((state) => state.cart);
+    const slug = new URLSearchParams(search).get("slug");
 
     useEffect(() => {
         dispath(caculateTotal());
@@ -33,8 +37,10 @@ function Detail(props) {
 
     useEffect(() => {
         const getProductDetail = async () => {
-            const data = await axiosClient.get("products", {params: {id: id}});
+            const data = await axiosClient.get("products/?slug=" + slug);
             setProductDetail(data[0]);
+            setSizes(data[0]?.sizes);
+            setImages(data[0]?.thumbnails)
             setLoading(false);
         };
 
@@ -72,7 +78,7 @@ function Detail(props) {
         toastSuccess("Thêm sản phẩm thành công!");
     };
 
-    console.log(userInfo)
+    console.log(productDetail)
     useEffect(() => {
         const checkSizes = document.querySelectorAll(`.${styles["size"]}`);
         checkSizes.forEach((size) => {
@@ -100,7 +106,15 @@ function Detail(props) {
                 <div className={styles["wrapper"]}>
                     <div className={styles["box-right"]}>
                         <div className={styles["image"]}>
-                            <img src={productDetail.thumbnail} alt={productDetail.name}/>
+                            {/*<img src={productDetail.thumbnails[0].thumbnail} alt={productDetail.name}/>*/}
+                            <Carousel>
+                                {images.map((image,i) => (
+                                    <div key={i}>
+                                        <img src={image.thumbnail} alt={productDetail.name} />
+                                        <p className="legend">{productDetail.name}</p>
+                                    </div>
+                                ))}
+                            </Carousel>
                         </div>
                         <div className={styles['user-helper']}>
                             <div className={styles['tabs']}>
@@ -249,30 +263,18 @@ function Detail(props) {
                         <div className={styles["variants"]}>
                             <div className={styles["title"]}>Size</div>
                             <div className={styles["sizes"]}>
-                                <div className={styles["size"]}>
-                                    <label>S</label>
-                                    <img
-                                        alt="img"
-                                        src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
-                                    />
-                                    <input className="size-value" type="hidden" value="S"/>
-                                </div>
-                                <div className={styles["size"]}>
-                                    <label>M</label>
-                                    <img
-                                        alt="img"
-                                        src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
-                                    />
-                                    <input className="size-value" type="hidden" value="M"/>
-                                </div>
-                                <div className={styles["size"]}>
-                                    <label>L</label>
-                                    <img
-                                        alt="img"
-                                        src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
-                                    />
-                                    <input className="size-value" type="hidden" value="L"/>
-                                </div>
+                                {sizes.map(size => {
+                                    if (size.name) {
+                                        return  <div className={styles["size"]}>
+                                            <label>{size.name}</label>
+                                            <img
+                                                alt="img"
+                                                src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
+                                            />
+                                            <input className="size-value" type="hidden" value={size.name} />
+                                        </div>
+                                    }
+                                })}
                             </div>
                         </div>
                         <div className={styles["addtion"]}>

@@ -102,8 +102,11 @@ function Home(props) {
                 <div className={styles["arrivals"]}>
                     {arrivals.map((arrival) => (
                         <div className={styles["item"]} key={arrival.id}>
-                            <Link to={`/products/${arrival.id}`} className={styles["image"]}>
-                                <img src={arrival.thumbnail} alt="product" />
+                            {/*<Link to={`/products/${arrival.id}`} className={styles["image"]}>*/}
+                            {/*    <img src={arrival.thumbnails[0].thumbnail} alt="product" />*/}
+                            {/*</Link>*/}
+                            <Link to={`/products/detail/?slug=${arrival.slug}`} className={styles["image"]}>
+                                <img src={arrival.thumbnails[0].thumbnail} alt="product" />
                             </Link>
                             <div className={styles["info"]}>
                                 <h2>

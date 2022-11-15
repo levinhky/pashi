@@ -9,9 +9,12 @@
   width: 55.5rem;
 }
 
+.box-left {
+  margin-left: 2.5rem;
+}
+
 .box-right .image img {
   width: 55.5rem;
-  padding-right: 2.5rem;
 }
 
 .info .price,
