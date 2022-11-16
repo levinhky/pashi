@@ -95,10 +95,10 @@ const CheckoutPage = ({ children }) => {
             <input
               type="text"
               id="discount-code"
-              className=" px-4 my-auto h-full flex-1 border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
+              className=" px-4 my-auto h-full border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
               placeholder="Mã giảm giá"
             />
-            <button className="inline-block h-full w-auto px-9 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium">
+            <button className="inline-block h-full w-auto px-6 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium">
               Sử dụng
             </button>
           </div>

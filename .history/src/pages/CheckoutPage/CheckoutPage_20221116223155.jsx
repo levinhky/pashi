@@ -2,24 +2,8 @@ import { vnd } from "configs/functions";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import useClickOutSide from "components/Checkout/hooks/useClickOutSide";
 
 const CheckoutPageStyles = styled.div`
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-  .wrap {
-    margin: 0 auto;
-    max-width: 40em;
-    zoom: 1;
-  }
   @media screen and (min-width: 1000px) {
     .wrap {
       padding: 0 5%;
@@ -28,15 +12,6 @@ const CheckoutPageStyles = styled.div`
     }
   }
   @media screen and (max-width: 999px) {
-    .banner {
-      display: block;
-    }
-    .toggle-summary {
-      display: block;
-    }
-    .content-second {
-      display: block;
-    }
     .sidebar {
       height: 0;
       overflow: hidden;
@@ -49,63 +24,17 @@ const CheckoutPageStyles = styled.div`
   }
 `;
 const CheckoutPage = ({ children }) => {
-  const { show, setShow, nodeRef } = useClickOutSide();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
   console.log(cartItems);
 
   return (
     <CheckoutPageStyles>
-      <div className="hidden py-10 banner">
-        <div className="wrap ">
-          <Link to="/" className="font-medium text-7xl ">
-            Pashi
-          </Link>
-        </div>
-      </div>
-      <div className="hidden border-gray-300 py-7 bg-[#fafafa] toggle-summary border-y-[1px]">
-        <div className="wrap">
-          <div
-            className="flex items-center justify-between order-summary"
-            ref={nodeRef}
-          >
-            <div
-              className="flex items-center order-summary-toggle-text"
-              onClick={() => setShow(!show)}
-            >
-              <div className="pr-4 icon">
-                <svg
-                  width="20"
-                  height="19"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="order-summary-toggle-icon"
-                >
-                  <path d="M17.178 13.088H5.453c-.454 0-.91-.364-.91-.818L3.727 1.818H0V0h4.544c.455 0 .91.364.91.818l.09 1.272h13.45c.274 0 .547.09.73.364.18.182.27.454.18.727l-1.817 9.18c-.09.455-.455.728-.91.728zM6.27 11.27h10.09l1.454-7.362H5.634l.637 7.362zm.092 7.715c1.004 0 1.818-.813 1.818-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817zm9.18 0c1.004 0 1.817-.813 1.817-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817z"></path>
-                </svg>
-              </div>
-              <span className="text">Hiển thị thông tin đơn hàng</span>
-            </div>
-            <div className="price">304,000đ</div>
-          </div>
-        </div>
-      </div>
-      <div className="hidden content-second bg-[#fafafa] py-7 border-gray-300 border-b-[1px]">
-        <div className="wrap">
-          <div className="flex items-center h-[47px] code">
-            <input
-              type="text"
-              id="discount-code"
-              className=" px-4 my-auto h-full flex-1 border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
-              placeholder="Mã giảm giá"
-            />
-            <button className="inline-block h-full w-auto px-9 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium">
-              Sử dụng
-            </button>
-          </div>
-        </div>
-      </div>
+      <div className="hidden banner"></div>
+      <div className="hidden toggle-summary"></div>
+      <div className="hidden content-second"></div>
       <div className="h-auto content">
-        <div className="h-auto max-w-screen-xl py-0 mx-auto wrap">
+        <div className="flex flex-row-reverse h-auto max-w-screen-xl py-0 mx-auto wrap">
           <div className="sidebar w-[44%] relative bg-[#fafafa]">
             <div className="sidebar-content pl-[8%] pt-20">
               {cartItems.length > 0 &&

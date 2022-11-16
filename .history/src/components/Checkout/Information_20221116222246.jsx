@@ -20,9 +20,6 @@ const InformationStyles = styled.div`
       padding-top: 4em;
     }
   }
-  @media (min-width: 750px) {
-    padding-top: 21px;
-  }
 `;
 
 const dataSelect = [

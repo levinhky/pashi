@@ -8,23 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "yup-phone";
 import styled from "styled-components";
-
-const InformationStyles = styled.div`
-  @media screen and (min-width: 1000px) {
-    width: 100%;
-    padding-right: 6%;
-    .container-form {
-      flex-direction: column;
-    }
-    .main {
-      padding-top: 4em;
-    }
-  }
-  @media (min-width: 750px) {
-    padding-top: 21px;
-  }
-`;
-
 const dataSelect = [
   {
     id: 1,
@@ -92,9 +75,9 @@ const Information = () => {
   };
 
   return (
-    <InformationStyles>
+    <div className="container flex flex-row-reverse">
       <form
-        className="flex flex-col flex-auto main container-form"
+        className="flex flex-col flex-auto main"
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <div className="pb-4 header z-1">
@@ -143,7 +126,7 @@ const Information = () => {
                   {errors.username.message}
                 </p>
               )}
-              <div className="grid grid-cols-2 gap-x-2">
+              <div className="grid grid-cols-[300px_minmax(100px,_1fr)_auto] gap-x-2">
                 <div>
                   <Input
                     name="email"
@@ -248,7 +231,7 @@ const Information = () => {
           </button>
         </div>
       </form>
-    </InformationStyles>
+    </div>
   );
 };
 

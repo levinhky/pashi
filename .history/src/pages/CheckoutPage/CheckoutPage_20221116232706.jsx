@@ -63,7 +63,7 @@ const CheckoutPage = ({ children }) => {
           </Link>
         </div>
       </div>
-      <div className="hidden border-gray-300 py-7 bg-[#fafafa] toggle-summary border-y-[1px]">
+      <div className="hidden border-gray-300 py-7 toggle-summary border-y-[1px]">
         <div className="wrap">
           <div
             className="flex items-center justify-between order-summary"
@@ -89,20 +89,8 @@ const CheckoutPage = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="hidden content-second bg-[#fafafa] py-7 border-gray-300 border-b-[1px]">
-        <div className="wrap">
-          <div className="flex items-center h-[47px] code">
-            <input
-              type="text"
-              id="discount-code"
-              className=" px-4 my-auto h-full flex-1 border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
-              placeholder="Mã giảm giá"
-            />
-            <button className="inline-block h-full w-auto px-9 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium">
-              Sử dụng
-            </button>
-          </div>
-        </div>
+      <div className="hidden content-second">
+      <div class="flex h-[47px] items-center code"><div class="relative w-full h-full p-2 code-input grow group"><input type="text" id="discount-code" required="" class="absolute w-full h-full px-4 my-auto  border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"><label for="discount-code" class="absolute top-0 flex items-center pl-0 my-[17px] text-2xl transition-all transform left-8 group-focus-within:text-base peer-valid:text-base group-focus-within:h-1.5 peer-valid:h-1.5 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0 cursor-text">Mã giảm giá</label></div><button class="inline-block w-auto px-6 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium h-full">Sử dụng</button></div>
       </div>
       <div className="h-auto content">
         <div className="h-auto max-w-screen-xl py-0 mx-auto wrap">

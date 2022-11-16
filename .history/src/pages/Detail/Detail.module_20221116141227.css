@@ -171,7 +171,7 @@
 }
 
 .tabs .active::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 3rem;
   left: 0;

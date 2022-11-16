@@ -6,15 +6,6 @@ import { Link } from "react-router-dom";
 import useClickOutSide from "components/Checkout/hooks/useClickOutSide";
 
 const CheckoutPageStyles = styled.div`
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
   .wrap {
     margin: 0 auto;
     max-width: 40em;
@@ -32,9 +23,6 @@ const CheckoutPageStyles = styled.div`
       display: block;
     }
     .toggle-summary {
-      display: block;
-    }
-    .content-second {
       display: block;
     }
     .sidebar {
@@ -63,17 +51,17 @@ const CheckoutPage = ({ children }) => {
           </Link>
         </div>
       </div>
-      <div className="hidden border-gray-300 py-7 bg-[#fafafa] toggle-summary border-y-[1px]">
+      <div className="hidden toggle-summary">
         <div className="wrap">
           <div
-            className="flex items-center justify-between order-summary"
+            className="flex items-center justify-around order-summary"
             ref={nodeRef}
           >
             <div
               className="flex items-center order-summary-toggle-text"
               onClick={() => setShow(!show)}
             >
-              <div className="pr-4 icon">
+              <div className="icon">
                 <svg
                   width="20"
                   height="19"
@@ -85,27 +73,13 @@ const CheckoutPage = ({ children }) => {
               </div>
               <span className="text">Hiển thị thông tin đơn hàng</span>
             </div>
-            <div className="price">304,000đ</div>
+            <div className="price"></div>
           </div>
         </div>
       </div>
-      <div className="hidden content-second bg-[#fafafa] py-7 border-gray-300 border-b-[1px]">
-        <div className="wrap">
-          <div className="flex items-center h-[47px] code">
-            <input
-              type="text"
-              id="discount-code"
-              className=" px-4 my-auto h-full flex-1 border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
-              placeholder="Mã giảm giá"
-            />
-            <button className="inline-block h-full w-auto px-9 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium">
-              Sử dụng
-            </button>
-          </div>
-        </div>
-      </div>
+      <div className="hidden content-second"></div>
       <div className="h-auto content">
-        <div className="h-auto max-w-screen-xl py-0 mx-auto wrap">
+        <div className="flex flex-row-reverse h-auto max-w-screen-xl py-0 mx-auto wrap">
           <div className="sidebar w-[44%] relative bg-[#fafafa]">
             <div className="sidebar-content pl-[8%] pt-20">
               {cartItems.length > 0 &&

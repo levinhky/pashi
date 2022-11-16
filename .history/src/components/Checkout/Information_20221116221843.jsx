@@ -11,17 +11,12 @@ import styled from "styled-components";
 
 const InformationStyles = styled.div`
   @media screen and (min-width: 1000px) {
-    width: 100%;
-    padding-right: 6%;
     .container-form {
       flex-direction: column;
     }
     .main {
       padding-top: 4em;
     }
-  }
-  @media (min-width: 750px) {
-    padding-top: 21px;
   }
 `;
 
