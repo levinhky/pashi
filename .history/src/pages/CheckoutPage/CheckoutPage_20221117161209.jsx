@@ -8,7 +8,7 @@ import useClickOutSide from "components/Checkout/hooks/useClickOutSide";
 const CheckoutPageStyles = styled.div`
   display: -webkit-flex;
   display: -ms-flexbox;
-
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -45,7 +45,6 @@ const CheckoutPageStyles = styled.div`
       width: 100%;
       box-sizing: border-box;
       padding: 0 1em;
-      flex-direction: column !important;
     }
   }
 `;
@@ -106,7 +105,7 @@ const CheckoutPage = ({ children }) => {
         </div>
       </div>
       <div className="content">
-        <div className="flex flex-row-reverse h-auto max-w-screen-xl py-0 mx-auto wrap">
+        <div className="h-auto max-w-screen-xl py-0 mx-auto wrap">
           <div className="sidebar w-[44%] relative bg-[#fafafa]">
             <div className="sidebar-content pl-[8%] pt-20">
               {cartItems.length > 0 &&

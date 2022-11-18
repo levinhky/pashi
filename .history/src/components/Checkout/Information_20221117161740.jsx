@@ -23,19 +23,6 @@ const InformationStyles = styled.div`
   @media (min-width: 750px) {
     padding-top: 21px;
   }
-  @media screen and (max-width: 999px) {
-    .main-header {
-      display: none;
-    }
-    .content {
-    }
-    .heading {
-      font-size: 18px;
-    }
-    .title {
-      font-size: 16px;
-    }
-  }
 `;
 
 const dataSelect = [
@@ -110,8 +97,8 @@ const Information = () => {
         className="flex flex-col flex-auto main container-form"
         onSubmit={handleSubmit(onSubmitHandler)}
       >
-        <div className="pb-4 header z-1 main-header">
-          <Link to="/" className="text-5xl font-medium ">
+        <div className="pb-4 header z-1">
+          <Link to="/" className="text-5xl font-medium max-[999px]:hidden">
             Pashi
           </Link>
           <ul className="flex items-center mt-4">
@@ -134,10 +121,8 @@ const Information = () => {
         </div>
         <div className="pb-16 content">
           <div className="relative z-10">
-            <h2 className="mb-4 text-[#333] text-3xl heading">
-              Thông tin giao hàng
-            </h2>
-            <div className="flex items-center mb-4 content-text title">
+            <h2 className="mb-4 text-[#333] text-3xl">Thông tin giao hàng</h2>
+            <div className="flex items-center mb-4 content-text">
               <p>
                 Bạn đã có tài khoản?{" "}
                 <Link to="" className="text-[#338dbc]">

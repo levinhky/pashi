@@ -28,12 +28,9 @@ const InformationStyles = styled.div`
       display: none;
     }
     .content {
-    }
-    .heading {
-      font-size: 18px;
-    }
-    .title {
-      font-size: 16px;
+      &heading {
+        font-size: 18px;
+      }
     }
   }
 `;
@@ -137,7 +134,7 @@ const Information = () => {
             <h2 className="mb-4 text-[#333] text-3xl heading">
               Thông tin giao hàng
             </h2>
-            <div className="flex items-center mb-4 content-text title">
+            <div className="flex items-center mb-4 content-text">
               <p>
                 Bạn đã có tài khoản?{" "}
                 <Link to="" className="text-[#338dbc]">

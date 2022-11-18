@@ -8,7 +8,7 @@ import useClickOutSide from "components/Checkout/hooks/useClickOutSide";
 const CheckoutPageStyles = styled.div`
   display: -webkit-flex;
   display: -ms-flexbox;
-
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -45,7 +45,7 @@ const CheckoutPageStyles = styled.div`
       width: 100%;
       box-sizing: border-box;
       padding: 0 1em;
-      flex-direction: column !important;
+      flex-direction: column;
     }
   }
 `;

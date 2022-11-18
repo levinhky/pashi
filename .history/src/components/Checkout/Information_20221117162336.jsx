@@ -27,13 +27,8 @@ const InformationStyles = styled.div`
     .main-header {
       display: none;
     }
-    .content {
-    }
-    .heading {
+    .item-content {
       font-size: 18px;
-    }
-    .title {
-      font-size: 16px;
     }
   }
 `;
@@ -121,7 +116,7 @@ const Information = () => {
             <span className="mx-2">
               <AiOutlineRight size="14"></AiOutlineRight>
             </span>
-            <li className="inline-block text-xl text-[#4d4d4d]">
+            <li className="inline-block text-xl text-[#4d4d4d] item-content">
               Thông tin giao hàng
             </li>
             <span className="mx-2">
@@ -134,10 +129,8 @@ const Information = () => {
         </div>
         <div className="pb-16 content">
           <div className="relative z-10">
-            <h2 className="mb-4 text-[#333] text-3xl heading">
-              Thông tin giao hàng
-            </h2>
-            <div className="flex items-center mb-4 content-text title">
+            <h2 className="mb-4 text-[#333] text-3xl">Thông tin giao hàng</h2>
+            <div className="flex items-center mb-4 content-text">
               <p>
                 Bạn đã có tài khoản?{" "}
                 <Link to="" className="text-[#338dbc]">

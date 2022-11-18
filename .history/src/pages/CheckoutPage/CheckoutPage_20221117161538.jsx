@@ -45,6 +45,7 @@ const CheckoutPageStyles = styled.div`
       width: 100%;
       box-sizing: border-box;
       padding: 0 1em;
+      display: flex;
       flex-direction: column !important;
     }
   }
