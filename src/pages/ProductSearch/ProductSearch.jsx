@@ -1,22 +1,21 @@
 import Loading from "components/Loading/Loading";
-import ProductList from "components/ProductList/ProductList";
 import axiosClient from "configs/api";
 import {useEffect, useState} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import styles from "./ProductGrid.module.css";
+import styles from "./ProductSearch.module.css";
+import ProductList from "../../components/ProductList/ProductList";
 
-function ProductGrid(props) {
+function ProductSearch(props) {
     const [productList, setProductList] = useState([]);
     const [limit, setLimit] = useState(4);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [sort, setSort] = useState('asc');
 
     const {search} = useLocation();
-    const {category} = useParams();
+    const {category,value} = useParams();
     const navigate = useNavigate();
-
+    console.log( useParams())
     const pageNumbers = Array.from({length: totalPages}, (v, i) => i + 1);
     const searchValue = new URLSearchParams(search).get("q");
 
@@ -31,26 +30,8 @@ function ProductGrid(props) {
     useEffect(() => {
         const getRows = async () => {
             let length = 0;
-            if (category === "all") {
-                if (!searchValue) {
-                    length = await axiosClient.get("products", {params: {page}});
-                } else {
-                    length = await axiosClient.get("products", {
-                        params: {limit, page, q: searchValue},
-                    });
-                }
-            } else if (category === "new-arrivals") {
-                length = await axiosClient.get("products", {
-                    params: {page},
-                });
-            } else if (category === "hot-products") {
-                length = await axiosClient.get("products", {
-                    params: {page},
-                });
-            } else {
-                length = await axiosClient.get("products/find/category", {
-                    params: {page, name: category},
-                });
+            if (value) {
+                length = await axiosClient.get('products',{params:{page,q:value}})
             }
             setTotalPages(Math.ceil(length.length / limit));
         }
@@ -60,36 +41,16 @@ function ProductGrid(props) {
     useEffect(() => {
         const getProductList = async () => {
             let data = null;
-            if (category === "all") {
-                data = await axiosClient.get("products", {
-                    params: {limit, page,sort},
-                });
-                document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
-            } else if (category === "new-arrivals") {
-                data = await axiosClient.get("products", {
-                    params: {
-                        limit, page,
-                        sort,
-                    },
-                });
-                document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
-            } else if (category === "hot-products") {
-                data = await axiosClient.get("products", {
-                    params: {limit, page, sort},
-                });
-                document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
-            } else {
-                data = await axiosClient.get("products/find/category", {
-                    params: {limit, page, name: category,sort},
-                });
-            }
-
+            data = await axiosClient.get("products", {
+                params: {limit, page, q: value},
+            });
+            console.log(data)
             setProductList(data);
             setLoading(false);
         };
 
         getProductList();
-    }, [category, limit, page, searchValue]);
+    }, [category, limit, page, value]);
 
     return (
         <>
@@ -157,4 +118,4 @@ function ProductGrid(props) {
     );
 }
 
-export default ProductGrid;
+export default ProductSearch;

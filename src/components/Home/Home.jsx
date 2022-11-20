@@ -39,8 +39,9 @@ function Home(props) {
 
     useEffect(() => {
         const getArrivals = async () => {
-            const res = await axiosClient.get("products", { params: { _limit: 6 } });
-            setArrivals(res.data);
+            const res = await axiosClient.get("products", { params: { limit: 6 } });
+            setArrivals(res);
+            console.log(res)
             setLoading(false);
         };
 
@@ -101,7 +102,7 @@ function Home(props) {
 
                 <div className={styles["arrivals"]}>
                     {arrivals.map((arrival) => (
-                        <div className={styles["item"]} key={arrival.id}>
+                        <div className={styles["item"]} key={arrival._id}>
                             {/*<Link to={`/products/${arrival.id}`} className={styles["image"]}>*/}
                             {/*    <img src={arrival.thumbnails[0].thumbnail} alt="product" />*/}
                             {/*</Link>*/}

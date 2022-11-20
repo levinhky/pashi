@@ -9,6 +9,7 @@ import InformationLogin from "components/Checkout/InformationLogin";
 import Payment from "components/Checkout/Payment";
 import Success from "components/Checkout/Success";
 import AccountGeneral from "../pages/Account/AccountGeneral";
+import ProductSearch from "../pages/ProductSearch/ProductSearch";
 // import Payment from "components/Checkout/Payment";
 // import Success from "components/Checkout/Success";
 const Detail = React.lazy(() => import("pages/Detail/Detail"));
@@ -17,6 +18,7 @@ export const routes = [
     {path: "", element: <Home/>, layout: "default"},
     // {path: "products/:id", element: <Detail/>, layout: "default"},
     {path: "products/detail", element: <Detail/>, layout: "default"},
+    {path: "products/search/:value", element: <ProductSearch/>, layout: "default"},
     {path: "collections/:category", element: <ProductGrid/>, layout: "default"},
     {path: "account/login", element: <Login/>, layout: "default"},
     {path: "account", element: <AccountGeneral/>, layout: "default"},

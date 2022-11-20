@@ -38,15 +38,19 @@ function Cart(props) {
                     <th>Xóa</th>
                   </tr>
                   {cartItems.map((product) => (
-                    <tr className={styles["item"]} key={product.id}>
+                    <tr className={styles["item"]} key={product._id}>
                       <td>
                         <a href="/">
                           <div className={styles["product"]}>
-                            <img src={product.thumbnail} alt={product.name} />
+                            <img src={product.thumbnails[0].thumbnail} alt={product.name} />
                             <div className={styles["info"]}>
                               <h4>{product.name}</h4>
                               <span>{vnd(product.price)}</span>
-                              <h3>Size: {product.size}</h3>
+                              {product.sizes.map(product => {
+                                if (product.size) {
+                                  return <h3>Size: {product.size}</h3>
+                                }
+                              })}
                             </div>
                           </div>
                         </a>

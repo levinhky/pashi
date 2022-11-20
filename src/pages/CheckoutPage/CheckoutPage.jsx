@@ -156,13 +156,13 @@ const CheckoutPage = ({ children }) => {
                 cartItems.map((product) => (
                   <div
                     className="content-item border-gray-300 border-b-[1px] mb-4 w-auto h-[65px] grid grid-cols-[65px_minmax(auto,_1fr)_auto]"
-                    key={product.id}
+                    key={product._id}
                   >
                     <div className="product-img w-[65px] h-[65px] relative">
                       <div className="bg-[#d8d8d8] w-full h-full rounded-lg relative overflow-hidden">
                         <img
-                          src={product.thumbnail}
-                          alt=""
+                          src={product.thumbnails[0].thumbnail}
+                          alt={product.name}
                           className="object-cover w-full h-full p-2 "
                         />
                       </div>

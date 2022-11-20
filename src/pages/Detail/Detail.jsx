@@ -37,10 +37,10 @@ function Detail(props) {
 
     useEffect(() => {
         const getProductDetail = async () => {
-            const data = await axiosClient.get("products/?slug=" + slug);
-            setProductDetail(data[0]);
-            setSizes(data[0]?.sizes);
-            setImages(data[0]?.thumbnails)
+            const data = await axiosClient.get("products/find/?slug=" + slug);
+            setProductDetail(data);
+            setSizes(data?.sizes);
+            setImages(data?.thumbnails)
             setLoading(false);
         };
 
@@ -90,7 +90,6 @@ function Detail(props) {
                 if (sizeChecked)
                     sizeChecked.classList.remove(`${styles["size-checked"]}`);
                 size.classList.add(`${styles["size-checked"]}`);
-
                 if (value) setSizeValue(value);
             });
         });
@@ -214,7 +213,7 @@ function Detail(props) {
                             <h2>{productDetail.name}</h2>
                             <div className={styles["price"]}>{vnd(productDetail.price)}</div>
                             <div className={styles["status"]}>
-                                Trạng thái : <span>Còn hàng</span>
+                                Trạng thái : <span>{productDetail.quantity === 0 ? 'Hết hàng' : 'Còn hàng'}</span>
                             </div>
                             <div className={styles["desc"]}>
                                 Chưa có mô tả cho sản phẩm này
@@ -246,7 +245,7 @@ function Detail(props) {
                             <div className={styles["add-cart"]}>
                                 <button
                                     onClick={() => {
-                                        if (sizeValue == "") {
+                                        if (sizeValue === "") {
                                             toastError(
                                                 "Vui lòng chọn kích cỡ trước khi thêm vào giỏ hàng!"
                                             );
@@ -263,23 +262,36 @@ function Detail(props) {
                         <div className={styles["variants"]}>
                             <div className={styles["title"]}>Size</div>
                             <div className={styles["sizes"]}>
-                                {sizes.map(size => {
-                                    if (size.name) {
-                                        return  <div className={styles["size"]}>
-                                            <label>{size.name}</label>
-                                            <img
-                                                alt="img"
-                                                src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
-                                            />
-                                            <input className="size-value" type="hidden" value={size.name} />
-                                        </div>
-                                    }
-                                })}
+                                <div className={styles["size"]}>
+                                    <label>{sizes[0]?.size}</label>
+                                    <img
+                                        alt="img"
+                                        src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
+                                    />
+                                    <input className="size-value" type="hidden" value={sizes[0]?.size} />
+                                </div>
+                                <div className={styles["size"]}>
+                                    <label>{sizes[1]?.size}</label>
+                                    <img
+                                        alt="img"
+                                        src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
+                                    />
+                                    <input className="size-value" type="hidden" value={sizes[1]?.size} />
+                                </div>
+                                <div className={styles["size"]}>
+                                    <label>{sizes[2]?.size}</label>
+                                    <img
+                                        alt="img"
+                                        src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
+                                    />
+                                    <input className="size-value" type="hidden" value={sizes[2]?.size} />
+                                </div>
+
                             </div>
                         </div>
                         <div className={styles["addtion"]}>
                             <div className={styles["product-id"]}>
-                                Mã sản phẩm : <span>250702</span>
+                                Mã sản phẩm : <span>{productDetail.sku}</span>
                             </div>
                         </div>
                     </div>

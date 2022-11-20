@@ -140,7 +140,7 @@ const Information = () => {
             <div className="flex items-center mb-4 content-text title">
               <p>
                 Bạn đã có tài khoản?{" "}
-                <Link to="" className="text-[#338dbc]">
+                <Link to="/account/login" className="text-[#338dbc]">
                   Đăng nhập
                 </Link>
               </p>

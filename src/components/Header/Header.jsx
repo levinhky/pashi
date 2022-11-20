@@ -82,15 +82,15 @@ function Header() {
         </Link>
         <ul className={styles["menu"]}>
           <li>
-            <Link to={`/collections/new-arrivals/?page=1`}>New Arrivals</Link>
+            <Link to={`/collections/new-arrivals`}>New Arrivals</Link>
           </li>
           <li className={styles["dropdown"]}>
-            <Link to={`/collections/all/?page=1`}>Products</Link>
+            <Link to={`/collections/all`}>Products</Link>
             <ul className={styles["sub-menu"]}>
               {categories &&
                 categories.map((category) => (
-                  <li key={category.id}>
-                    <Link to={`/collections/${category.id}`}>
+                  <li key={category._id}>
+                    <Link to={`/collections/${category.category_slug}`}>
                       {category.name}
                     </Link>
                   </li>
@@ -98,7 +98,7 @@ function Header() {
             </ul>
           </li>
           <li>
-            <Link to={`/collections/hot-products/?page=1`}>Best seller</Link>
+            <Link to={`/collections/hot-products`}>Best seller</Link>
           </li>
           {userInfo.accessToken ? (
             <li>
@@ -133,7 +133,7 @@ function Header() {
                     onChange={(e) => setSearchValue(e.target.value)}
                   />
                   <Link
-                    to={`/collections/all/?q=${searchValue}`}
+                    to={`/products/search/${searchValue}`}
                     onClick={() => {
                       setSearchValue("");
                       setIsOpen(false);
@@ -173,10 +173,10 @@ function Header() {
             }
           >
             <li>
-              <Link to={`/collections/new-arrivals/?page=1`}>New Arrivals</Link>
+              <Link to={`/collections/new-arrivals`}>New Arrivals</Link>
             </li>
             <li className={styles["dropdown"]}>
-              <Link to={`/collections/all/?page=1`}>Products</Link>
+              <Link to={`/collections/all`}>Products</Link>
               <b
                 className={styles["sub-menu-icon"]}
                 onClick={() => {
@@ -195,10 +195,10 @@ function Header() {
               >
                 {categories &&
                   categories.map((category) => (
-                    <li key={category.id}>
+                    <li key={category._id}>
                       <Link
                         onClick={() => setIsOpenMenu(false)}
-                        to={`/collections/${category.id}`}
+                        to={`/collections/${category.category_slug}`}
                       >
                         {category.name}
                       </Link>
@@ -207,7 +207,7 @@ function Header() {
               </ul>
             </li>
             <li>
-              <Link to={`/collections/hot-products/?page=1`}>Best seller</Link>
+              <Link to={`/collections/hot-products`}>Best seller</Link>
             </li>
             {userInfo.accessToken ? (
                 // onClick={() => {
@@ -242,7 +242,7 @@ function Header() {
                         onChange={(e) => setSearchValue(e.target.value)}
                       />
                       <Link
-                        to={`/collections/all/?q=${searchValue}`}
+                        to={`/collections/all`}
                         onClick={() => {
                           setSearchValue("");
                           setIsOpenMenu(false);

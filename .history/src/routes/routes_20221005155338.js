@@ -1,7 +1,7 @@
 import React from "react";
 
 import Home from "components/Home/Home";
-import ProductGrid from "pages/ProductGrid/ProductGrid";
+import ProductGrid from "pages/ProductSearch/ProductSearch";
 import Login from "pages/Login/Login";
 import Cart from "pages/Cart/Cart";
 import Information from "components/Checkout/Information";

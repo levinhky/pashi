@@ -132,6 +132,10 @@
   border: 1px solid #e4393c;
 }
 
+.not-display {
+  display: none !important;
+}
+
 .variants .sizes .size-checked img {
   display: block;
 }
