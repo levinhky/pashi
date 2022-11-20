@@ -21,6 +21,7 @@ function Detail(props) {
     const [productDetail, setProductDetail] = useState({});
     const [sizes,setSizes] = useState([]);
     const [images,setImages] = useState([]);
+    const [relativeProduct,setRelativeProduct] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [sizeValue, setSizeValue] = useState("");
     const [loading, setLoading] = useState(true);
@@ -45,7 +46,7 @@ function Detail(props) {
         };
 
         getProductDetail();
-    }, [id]);
+    }, [slug]);
 
     useEffect(() => {
         window.scroll({
@@ -53,7 +54,7 @@ function Detail(props) {
             left: 0,
             behavior: "smooth",
         });
-    }, []);
+    }, [slug]);
 
     //auth
     useEffect(() => {
@@ -78,7 +79,14 @@ function Detail(props) {
         toastSuccess("Thêm sản phẩm thành công!");
     };
 
-    console.log(productDetail)
+    useEffect(() => {
+        const getRelative = async () => {
+            const products = await axiosClient.get('products',{params:{limit:6}})
+            setRelativeProduct(products);
+        }
+        getRelative();
+    })
+
     useEffect(() => {
         const checkSizes = document.querySelectorAll(`.${styles["size"]}`);
         checkSizes.forEach((size) => {
@@ -297,7 +305,7 @@ function Detail(props) {
                     </div>
                 </div>
             )}
-            <RelativeProduct/>
+            <RelativeProduct products={relativeProduct} />
             {loading && <Loading/>}
         </>
     );

@@ -6,8 +6,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "swiper/css/lazy";
+import {Link} from "react-router-dom";
+import {vnd} from "../../configs/functions";
 
-function RelativeProduct() {
+function RelativeProduct({products}) {
   const productData = [
       {
         name : "ao", 
@@ -57,14 +59,28 @@ function RelativeProduct() {
         spaceBetween={0}
         slidesPerView={5}
       >
-        {
-        productData.map((sp, index) => (
-          <SwiperSlide key={index}>
-            <img src={sp.img} alt="" />
-            <p>{sp.name}</p>
-            <p>{sp.price}</p>
-          </SwiperSlide>
-        ))}
+          <div className={styles["product-grid"]}>
+              {products.map((product) => (
+                  <SwiperSlide key={product._id}>
+                      <div className={styles["item"]} key={product._id}>
+                          <Link to={`/products/detail?slug=${product.slug}`} className={styles["image"]}>
+                              <img src={product.thumbnails[0].thumbnail} alt="product"/>
+                          </Link>
+                          <div className={styles["info"]}>
+                              <h2>
+                                  <Link to={`/products/detail/?slug${product.slug}`} className={styles["name"]}>
+                                      {product.name}
+                                  </Link>
+                              </h2>
+                              <div className={styles["price"]}>
+                                  <span>{vnd(product.price)}</span>
+                              </div>
+                          </div>
+                      </div>
+                  </SwiperSlide>
+              ))}
+              {products.length === 0 && <p>Không có sản phẩm!</p>}
+          </div>
       </Swiper>
     </div>
   );

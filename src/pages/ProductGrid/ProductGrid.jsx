@@ -11,7 +11,6 @@ function ProductGrid(props) {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [sort, setSort] = useState('asc');
 
     const {search} = useLocation();
     const {category} = useParams();
@@ -32,13 +31,7 @@ function ProductGrid(props) {
         const getRows = async () => {
             let length = 0;
             if (category === "all") {
-                if (!searchValue) {
-                    length = await axiosClient.get("products", {params: {page}});
-                } else {
-                    length = await axiosClient.get("products", {
-                        params: {limit, page, q: searchValue},
-                    });
-                }
+                length = await axiosClient.get("products", {params: {page}});
             } else if (category === "new-arrivals") {
                 length = await axiosClient.get("products", {
                     params: {page},
@@ -62,25 +55,25 @@ function ProductGrid(props) {
             let data = null;
             if (category === "all") {
                 data = await axiosClient.get("products", {
-                    params: {limit, page,sort},
+                    params: {limit, page},
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else if (category === "new-arrivals") {
                 data = await axiosClient.get("products", {
                     params: {
                         limit, page,
-                        sort,
+                        sort: "asc"
                     },
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else if (category === "hot-products") {
                 data = await axiosClient.get("products", {
-                    params: {limit, page, sort},
+                    params: {limit, page, sort: "desc"},
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else {
                 data = await axiosClient.get("products/find/category", {
-                    params: {limit, page, name: category,sort},
+                    params: {limit, page, name: category},
                 });
             }
 

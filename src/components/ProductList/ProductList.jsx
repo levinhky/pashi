@@ -1,6 +1,6 @@
 import axiosClient from "configs/api";
 import {vnd} from "configs/functions";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import styles from "./ProductList.module.css";
 
@@ -8,8 +8,7 @@ function ProductList(props) {
     const {products, isNav, setProductList, page, limit} = props;
     const {pathname, search} = useLocation();
     const navigate = useNavigate();
-    const sortParam = new URLSearchParams(search).get("sort");
-    const orderParam = new URLSearchParams(search).get("order");
+    const [sort,setSort] = useState('');
 
     useEffect(() => {
         const filter = document.querySelector(".current");
@@ -30,7 +29,6 @@ function ProductList(props) {
             option.addEventListener("click", () => {
                 closeSelect();
                 filter.innerHTML = option.getAttribute("text");
-                console.log(filter)
             });
         });
 
@@ -43,21 +41,19 @@ function ProductList(props) {
     }, []);
 
     useEffect(() => {
-        if (search.length > 0) {
-            const getFilterProducts = async () => {
-                const data = await axiosClient.get("products", {
-                    params: {
-                        page,
-                        limit,
-                        sort: sortParam
-                    },
-                });
-                setProductList(data.data);
-            };
+        const getFilterProducts = async () => {
+            const data = await axiosClient.get("products", {
+                params: {
+                    page,
+                    limit,
+                    sort
+                },
+            });
+            setProductList(data);
+        };
 
-            getFilterProducts();
-        }
-    }, [orderParam, sortParam, search, limit, page, setProductList]);
+        getFilterProducts();
+    }, [sort, search, limit, page, setProductList]);
 
     return (
         <>
@@ -71,35 +67,35 @@ function ProductList(props) {
             </span>
                         <ul className={`${styles["filter-select"]} select`}>
                             <li
-                                onClick={() => navigate(`${pathname}`)}
+                                onClick={() => setSort('desc')}
                                 className={`${styles["option"]} option`}
                                 text="Sản phẩm nổi bật"
                             >
                                 Sản phẩm nổi bật
                             </li>
                             <li
-                                onClick={() => navigate(`${pathname}`)}
+                                onClick={() => setSort('price-asc')}
                                 className={`${styles["option"]} option`}
                                 text="Giá : Tăng dần"
                             >
                                 Giá : Tăng dần
                             </li>
                             <li
-                                onClick={() => navigate(`${pathname}`)}
+                                onClick={() => setSort('price-desc')}
                                 className={`${styles["option"]} option`}
                                 text="Giá : Giảm dần"
                             >
                                 Giá : Giảm dần
                             </li>
                             <li
-                                onClick={() => navigate(`${pathname}`)}
+                                onClick={() => setSort('name-asc')}
                                 className={`${styles["option"]} option`}
                                 text="Tên : A-Z"
                             >
                                 Tên : A-Z
                             </li>
                             <li
-                                onClick={() => navigate(`${pathname}`)}
+                                onClick={() => setSort('name-desc')}
                                 className={`${styles["option"]} option`}
                                 text="Tên : Z-A"
                             >
