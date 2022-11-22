@@ -1,9 +1,10 @@
 import { vnd } from "configs/functions";
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import useClickOutSide from "components/Checkout/hooks/useClickOutSide";
+import {toastError} from "../../configs/toast";
 
 const CheckoutPageStyles = styled.div`
   display: -webkit-flex;
@@ -91,8 +92,9 @@ const CheckoutPage = ({ children }) => {
   const { show, setShow, nodeRef } = useClickOutSide();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
+  const [voucher,setVoucher] = useState('');
   // console.log(cartItems);
-
+  console.log(voucher)
   return (
     <CheckoutPageStyles ref={nodeRef}>
       <div className="hidden py-10 banner">
@@ -137,6 +139,7 @@ const CheckoutPage = ({ children }) => {
               id="discount-code"
               className=" px-4 my-auto h-full flex-1 border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
               placeholder="Mã giảm giá"
+              onChange={(e) => setVoucher(e.target.value)}
             />
             <button className="inline-block h-full w-auto px-9 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium">
               Sử dụng
@@ -193,6 +196,7 @@ const CheckoutPage = ({ children }) => {
                     type="text"
                     id="discount-code"
                     required
+                    onChange={(e) => setVoucher(e.target.value)}
                     className="absolute w-full h-full px-4 my-auto  border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
                   />
                   <label
@@ -202,7 +206,15 @@ const CheckoutPage = ({ children }) => {
                     Mã giảm giá
                   </label>
                 </div>
-                <button className="inline-block w-auto px-6 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium h-full">
+                <button
+                    onClick={() => {
+                      if (voucher !== '') {
+                        toastError('Mã giảm giá không hợp lệ!')
+                      } else if (voucher === '') {
+                        toastError('Vui lòng nhập mã hợp lệ!')
+                      }
+                    }}
+                    className="inline-block w-auto px-6 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium h-full">
                   Sử dụng
                 </button>
               </div>

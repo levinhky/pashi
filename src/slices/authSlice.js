@@ -1,4 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { signOut } from "firebase/auth";
+import {auth} from "../configs/firebase";
+import {toastError, toastSuccess} from "../configs/toast";
 
 const initialState = {
   userInfo: {}
@@ -13,6 +16,11 @@ export const authSlice = createSlice({
     },
     setLogOut(state, action) {
       state.userInfo = {};
+      signOut(auth).then(() => {
+        toastSuccess('Đăng xuất thành công!')
+      }).catch((error) => {
+        toastError('Có lỗi khi đăng xuất!')
+      });
     }
   },
 })

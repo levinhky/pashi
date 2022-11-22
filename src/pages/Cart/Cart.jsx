@@ -38,9 +38,9 @@ function Cart(props) {
                     <th>Xóa</th>
                   </tr>
                   {cartItems.map((product) => (
-                    <tr className={styles["item"]} key={product._id}>
+                    <tr className={styles["item"]} key={product.sku}>
                       <td>
-                        <a href="/">
+                        <Link to={`/products/detail/?slug=${product.slug}`}>
                           <div className={styles["product"]}>
                             <img src={product.thumbnails[0].thumbnail} alt={product.name} />
                             <div className={styles["info"]}>
@@ -53,7 +53,7 @@ function Cart(props) {
                               })}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       </td>
                       <td className={styles["qty"]}>
                         <div className={styles["qty-number"]}>

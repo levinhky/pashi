@@ -5,8 +5,6 @@ import {auth} from "../../configs/firebase";
 import {getUserInfo, setLogOut} from "../../slices/authSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
-import {authSignOut} from "../../configs/auth";
-import {toastSuccess} from "../../configs/toast";
 
 const AccountGeneral = () => {
     const [activeTab, setActiveTab] = useState(1);
@@ -69,7 +67,7 @@ const AccountGeneral = () => {
                     {activeTab === 1 ? <h3>Bảng thông tin của tôi</h3> : <h3>Danh sách đơn hàng của tôi</h3>}
                     <span
                         onClick={() => {
-                            authSignOut();
+                            // authSignOut();
                             dispath(setLogOut());
                             navigate('/');
                         }}>Đăng xuất</span>
