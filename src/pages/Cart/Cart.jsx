@@ -14,11 +14,11 @@ function Cart(props) {
   const { cartItems, cartTotal } = useSelector((state) => state.cart);
 
   const dispath = useDispatch();
-
+  console.log(cartItems)
   useEffect(() => {
     dispath(caculateTotal());
   }, [cartItems]);
-  console.log(cartItems);
+
   return (
     <div className={styles["wrapper"]}>
       <div className={styles["title"]}>
@@ -62,9 +62,9 @@ function Cart(props) {
                             value="<"
                             className={styles["qtyminus"]}
                             onClick={() => {
-                              dispath(decreaseQuantity(product.id));
+                              dispath(decreaseQuantity(product._id));
                               if (product.quantity <= 1)
-                                dispath(removeFromCart(product.id));
+                                dispath(removeFromCart(product._id));
                             }}
                           />
                           <input
@@ -78,7 +78,7 @@ function Cart(props) {
                             value=">"
                             className={styles["qtyplus"]}
                             onClick={() =>
-                              dispath(increaseQuantity(product.id))
+                              dispath(increaseQuantity(product._id))
                             }
                           />
                         </div>
@@ -90,7 +90,7 @@ function Cart(props) {
                         <span>
                           <i
                             className="bx bx-trash"
-                            onClick={() => dispath(removeFromCart(product.id))}
+                            onClick={() => dispath(removeFromCart(product._id))}
                           ></i>
                         </span>
                       </td>

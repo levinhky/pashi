@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -84,9 +84,6 @@ const Information = () => {
     handleSubmit,
     formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
     control,
-    setValue,
-    reset,
-    watch,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -94,14 +91,22 @@ const Information = () => {
   const navigate = useNavigate();
 
   const onSubmitHandler = (value) => {
-    if (!isValid) return;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 5000);
-      navigate("/checkout/payment");
-    });
+    // if (!isValid) return;
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve();
+    //   }, 5000);
+    //   navigate("/checkout/payment");
+    // });
+    console.log(value)
   };
+
+  useEffect(() => {
+    const btn = document.getElementById('tieptucthanhtoan');
+    btn.addEventListener('click',() => {
+      console.log(control)
+    })
+  },[])
 
   return (
     <InformationStyles>
@@ -200,50 +205,50 @@ const Information = () => {
                   {errors.address.message}
                 </p>
               )}
-              <div className="grid grid-cols-3 gap-x-2 select">
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="province"
-                    data={dataSelect}
-                    selectLabel="Chọn tỉnh / thành"
-                  ></Select>
-                  {errors.province && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.province.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="district"
-                    data={dataSelect}
-                    selectLabel="Chọn quận / huyện"
-                  ></Select>
-                  {errors.district && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.district.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <Select
-                    control={control}
-                    setValue={setValue}
-                    name="wards"
-                    data={dataSelect}
-                    selectLabel="Chọn phường / xã"
-                  ></Select>
-                  {errors.wards && (
-                    <p className="mb-4 text-2xl text-red-500">
-                      {errors.wards.message}
-                    </p>
-                  )}
-                </div>
-              </div>
+              {/*<div className="grid grid-cols-3 gap-x-2 select">*/}
+              {/*  <div>*/}
+              {/*    <Select*/}
+              {/*      control={control}*/}
+              {/*      setValue={setValue}*/}
+              {/*      name="province"*/}
+              {/*      data={dataSelect}*/}
+              {/*      selectLabel="Chọn tỉnh / thành"*/}
+              {/*    ></Select>*/}
+              {/*    {errors.province && (*/}
+              {/*      <p className="mb-4 text-2xl text-red-500">*/}
+              {/*        {errors.province.message}*/}
+              {/*      </p>*/}
+              {/*    )}*/}
+              {/*  </div>*/}
+              {/*  <div>*/}
+              {/*    <Select*/}
+              {/*      control={control}*/}
+              {/*      setValue={setValue}*/}
+              {/*      name="district"*/}
+              {/*      data={dataSelect}*/}
+              {/*      selectLabel="Chọn quận / huyện"*/}
+              {/*    ></Select>*/}
+              {/*    {errors.district && (*/}
+              {/*      <p className="mb-4 text-2xl text-red-500">*/}
+              {/*        {errors.district.message}*/}
+              {/*      </p>*/}
+              {/*    )}*/}
+              {/*  </div>*/}
+              {/*  <div>*/}
+              {/*    <Select*/}
+              {/*      control={control}*/}
+              {/*      setValue={setValue}*/}
+              {/*      name="wards"*/}
+              {/*      data={dataSelect}*/}
+              {/*      selectLabel="Chọn phường / xã"*/}
+              {/*    ></Select>*/}
+              {/*    {errors.wards && (*/}
+              {/*      <p className="mb-4 text-2xl text-red-500">*/}
+              {/*        {errors.wards.message}*/}
+              {/*      </p>*/}
+              {/*    )}*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </div>
           </div>
         </div>
@@ -251,17 +256,25 @@ const Information = () => {
           <Link to="/cart" className="text-[#338dbc] hover:brightness-125">
             Giỏ hàng
           </Link>
+          {/*<button*/}
+          {/*  className={`w-[200px] p-4 bg-[#338dbc] text-white rounded-lg mt-5 font-semibold ${*/}
+          {/*    isSubmitting ? "opacity-50" : ""*/}
+          {/*  }`}*/}
+          {/*  disabled={isSubmitting}*/}
+          {/*>*/}
+          {/*  {isSubmitting ? (*/}
+          {/*    <LoadingSpinner></LoadingSpinner>*/}
+          {/*  ) : (*/}
+          {/*    "Tiếp tục thanh toán"*/}
+          {/*  )}*/}
+          {/*</button>*/}
           <button
-            className={`w-[200px] p-4 bg-[#338dbc] text-white rounded-lg mt-5 font-semibold ${
-              isSubmitting ? "opacity-50" : ""
-            }`}
-            disabled={isSubmitting}
+              id='tieptucthanhtoan'
+              className={`w-[200px] p-4 bg-[#338dbc] text-white rounded-lg mt-5 font-semibold ${
+                  isSubmitting ? "opacity-50" : ""
+              }`}
           >
-            {isSubmitting ? (
-              <LoadingSpinner></LoadingSpinner>
-            ) : (
-              "Tiếp tục thanh toán"
-            )}
+            Tiếp tục thanh toán
           </button>
         </div>
       </form>

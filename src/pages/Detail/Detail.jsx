@@ -24,6 +24,9 @@ function Detail(props) {
     const [relativeProduct,setRelativeProduct] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [sizeValue, setSizeValue] = useState("");
+    const [sizeS, setSizeS] = useState("");
+    const [sizeM, setSizeM] = useState("");
+    const [sizeL, setSizeL] = useState("");
     const [loading, setLoading] = useState(true);
     const [tabActive, setTabActive] = useState(1);
     const {userInfo} = useSelector((state) => state.auth);
@@ -42,6 +45,9 @@ function Detail(props) {
             setProductDetail(data);
             setSizes(data?.sizes);
             setImages(data?.thumbnails)
+            setSizeS(data?.sizes[0].size);
+            setSizeM(data?.sizes[1].size);
+            setSizeL(data?.sizes[2].size);
             setLoading(false);
         };
 
@@ -271,28 +277,28 @@ function Detail(props) {
                             <div className={styles["title"]}>Size</div>
                             <div className={styles["sizes"]}>
                                 <div className={styles["size"]}>
-                                    <label>{sizes[0]?.size}</label>
+                                    <label>{sizeS}</label>
                                     <img
                                         alt="img"
                                         src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                                     />
-                                    <input className="size-value" type="hidden" value={sizes[0]?.size} />
+                                    <input className="size-value" type="hidden" value={sizeS} />
                                 </div>
                                 <div className={styles["size"]}>
-                                    <label>{sizes[1]?.size}</label>
+                                    <label>{sizeM}</label>
                                     <img
                                         alt="img"
                                         src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                                     />
-                                    <input className="size-value" type="hidden" value={sizes[1]?.size} />
+                                    <input className="size-value" type="hidden" value={sizeM} />
                                 </div>
                                 <div className={styles["size"]}>
-                                    <label>{sizes[2]?.size}</label>
+                                    <label>{sizeL}</label>
                                     <img
                                         alt="img"
                                         src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                                     />
-                                    <input className="size-value" type="hidden" value={sizes[2]?.size} />
+                                    <input className="size-value" type="hidden" value={sizeL} />
                                 </div>
 
                             </div>

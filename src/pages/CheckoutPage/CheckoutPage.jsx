@@ -168,7 +168,7 @@ const CheckoutPage = ({ children }) => {
                       </div>
                       <span
                         className="absolute bg-[rgba(153,153,153,0.9)] z-50 px-3 py-2 text-xl quantity rounded-full -top-4 -right-4 text-white font-bold"
-                        ariaHidden="true"
+                        aria-hidden="true"
                       >
                         {product.quantity}
                       </span>

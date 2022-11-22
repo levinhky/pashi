@@ -11,22 +11,23 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
+      const itemIndex = state.cartItems.findIndex(item => item._id === action.payload._id);
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].quantity += 1;
       } else {
         state.cartItems.push({ ...action.payload });
       }
+      console.log( state.cartItems)
     },
     removeFromCart(state, action) {
-      state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
+      state.cartItems = state.cartItems.filter(item => item._id !== action.payload);
     },
     increaseQuantity(state, action) {
-      const product = state.cartItems.find(item => item.id === action.payload);
+      const product = state.cartItems.find(item => item._id === action.payload);
       product.quantity += 1;
     },
     decreaseQuantity(state, action) {
-      const product = state.cartItems.find(item => item.id === action.payload);
+      const product = state.cartItems.find(item => item._id === action.payload);
       product.quantity -= 1;
     },
     caculateTotal(state, action) {
