@@ -1,10 +1,9 @@
 import { vnd } from "configs/functions";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import useClickOutSide from "components/Checkout/hooks/useClickOutSide";
-import { toastError } from "../../configs/toast";
 
 const CheckoutPageStyles = styled.div`
   display: -webkit-flex;
@@ -25,7 +24,7 @@ const CheckoutPageStyles = styled.div`
   @media screen and (min-width: 1000px) {
     .wrap,
     .main {
-      padding: 0 5%;
+      /* padding: 0 5%; */
       width: 90%;
       max-width: 78.57143em;
     }
@@ -60,7 +59,7 @@ const CheckoutPageStyles = styled.div`
       margin: 10px 0;
       height: inherit;
       display: block;
-      width: 100%;
+      width: 300%;
       position: absolute;
       top: 0;
       left: -100%;
@@ -92,9 +91,8 @@ const CheckoutPage = ({ children }) => {
   const { show, setShow, nodeRef } = useClickOutSide();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
-  const [voucher, setVoucher] = useState("");
   // console.log(cartItems);
-  console.log(voucher);
+
   return (
     <CheckoutPageStyles ref={nodeRef}>
       <div className="hidden py-10 banner">
@@ -139,7 +137,6 @@ const CheckoutPage = ({ children }) => {
               id="discount-code"
               className=" px-4 my-auto h-full flex-1 border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
               placeholder="Mã giảm giá"
-              onChange={(e) => setVoucher(e.target.value)}
             />
             <button className="inline-block h-full w-auto px-9 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium">
               Sử dụng
@@ -171,7 +168,7 @@ const CheckoutPage = ({ children }) => {
                       </div>
                       <span
                         className="absolute bg-[rgba(153,153,153,0.9)] z-50 px-3 py-2 text-xl quantity rounded-full -top-4 -right-4 text-white font-bold"
-                        aria-hidden="true"
+                        ariaHidden="true"
                       >
                         {product.quantity}
                       </span>
@@ -196,7 +193,6 @@ const CheckoutPage = ({ children }) => {
                     type="text"
                     id="discount-code"
                     required
-                    onChange={(e) => setVoucher(e.target.value)}
                     className="absolute w-full h-full px-4 my-auto  border shadow-md focus:ring-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 transition-all delay-300 text-[#333] rounded-md p-[10px_40px_10px_12px] mb-4 bg-gray-100 outline-none peer text-2xl"
                   />
                   <label
@@ -206,16 +202,7 @@ const CheckoutPage = ({ children }) => {
                     Mã giảm giá
                   </label>
                 </div>
-                <button
-                  onClick={() => {
-                    if (voucher !== "") {
-                      toastError("Mã giảm giá không hợp lệ!");
-                    } else if (voucher === "") {
-                      toastError("Vui lòng nhập mã hợp lệ!");
-                    }
-                  }}
-                  className="inline-block w-auto px-6 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium h-full"
-                >
+                <button className="inline-block w-auto px-6 py-0 ml-8 text-center rounded-lg whitespace-nowrap bg-[#338dbc] hover:brightness-125 text-white relative transition-all cursor-pointer font-medium h-full">
                   Sử dụng
                 </button>
               </div>
