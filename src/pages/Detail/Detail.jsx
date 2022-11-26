@@ -13,20 +13,24 @@ import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../../configs/firebase";
 import {getUserInfo} from "../../slices/authSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import {Carousel} from 'react-responsive-carousel';
 
 function Detail(props) {
     const {id} = useParams();
 
     const [productDetail, setProductDetail] = useState({});
-    const [sizes,setSizes] = useState([]);
-    const [images,setImages] = useState([]);
-    const [relativeProduct,setRelativeProduct] = useState([]);
+    const [sizes, setSizes] = useState([]);
+    const [images, setImages] = useState([]);
+    const [relativeProduct, setRelativeProduct] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [sizeValue, setSizeValue] = useState("");
     const [sizeS, setSizeS] = useState("");
     const [sizeM, setSizeM] = useState("");
     const [sizeL, setSizeL] = useState("");
+    const [sizeSVal, setSizeSVal] = useState("");
+    const [sizeMVal, setSizeMVal] = useState("");
+    const [sizeLVal, setSizeLVal] = useState("");
+    const [checked, setChecked] = useState(0);
     const [loading, setLoading] = useState(true);
     const [tabActive, setTabActive] = useState(1);
     const {userInfo} = useSelector((state) => state.auth);
@@ -42,6 +46,8 @@ function Detail(props) {
     useEffect(() => {
         const getProductDetail = async () => {
             const data = await axiosClient.get("products/find/?slug=" + slug);
+            data.size = '';
+            data.sizeArr= [];
             setProductDetail(data);
             setSizes(data?.sizes);
             setImages(data?.thumbnails)
@@ -87,31 +93,11 @@ function Detail(props) {
 
     useEffect(() => {
         const getRelative = async () => {
-            const products = await axiosClient.get('products',{params:{limit:6}})
+            const products = await axiosClient.get('products', {params: {limit: 6}})
             setRelativeProduct(products);
         }
         getRelative();
-    })
-
-    useEffect(() => {
-        const checkSizes = document.querySelectorAll(`.${styles["size"]}`);
-        checkSizes.forEach((size) => {
-            size.addEventListener("click", () => {
-                const value = size.querySelector(".size-value").value;
-                const sizeChecked = document.querySelector(
-                    `.${styles["size"]}.${styles["size-checked"]}`
-                );
-                if (sizeChecked)
-                    sizeChecked.classList.remove(`${styles["size-checked"]}`);
-                size.classList.add(`${styles["size-checked"]}`);
-                if (value) setSizeValue(value);
-            });
-        });
-    }, []);
-
-    if (sizeValue) {
-        productDetail.size = sizeValue;
-    }
+    }, [])
 
     return (
         <>
@@ -121,9 +107,9 @@ function Detail(props) {
                         <div className={styles["image"]}>
                             {/*<img src={productDetail.thumbnails[0].thumbnail} alt={productDetail.name}/>*/}
                             <Carousel>
-                                {images.map((image,i) => (
+                                {images.map((image, i) => (
                                     <div key={i}>
-                                        <img src={image.thumbnail} alt={productDetail.name} />
+                                        <img src={image.thumbnail} alt={productDetail.name}/>
                                         <p className="legend">{productDetail.name}</p>
                                     </div>
                                 ))}
@@ -198,12 +184,13 @@ function Detail(props) {
                                         {userInfo.uid ?
                                             <div>
                                                 <div id={styles['user-icon']}>
-                                                    <img src={userInfo.photoUrl} alt={userInfo.displayName} />
+                                                    <img src={userInfo.photoUrl} alt={userInfo.displayName}/>
                                                 </div>
                                                 <textarea name="comment-box" rows="1" cols="50"
                                                           placeholder={'Nhập bình luận của bạn ở đây...'}></textarea>
                                             </div> :
-                                            <h3 id={styles['login-warn']}>Vui lòng <Link to='/account/login'>đăng nhập</Link> để bình luận</h3>
+                                            <h3 id={styles['login-warn']}>Vui lòng <Link to='/account/login'>đăng
+                                                nhập</Link> để bình luận</h3>
                                         }
                                         {userInfo.uid && <span className={styles['send-icon']}><i
                                             className='bx bxs-send'></i></span>}
@@ -259,10 +246,10 @@ function Detail(props) {
                             <div className={styles["add-cart"]}>
                                 <button
                                     onClick={() => {
-                                        if (sizeValue === "") {
-                                            toastError(
-                                                "Vui lòng chọn kích cỡ trước khi thêm vào giỏ hàng!"
-                                            );
+                                        productDetail.sizeArr = [...productDetail.sizeArr,{size:sizeValue}];
+                                        productDetail.size = sizeValue;
+                                        if (sizeValue === '') {
+                                            toastError("Vui lòng chọn kích cỡ trước khi thêm vào giỏ hàng!");
                                         } else {
                                             dispath(addToCart({...productDetail, quantity}));
                                             addSuccess();
@@ -276,30 +263,57 @@ function Detail(props) {
                         <div className={styles["variants"]}>
                             <div className={styles["title"]}>Size</div>
                             <div className={styles["sizes"]}>
-                                <div className={styles["size"]}>
+                                {sizeS && <div
+                                    className={checked === 1 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
+                                    onClick={() => {
+                                        setChecked(1)
+                                        setSizeSVal('S')
+                                        setSizeMVal('')
+                                        setSizeLVal('')
+                                        setSizeValue('S')
+                                    }}
+                                >
                                     <label>{sizeS}</label>
                                     <img
                                         alt="img"
                                         src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                                     />
-                                    <input className="size-value" type="hidden" value={sizeS} />
-                                </div>
-                                <div className={styles["size"]}>
+                                    <input className="size-value" type="hidden" value={sizeS}/>
+                                </div>}
+                                {sizeM && <div
+                                    className={checked === 2 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
+                                    onClick={() => {
+                                        setChecked(2)
+                                        setSizeMVal('M')
+                                        setSizeSVal('')
+                                        setSizeLVal('')
+                                        setSizeValue('M')
+                                    }}
+                                >
                                     <label>{sizeM}</label>
                                     <img
                                         alt="img"
                                         src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                                     />
-                                    <input className="size-value" type="hidden" value={sizeM} />
-                                </div>
-                                <div className={styles["size"]}>
+                                    <input className="size-value" type="hidden" value={sizeM}/>
+                                </div>}
+                                {sizeL && <div
+                                    className={checked === 3 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
+                                    onClick={() => {
+                                        setChecked(3)
+                                        setSizeLVal('L')
+                                        setSizeSVal('')
+                                        setSizeMVal('')
+                                        setSizeValue('L')
+                                    }}
+                                >
                                     <label>{sizeL}</label>
                                     <img
                                         alt="img"
                                         src="https://theme.hstatic.net/1000370235/1000472578/14/select-pro.png?v=870"
                                     />
-                                    <input className="size-value" type="hidden" value={sizeL} />
-                                </div>
+                                    <input className="size-value" type="hidden" value={sizeL}/>
+                                </div>}
 
                             </div>
                         </div>
@@ -311,7 +325,7 @@ function Detail(props) {
                     </div>
                 </div>
             )}
-            <RelativeProduct products={relativeProduct} />
+            <RelativeProduct products={relativeProduct}/>
             {loading && <Loading/>}
         </>
     );

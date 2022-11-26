@@ -14,9 +14,17 @@ export const cartSlice = createSlice({
       const itemIndex = state.cartItems.findIndex(item => item._id === action.payload._id);
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].quantity += 1;
-      } else {
+        let obj = {
+          size: action.payload.size
+        }
+       const sizeArr= state.cartItems[itemIndex].sizeArr.map(item => item.size === action.payload.size);
+       if (sizeArr[0] === false) state.cartItems[itemIndex].sizeArr.push(obj);
+      }
+      else {
         state.cartItems.push({ ...action.payload });
       }
+      console.log(action.payload.sizeArr);
+      console.log(action.payload.size);
     },
     removeFromCart(state, action) {
       state.cartItems = state.cartItems.filter(item => item._id !== action.payload);

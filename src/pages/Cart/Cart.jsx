@@ -48,7 +48,7 @@ function Cart(props) {
                               <span>{vnd(product.price)}</span>
                               {product.sizes.map(product => {
                                 if (product.size) {
-                                  return <h3>Size: {product.size}</h3>
+                                  return
                                 }
                               })}
                             </div>
