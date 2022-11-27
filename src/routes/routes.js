@@ -5,7 +5,6 @@ import ProductGrid from "pages/ProductGrid/ProductGrid";
 import Login from "pages/Login2/Login";
 import Cart from "pages/Cart/Cart";
 import Information from "components/Checkout/Information";
-import InformationLogin from "components/Checkout/InformationLogin";
 import Payment from "components/Checkout/Payment";
 import Success from "components/Checkout/Success";
 import AccountGeneral from "../pages/Account/AccountGeneral";
@@ -24,7 +23,6 @@ export const routes = [
     {path: "account", element: <AccountGeneral/>, layout: "default"},
     {path: "cart", element: <Cart/>, layout: "default"},
     {path: "checkout/information", element: <Information/>, layout: "checkout"},
-    {path: "checkout/informationlogin", element: <InformationLogin/>, layout: "checkout"},
     {path: "checkout/payment", element: <Payment/>, layout: "checkout"},
     {path: "checkout/success", element: <Success/>, layout: "checkout"}
     // { path: "checkout/payment", element: <Payment />, layout: "checkout" },

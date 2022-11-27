@@ -46,9 +46,9 @@ function Cart(props) {
                             <div className={styles["info"]}>
                               <h4>{product.name}</h4>
                               <span>{vnd(product.price)}</span>
-                              {product.sizes.map(product => {
+                              {product.sizeArr.map(product => {
                                 if (product.size) {
-                                  return
+                                  return <h3>Size: {product.size}</h3>
                                 }
                               })}
                             </div>

@@ -14,6 +14,7 @@ import { auth } from "../../configs/firebase";
 import { getUserInfo, setLogOut } from "../../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toastError, toastSuccess } from "../../configs/toast";
+import Radio from "./components/Radio";
 
 const InformationStyles = styled.div`
   @media screen and (min-width: 1000px) {
@@ -93,10 +94,17 @@ const Information = () => {
     handleSubmit,
     formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
     control,
+    watch
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
+    defaultValues: {
+      payment: "delivery",
+      shipping: "freeship",
+    },
   });
+  const watchPayment = watch("payment");
+  const watchShipping = watch("shipping");
   const navigate = useNavigate();
 
   const onSubmitHandler = (value) => {
@@ -153,12 +161,6 @@ const Information = () => {
             </span>
             <li className="inline-block text-xl text-[#4d4d4d]">
               Thông tin giao hàng
-            </li>
-            <span className="mx-2">
-              <AiOutlineRight size="14"></AiOutlineRight>
-            </span>
-            <li className="inline-block text-xl text-[#999999]">
-              Phương thức thanh toán
             </li>
           </ul>
         </div>
@@ -253,6 +255,60 @@ const Information = () => {
                   {errors.address.message}
                 </p>
               )}
+              <div className="pb-16 content">
+                <div className="relative z-10">
+                  <h2 className="mb-4 text-[#333] font-medium text-4xl">
+                    Phương thức vận chuyển
+                  </h2>
+                  <Radio
+                      control={control}
+                      id="freeship"
+                      name="shipping"
+                      value="freeship"
+                      classNameImg="hidden"
+                      text="FREE SHIP"
+                      defaultChecked={true}
+                      checked={watchShipping === "freeship"}
+                      price="0đ"
+                  ></Radio>
+                </div>
+
+                <div className="relative z-10">
+                  <h2 className="my-4 text-[#333] font-medium text-4xl">
+                    Phương thức thanh toán
+                  </h2>
+                  <Radio
+                      control={control}
+                      id="delivery"
+                      name="payment"
+                      value="delivery"
+                      img="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1"
+                      text="Giao hàng khi nhận hàng (COD)"
+                      defaultChecked={true}
+                      checked={watchPayment === "delivery"}
+                  ></Radio>
+                  <Radio
+                      control={control}
+                      id="momo"
+                      name="payment"
+                      value="momo"
+                      img="https://hstatic.net/0/0/global/design/seller/image/payment/momo.svg?v=1"
+                      text="Ví Momo"
+                      defaultChecked={true}
+                      checked={watchPayment === "momo"}
+                  ></Radio>
+                  <Radio
+                      control={control}
+                      id="vnpay"
+                      name="payment"
+                      value="vnpay"
+                      img="https://hstatic.net/0/0/global/design/seller/image/payment/vnpay_new.svg?v=1"
+                      text="Thẻ ATM/Visa/Master/JCB/QR Pay qua cổng VNPAY"
+                      defaultChecked={true}
+                      checked={watchPayment === "vnpay"}
+                  ></Radio>
+                </div>
+              </div>
               {/*<div className="grid grid-cols-3 gap-x-2 select">*/}
               {/*  <div>*/}
               {/*    <Select*/}
@@ -322,7 +378,7 @@ const Information = () => {
               isSubmitting ? "opacity-50" : ""
             }`}
           >
-            Tiếp tục thanh toán
+            Hoàn tất đơn hàng
           </button>
         </div>
       </form>

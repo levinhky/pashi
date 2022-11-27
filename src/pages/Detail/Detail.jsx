@@ -51,9 +51,9 @@ function Detail(props) {
             setProductDetail(data);
             setSizes(data?.sizes);
             setImages(data?.thumbnails)
-            setSizeS(data?.sizes[0].size);
-            setSizeM(data?.sizes[1].size);
-            setSizeL(data?.sizes[2].size);
+            setSizeS(data?.sizes[0]?.size);
+            setSizeM(data?.sizes[1]?.size);
+            setSizeL(data?.sizes[2]?.size);
             setLoading(false);
         };
 
@@ -267,9 +267,6 @@ function Detail(props) {
                                     className={checked === 1 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
                                     onClick={() => {
                                         setChecked(1)
-                                        setSizeSVal('S')
-                                        setSizeMVal('')
-                                        setSizeLVal('')
                                         setSizeValue('S')
                                     }}
                                 >
@@ -284,9 +281,6 @@ function Detail(props) {
                                     className={checked === 2 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
                                     onClick={() => {
                                         setChecked(2)
-                                        setSizeMVal('M')
-                                        setSizeSVal('')
-                                        setSizeLVal('')
                                         setSizeValue('M')
                                     }}
                                 >
@@ -301,9 +295,6 @@ function Detail(props) {
                                     className={checked === 3 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
                                     onClick={() => {
                                         setChecked(3)
-                                        setSizeLVal('L')
-                                        setSizeSVal('')
-                                        setSizeMVal('')
                                         setSizeValue('L')
                                     }}
                                 >

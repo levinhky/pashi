@@ -17,17 +17,17 @@ function Home(props) {
     const slides = [
         {
             id: 1,
-            img: "https://theme.hstatic.net/1000370235/1000472578/14/slideshow_1.jpg?v=837",
+            img: "https://firebasestorage.googleapis.com/v0/b/pashi-admin.appspot.com/o/slide1.jpg?alt=media&token=1c82a289-873c-456e-9013-1b4d77c8052c",
             alt: "slide_1",
         },
         {
             id: 2,
-            img: "https://theme.hstatic.net/1000370235/1000472578/14/slideshow_2.jpg?v=837",
+            img: "https://firebasestorage.googleapis.com/v0/b/pashi-admin.appspot.com/o/slide2.jpg?alt=media&token=3fa20c0c-e4f4-4707-9748-4606165872c9",
             alt: "slide_2",
         },
         {
             id: 3,
-            img: "https://theme.hstatic.net/1000370235/1000472578/14/slideshow_3mb.jpg?v=837",
+            img: "https://firebasestorage.googleapis.com/v0/b/pashi-admin.appspot.com/o/slide3.jpg?alt=media&token=cc772784-2f94-416c-8f7d-64949fe74d8e",
             alt: "slide_3",
         },
     ];
@@ -73,7 +73,7 @@ function Home(props) {
                     <div className={styles["item"]}>
                         <Link to="/collections/2">
                             <img
-                                src="https://theme.hstatic.net/1000370235/1000472578/14/xxx_4.jpg?v=837"
+                                src="https://firebasestorage.googleapis.com/v0/b/pashi-admin.appspot.com/o/slide4.jpg?alt=media&token=f5b9039c-6d3e-4abd-9d63-813efd91ac01"
                                 alt="tops"
                             />
                         </Link>
@@ -85,7 +85,7 @@ function Home(props) {
                     <div className={styles["item"]}>
                         <Link to="/collections/1">
                             <img
-                                src="https://theme.hstatic.net/1000370235/1000472578/14/xxx_5.jpg?v=837"
+                                src="https://firebasestorage.googleapis.com/v0/b/pashi-admin.appspot.com/o/slide5.jpg?alt=media&token=58c87724-8994-4fbf-9272-99b5b3e0d9a1"
                                 alt="tops"
                             />
                         </Link>
