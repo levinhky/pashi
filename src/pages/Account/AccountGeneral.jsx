@@ -5,10 +5,13 @@ import {auth} from "../../configs/firebase";
 import {getUserInfo, setLogOut} from "../../slices/authSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
+import axiosClient from "../../configs/api";
+import {vnd} from "../../configs/functions";
 
 const AccountGeneral = () => {
     const [activeTab, setActiveTab] = useState(1);
     const {userInfo} = useSelector((state) => state.auth);
+    const [orders,setOrders] = useState([]);
     const dispath = useDispatch();
     const navigate = useNavigate();
 
@@ -30,6 +33,16 @@ const AccountGeneral = () => {
             }
         });
     }, [dispath, auth]);
+
+    useEffect(() => {
+        const getOrders = async () => {
+            const orders = await axiosClient.get('orders/', userInfo.uid);
+            console.log(orders);
+            setOrders(orders);
+        }
+
+        if (userInfo.uid) getOrders();
+    },[userInfo.uid])
 
     return (
         <div className={styles['wrapper']}>
@@ -92,15 +105,17 @@ const AccountGeneral = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><span>#110643</span></td>
-                            <td>19/09/2022</td>
-                            <td className={styles['order-item']}>
-                                <a href="/products/layla-dress" title="">1. Layla Dress - S</a>
-                            </td>
-                            <td>416,000₫</td>
-                            <td>chờ xử lý</td>
-                        </tr>
+                        {orders.length && orders.map(order => (
+                            <tr key={order._id}>
+                                <td><span>{order._id}</span></td>
+                                <td>{order.createdAt.substring(0,10)}</td>
+                                <td className={styles['order-item']}>
+                                    <a href="/products/layla-dress" title="">1. {order.name} - S</a>
+                                </td>
+                                <td>{vnd(order.total)}</td>
+                                <td>{order.status}</td>
+                            </tr>
+                        ))}
                         </tbody>
                     </table>
                 </div>

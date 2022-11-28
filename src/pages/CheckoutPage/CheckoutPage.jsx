@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import useClickOutSide from "components/Checkout/hooks/useClickOutSide";
 import { toastError } from "../../configs/toast";
+import Infomation from "../../../src/components/Checkout/Information";
 
 const CheckoutPageStyles = styled.div`
   display: -webkit-flex;
@@ -251,7 +252,7 @@ const CheckoutPage = ({ children }) => {
           </div>
 
           <div className="main overflow-x-hidden flex flex-column w-[56%] pr-[6%] pt-20">
-            {children}
+            <Infomation cartItems={cartItems} cartTotal={cartTotal} />
           </div>
         </div>
       </div>
