@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import { signInWithFacebook, signInWithGoogle } from "configs/auth";
+import {
+  createUser,
+  logInUser,
+  signInWithFacebook,
+  signInWithGoogle,
+} from "configs/auth";
 // ICONS
 import { BsFacebook } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import { GiPadlock } from "react-icons/gi";
 import { ImGooglePlus3 } from "react-icons/im";
 // ICONS
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Input from "./components/input/Input";
@@ -39,14 +44,14 @@ const Login = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
   const [isResetForm, setIsResetForm] = useState(false);
-  // const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   console.log(isSubmitting);
   console.log(errors);
 
@@ -99,14 +104,7 @@ const Login = () => {
       {/* =========================================== FORM =========================================== */}
       <div className="flex flex-row justify-between">
         {isResetForm ? (
-          <ForgotPassword>
-            <span
-              className="underline cursor-pointer"
-              onClick={() => setIsResetForm(false)}
-            >
-              Đăng nhập
-            </span>
-          </ForgotPassword>
+          <ForgotPassword></ForgotPassword>
         ) : (
           <form
             className="login-form col-sm-6 col-xs-12"

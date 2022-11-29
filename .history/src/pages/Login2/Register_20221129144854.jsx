@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Login.module.css";
 // ICONS
 import { HiMail } from "react-icons/hi";
 import { GiPadlock } from "react-icons/gi";
@@ -29,9 +30,12 @@ const schema = yup.object({
 
 const Register = () => {
   const {
+    register,
     control,
     handleSubmit,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
+    setValue,
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",

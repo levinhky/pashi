@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Login.module.css";
 // ICONS
 import { HiMail } from "react-icons/hi";
 import { GiPadlock } from "react-icons/gi";

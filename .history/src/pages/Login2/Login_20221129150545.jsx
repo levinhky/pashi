@@ -39,14 +39,14 @@ const Login = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
   const [isResetForm, setIsResetForm] = useState(false);
-  // const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   console.log(isSubmitting);
   console.log(errors);
 
