@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Input from "./components/input/Input";
+import {createUser} from "../../configs/auth";
 
 const schema = yup.object({
   username: yup.string().required("Vui lòng nhập họ và tên"),
@@ -31,6 +32,7 @@ const Register = () => {
   const {
     control,
     handleSubmit,
+      reset,
     formState: { errors, isValid, isSubmitting },
   } = useForm({
     resolver: yupResolver(schema),
@@ -45,8 +47,13 @@ const Register = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-        console.log(value);
-      }, 5000);
+        reset({
+          email: "",
+          password: "",
+          username: ""
+        });
+        createUser(value.username,value.email,value.password)
+      }, 500);
     });
   };
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -16,6 +16,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {toastError, toastSuccess} from "../../configs/toast";
 import Radio from "./components/Radio";
 import axiosClient from "../../configs/api";
+import Loading from "../Loading/Loading";
+import {setBuyer} from "../../slices/cartSlice";
 
 const InformationStyles = styled.div`
   @media screen and (min-width: 1000px) {
@@ -91,6 +93,7 @@ const schema = yup.object({
 const Information = ({cartItems, cartTotal}) => {
     const {userInfo} = useSelector((state) => state.auth);
     const dispath = useDispatch();
+    const [isLoading,setIsLoading] = useState(false);
     const {
         handleSubmit,
         formState: {errors, isValid, isSubmitting, isSubmitSuccessful},
@@ -111,7 +114,6 @@ const Information = ({cartItems, cartTotal}) => {
     const navigate = useNavigate();
 
     const onSubmitHandler = async (value) => {
-        console.log(value);
         const email = value.email ? value.email : 'empty'
         cartItems.map(product => {
             const order = {
@@ -131,7 +133,25 @@ const Information = ({cartItems, cartTotal}) => {
                 status: 'Đang giao hàng',
                 total: +cartTotal
             }
-            axiosClient.post('orders', order);
+            const buyer = {
+                fullName: value.fullname,
+                phoneNumber: value.phoneNumber,
+                email,
+                address: value.address,
+                paymentMethod: value.payment
+            }
+            if (watchPayment === 'momo' || watchPayment === 'vnpay') {
+                toastError('Phương thức chưa được hỗ trợ');
+            }
+            else {
+                axiosClient.post('orders', order);
+                setIsLoading(true);
+                setTimeout(() => {
+                    setIsLoading(false)
+                    navigate('/checkout/success')
+                    dispath(setBuyer(buyer))
+                },1500);
+            }
         })
         // if (!isValid) return;
         // return new Promise((resolve) => {
@@ -166,6 +186,7 @@ const Information = ({cartItems, cartTotal}) => {
     // console.log(userInfo);
     return (
         <InformationStyles>
+            {isLoading && <Loading/>}
             <form
                 onSubmit={handleSubmit(onSubmitHandler)}
                 className="flex flex-col flex-auto main container-form"

@@ -1,11 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { MdContactSupport } from "react-icons/md";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import LoadingSpinner from "./components/LoadingSpinner";
 import styled from "styled-components";
+import {useSelector} from "react-redux";
 
 const SuccessStyles = styled.div`
   @media screen and (min-width: 1000px) {
@@ -51,8 +52,11 @@ const Success = () => {
     mode: "onChange",
   });
 
+  const {buyer} = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+
   return (
-    <SuccessStyles className="flex flex-row-reverse">
+    <SuccessStyles className="flex justify-center my-0 mx-auto flex-row-reverse w-50">
       <form
         className="flex flex-col flex-auto main"
         // onSubmit={handleSubmit(onSubmitHandler)}
@@ -67,26 +71,16 @@ const Success = () => {
             <h2 className="text-4xl font-medium text[#333]">
               Thanh toán thành công
             </h2>
-            <span className="text-2xl break-all text-[#737373]">
-              Mã đơn hàng #110726
-            </span>
+            {/*<span className="text-2xl break-all text-[#737373]">*/}
+            {/*  Mã đơn hàng #{buyer.orderId}*/}
+            {/*</span>*/}
           </div>
           <div className="status-icon">
-            <svg
-              width="50"
-              height="50"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="#000"
-              strokeWidth="2"
-              className=" hanging-icon-error xmark"
-            >
-              <path
-                className="xmark_circle"
-                d="M25 49c13.255 0 24-10.745 24-24S38.255 1 25 1 1 11.745 1 25s10.745 24 24 24z"
-              ></path>
-              <path className="xmark_check1" d="M16 16l18 18"></path>
-              <path className="xmark_check2" d="M34 16l-18 18"></path>
+            <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#338dbc" strokeWidth="2"
+                 className="hanging-icon checkmark">
+              <path className="checkmark_circle"
+                    d="M25 49c13.255 0 24-10.745 24-24S38.255 1 25 1 1 11.745 1 25s10.745 24 24 24z"></path>
+              <path className="checkmark_check" d="M15 24.51l7.307 7.308L35.125 19"></path>
             </svg>
           </div>
         </div>
@@ -95,19 +89,19 @@ const Success = () => {
           <div className="nfo-delivery">
             <h3 className="mb-2 font-medium">Thông tin giao hàng</h3>
             <p className="font-light info-name">
-              Tên người nhận: <span>Quangdzu</span>
+              Tên người nhận: <span>{buyer.fullName}</span>
             </p>
             <p className="font-light info-phone">
-              Số điện thoại: <span className="">012345678</span>
+              Số điện thoại: <span className="">{buyer.phoneNumber}</span>
             </p>
             <p className="font-light info-address">
               Địa chỉ:{" "}
-              <span>Xã Vọng Thê, Huyện Thoại Sơn, An Giang, Vietnam</span>
+              <span>{buyer.address}</span>
             </p>
           </div>
           <div className="payment">
             <h3 className="my-2 font-medium">Phương thức thanh toán</h3>
-            <p className="font-light">Thanh toán online qua ví Momo</p>
+            <p className="font-light">Thanh toán {buyer.paymentMethod}</p>
           </div>
         </div>
         <div className="flex items-center justify-between step">
@@ -116,7 +110,7 @@ const Success = () => {
             <span>
               Cần hỗ trợ?{" "}
               <a
-                href="https://mail.google.com/mail/"
+                href="mailto:pashicareer@pashi.com"
                 className="text-[#338dbc] hover:brightness-125"
               >
                 Liên hệ chúng tôi
@@ -127,6 +121,7 @@ const Success = () => {
             className={`w-[200px] p-4 bg-[#338dbc] text-white rounded-lg mt-5 font-semibold ${
               isSubmitting ? "opacity-50" : ""
             }`}
+            onClick={() => navigate('/')}
             disabled={isSubmitting}
           >
             {isSubmitting ? (

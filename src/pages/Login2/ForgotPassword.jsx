@@ -38,11 +38,11 @@ const ForgotPassword = ({ children }) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-        console.log(value);
         reset({
           email: "",
         });
-      }, 5000);
+        resetPassword(value.email);
+      }, 500);
     });
   };
   return (
@@ -71,7 +71,6 @@ const ForgotPassword = ({ children }) => {
         )}
         <div className="relative flex flex-col items-center group ">
           <button
-            onClick={() => resetPassword()}
             className={`w-full h-[40px] mb-4 bg-slate-50 block border border-black rounded-lg hover:bg-slate-700 hover:text-white transition-all delay-100 leading-5 ${
               isSubmitting ? "opacity-50" : ""
             }`}

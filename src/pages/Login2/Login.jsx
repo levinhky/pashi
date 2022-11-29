@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import { signInWithFacebook, signInWithGoogle } from "configs/auth";
+import {logInUser, signInWithFacebook, signInWithGoogle} from "configs/auth";
 // ICONS
 import { BsFacebook } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
@@ -46,22 +46,18 @@ const Login = () => {
     mode: "onChange",
   });
   const [isResetForm, setIsResetForm] = useState(false);
-  // const [email, setEmail] = useState("");
-  console.log(isSubmitting);
-  console.log(errors);
 
   const onSubmitLogin = (value) => {
     if (!isValid) return;
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-        console.log(value);
         reset({
           email: "",
-          password: "",
-          reEmail: "",
+          password: ""
         });
-      }, 5000);
+        logInUser(value.email,value.password)
+      }, 500);
     });
   };
 

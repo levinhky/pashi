@@ -9,12 +9,10 @@ const facebookAuthProvider = new FacebookAuthProvider();
 export async function resetPassword(email) {
    await sendPasswordResetEmail(auth, email)
         .then(() => {
-           toastSuccess('Password reset email sent!');
+           toastSuccess('Thư đặt lại mật khẩu đã gửi!');
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toastError(errorMessage);
+            toastError('Có lỗi xảy ra vui lòng nhập lại!');
         });
 }
 
@@ -23,9 +21,7 @@ export function signInWithGoogle() {
     .then((result) => {
       toastSuccess('Đăng nhập thành công!');
     }).catch((error) => {
-      const errorMessage = error.message;
-      console.log(error);
-      toastError(errorMessage);
+      toastError('Có lỗi xảy ra');
     });
 }
 
@@ -36,8 +32,7 @@ export function signInWithFacebook() {
     })
     .catch((error) => {
       const errorMessage = error.message;
-      console.log(error);
-        toastError(errorMessage);
+        toastError('Có lỗi xảy ra!');
     });
 }
 
@@ -45,13 +40,12 @@ export function createUser(name, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       toastSuccess('Đăng ký thành công!');
+      setTimeout(() => toastSuccess('Tài khoản của bạn đã tự đăng nhập!'),1000)
       const user = userCredential.user;
       user.displayName = name;
-      console.log(user);
     })
     .catch((error) => {
-      const errorMessage = error.message;
-      toastError(errorMessage);
+      toastError('Có lỗi xảy ra!');
     });
 };
 
@@ -59,11 +53,10 @@ export function logInUser(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log(user);
+        toastSuccess('Đăng nhập thành công!');
     })
     .catch((error) => {
-      const errorMessage = error.message;
-      toastError(errorMessage);
+      toastError('Thất bại! Vui lòng kiểm tra lại thông tin');
     });
 }
 

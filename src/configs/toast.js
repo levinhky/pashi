@@ -15,7 +15,7 @@ export function toastSuccess(message) {
 export function toastError(message) {
   toast.error(message, {
     position: "top-right",
-    autoClose: 300,
+    autoClose: 500,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

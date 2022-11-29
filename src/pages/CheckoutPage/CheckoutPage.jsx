@@ -94,8 +94,6 @@ const CheckoutPage = ({ children }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
   const [voucher, setVoucher] = useState("");
-  // console.log(cartItems);
-  console.log(voucher);
   return (
     <CheckoutPageStyles ref={nodeRef}>
       <div className="hidden py-10 banner">
@@ -155,7 +153,7 @@ const CheckoutPage = ({ children }) => {
               !show ? "" : "hidden h-0"
             }`}
           >
-            <div className={`sidebar-content pl-[8%] pt-20 `}>
+            <div className={`sidebar-content px-[8%] pt-20 `}>
               {cartItems.length > 0 &&
                 cartItems.map((product) => (
                   <div
