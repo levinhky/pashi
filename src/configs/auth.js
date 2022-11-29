@@ -1,9 +1,22 @@
 import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { toastError, toastSuccess } from "./toast";
+import {sendPasswordResetEmail } from "firebase/auth";
 
 const googleAuthProvider = new GoogleAuthProvider();
 const facebookAuthProvider = new FacebookAuthProvider();
+
+export async function resetPassword(email) {
+   await sendPasswordResetEmail(auth, email)
+        .then(() => {
+           toastSuccess('Password reset email sent!');
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            toastError(errorMessage);
+        });
+}
 
 export function signInWithGoogle() {
   signInWithPopup(auth, googleAuthProvider)
@@ -11,7 +24,8 @@ export function signInWithGoogle() {
       toastSuccess('Đăng nhập thành công!');
     }).catch((error) => {
       const errorMessage = error.message;
-      console.log(errorMessage);
+      console.log(error);
+      toastError(errorMessage);
     });
 }
 
@@ -22,7 +36,8 @@ export function signInWithFacebook() {
     })
     .catch((error) => {
       const errorMessage = error.message;
-      console.log(errorMessage);
+      console.log(error);
+        toastError(errorMessage);
     });
 }
 

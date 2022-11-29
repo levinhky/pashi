@@ -112,12 +112,13 @@ const Information = ({cartItems, cartTotal}) => {
 
     const onSubmitHandler = async (value) => {
         console.log(value);
+        const email = value.email ? value.email : 'empty'
         cartItems.map(product => {
             const order = {
                 userId: userInfo.uid,
                 fullName: value.fullname,
                 phoneNumber: value.phoneNumber,
-                email: value.email,
+                email,
                 address: value.address,
                 deliveryMethod: value.payment,
                 shipping: value.shipping,
@@ -211,7 +212,7 @@ const Information = ({cartItems, cartTotal}) => {
                                 </div>
                                 <div className="flex flex-col ml-5">
                   <span>
-                    {userInfo.displayName} ({userInfo.email})
+                    {userInfo.displayName} ({userInfo?.email && userInfo.email})
                   </span>
                                     <span
                                         onClick={() => dispath(setLogOut())}

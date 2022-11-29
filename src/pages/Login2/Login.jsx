@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./Login.module.css";
 import {
   createUser,
-  logInUser,
+  logInUser, resetPassword,
   signInWithFacebook,
   signInWithGoogle,
 } from "configs/auth";
@@ -12,7 +12,7 @@ import { HiMail } from "react-icons/hi";
 import { GiPadlock } from "react-icons/gi";
 import { ImGooglePlus3 } from "react-icons/im";
 // ICONS
-import { useForm } from "react-hook-form";
+import {set, useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Input from "./components/input/Input";
@@ -58,6 +58,8 @@ const Login = () => {
     resolver: yupResolver(schema),
     mode: "onChange",
   });
+  const [isResetForm, setIsResetForm] = useState(false);
+  const [email,setEmail] = useState('');
   console.log(isSubmitting);
   console.log(errors);
 
@@ -70,6 +72,7 @@ const Login = () => {
         reset({
           email: "",
           password: "",
+          reEmail: ""
         });
       }, 5000);
     });
@@ -108,70 +111,112 @@ const Login = () => {
       </div>
       {/* =========================================== FORM =========================================== */}
       <div className="flex flex-row justify-between">
-        <form
-          className="login-form col-sm-6 col-xs-12"
-          onSubmit={handleSubmit(onSubmitLogin)}
-        >
-          <h2 className="m-5 text-3xl font-light text-center">Đăng nhập</h2>
-          <div className="w-[410px] mx-auto my-0">
-            <div className="relative flex items-center ">
+        {isResetForm ?
+            <form
+                className="login-form col-sm-6 col-xs-12"
+                onSubmit={handleSubmit(onSubmitLogin)}
+            >
+              <h2 className="m-5 text-3xl font-light text-center">Quên mật khẩu</h2>
+              <div className="w-[410px] mx-auto my-0">
+                <div className="relative flex items-center ">
               <span className="absolute top-3 right-1 text-[#ed1846] text-3xl z-1">
                 *
               </span>
-              <span className="absolute inline-block top-2 left-3">
+                  <span className="absolute inline-block top-2 left-3">
                 <HiMail size="22"></HiMail>
               </span>
-              <Input
-                type="email"
-                control={control}
-                name="email"
-                placeholder="Nhập email của bạn"
-              ></Input>
-            </div>
-            {errors.email && (
-              <p className="mb-4 text-2xl text-red-500">
-                {errors.email.message}
-              </p>
-            )}
-
-            <div className="relative flex items-center ">
+                  <Input
+                      type="email"
+                      control={control}
+                      name="email"
+                      placeholder="Nhập email của bạn"
+                  ></Input>
+                </div>
+                <div className="relative flex flex-col items-center group ">
+                  <button
+                      onClick={() => resetPassword()}
+                      className={`w-full h-[40px] mb-4 bg-slate-50 block border border-black rounded-lg hover:bg-slate-700 hover:text-white transition-all delay-100 leading-5 ${
+                          isSubmitting ? "opacity-50" : ""
+                      }`}
+                      disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                        <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                    ) : (
+                        "Gửi mã xác minh"
+                    )}
+                  </button>
+                  <span className="underline cursor-pointer" onClick={() => setIsResetForm(false)}>
+                Đăng nhập
+              </span>
+                </div>
+              </div>
+            </form> :
+            <form
+                className="login-form col-sm-6 col-xs-12"
+                onSubmit={handleSubmit(onSubmitLogin)}
+            >
+              <h2 className="m-5 text-3xl font-light text-center">Đăng nhập</h2>
+              <div className="w-[410px] mx-auto my-0">
+                <div className="relative flex items-center ">
               <span className="absolute top-3 right-1 text-[#ed1846] text-3xl z-1">
                 *
               </span>
-              <span className="absolute inline-block top-2 left-3">
+                  <span className="absolute inline-block top-2 left-3">
+                <HiMail size="22"></HiMail>
+              </span>
+                  <Input
+                      type="email"
+                      control={control}
+                      name="email"
+                      placeholder="Nhập email của bạn"
+                  ></Input>
+                </div>
+                {errors.email && (
+                    <p className="mb-4 text-2xl text-red-500">
+                      {errors.email.message}
+                    </p>
+                )}
+
+                <div className="relative flex items-center ">
+              <span className="absolute top-3 right-1 text-[#ed1846] text-3xl z-1">
+                *
+              </span>
+                  <span className="absolute inline-block top-2 left-3">
                 <GiPadlock size="22"></GiPadlock>
               </span>
-              <Input
-                type="password"
-                control={control}
-                name="password"
-                placeholder="Mật khẩu"
-              ></Input>
-            </div>
-            {errors.password && (
-              <p className="mb-4 text-2xl text-red-500">
-                {errors.password.message}
-              </p>
-            )}
-            <div className="relative flex flex-col items-center group ">
-              <button
-                className={`w-full h-[40px] mb-4 bg-slate-50 block border border-black rounded-lg hover:bg-slate-700 hover:text-white transition-all delay-100 leading-5 ${
-                  isSubmitting ? "opacity-50" : ""
-                }`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
-                ) : (
-                  "Đăng nhập"
+                  <Input
+                      type="password"
+                      control={control}
+                      name="password"
+                      placeholder="Mật khẩu"
+                  ></Input>
+                </div>
+                {errors.password && (
+                    <p className="mb-4 text-2xl text-red-500">
+                      {errors.password.message}
+                    </p>
                 )}
-              </button>
-              <a href="sss" className="underline">
+                <div className="relative flex flex-col items-center group ">
+                  <button
+                      className={`w-full h-[40px] mb-4 bg-slate-50 block border border-black rounded-lg hover:bg-slate-700 hover:text-white transition-all delay-100 leading-5 ${
+                          isSubmitting ? "opacity-50" : ""
+                      }`}
+                      disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                        <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                    ) : (
+                        "Đăng nhập"
+                    )}
+                  </button>
+                  <span onClick={() => setIsResetForm(true)} className="underline cursor-pointer">
                 Quên mật khẩu?
-              </a>
-            </div>
-          </div>
-        </form>
+              </span>
+                </div>
+              </div>
+            </form>
+        }
         {/* Đăng ký */}
         <Register></Register>
       </div>

@@ -43,7 +43,7 @@ function Header() {
       }
     });
   }, [dispath, auth]);
-
+  console.log(userInfo)
   // api
   useEffect(() => {
     const getCategories = async () => {
@@ -108,7 +108,7 @@ function Header() {
                 //   dispath(setLogOut());
                 // }}
               >
-                {userInfo.email.substring(0, userInfo.email.indexOf("@"))}
+                {userInfo?.email ? userInfo?.email.substring(0, userInfo.email.indexOf("@")) : userInfo?.displayName  }
               </Link>
             </li>
           ) : (
@@ -216,7 +216,7 @@ function Header() {
                 // }}
               <li>
                 <Link to='/account'>
-                  {userInfo.email.substring(0, userInfo.email.indexOf("@"))}
+                  {userInfo?.email ? userInfo?.email.substring(0, userInfo.email.indexOf("@")) : userInfo?.displayName  }
                 </Link>
               </li>
             ) : (
