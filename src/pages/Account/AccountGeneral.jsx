@@ -37,7 +37,6 @@ const AccountGeneral = () => {
     useEffect(() => {
         const getOrders = async () => {
             const orders = await axiosClient.get(`orders/user/${userInfo.uid}`);
-            console.log(orders,);
             setOrders(orders);
         }
 

@@ -6,7 +6,6 @@ import {toastError, toastSuccess} from "configs/toast";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useLocation, useParams} from "react-router-dom";
-import {toast} from "react-toastify";
 import {addToCart, caculateTotal} from "slices/cartSlice";
 import styles from "./Detail.module.css";
 import {onAuthStateChanged} from "firebase/auth";
@@ -16,8 +15,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Carousel} from 'react-responsive-carousel';
 
 function Detail(props) {
-    const {id} = useParams();
-
     const [productDetail, setProductDetail] = useState({});
     const [sizes, setSizes] = useState([]);
     const [images, setImages] = useState([]);
@@ -27,12 +24,11 @@ function Detail(props) {
     const [sizeS, setSizeS] = useState("");
     const [sizeM, setSizeM] = useState("");
     const [sizeL, setSizeL] = useState("");
-    const [sizeSVal, setSizeSVal] = useState("");
-    const [sizeMVal, setSizeMVal] = useState("");
-    const [sizeLVal, setSizeLVal] = useState("");
     const [checked, setChecked] = useState(0);
     const [loading, setLoading] = useState(true);
     const [tabActive, setTabActive] = useState(1);
+    const [commentContent, setCommentContent] = useState('');
+    const [commentList, setCommentList] = useState([]);
     const {userInfo} = useSelector((state) => state.auth);
     const {search} = useLocation();
     const dispath = useDispatch();
@@ -97,7 +93,35 @@ function Detail(props) {
             setRelativeProduct(products);
         }
         getRelative();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        const getComments = async () => {
+            const data = await axiosClient.get(`comments/find/${productDetail._id}`);
+            setCommentList(data);
+        }
+
+        getComments();
+    },[productDetail._id, commentList])
+
+    const handlePostComment = async () => {
+        const content = {
+            displayName: userInfo.displayName,
+            userId: userInfo.uid,
+            commentContent,
+            photoUrl: userInfo.photoUrl,
+            productId: productDetail._id
+        };
+        if (commentContent === '') {
+            toastError('Vui lòng nhập nội dung!');
+        } else {
+            await axiosClient.post('comments',content).then(res => {
+                toastSuccess('Bình luận của bạn đã được gửi!');
+                setCommentContent('');
+                setCommentList(res);
+            });
+        }
+    };
 
     return (
         <>
@@ -187,23 +211,27 @@ function Detail(props) {
                                                     <img src={userInfo.photoUrl} alt={userInfo.displayName}/>
                                                 </div>
                                                 <textarea name="comment-box" rows="1" cols="50"
+                                                          value={commentContent}
+                                                          onChange={(e) => setCommentContent(e.target.value)}
                                                           placeholder={'Nhập bình luận của bạn ở đây...'}></textarea>
                                             </div> :
                                             <h3 id={styles['login-warn']}>Vui lòng <Link to='/account/login'>đăng
                                                 nhập</Link> để bình luận</h3>
                                         }
-                                        {userInfo.uid && <span className={styles['send-icon']}><i
+                                        {userInfo.uid && <span onClick={handlePostComment} className={styles['send-icon']}><i
                                             className='bx bxs-send'></i></span>}
                                         <div className={styles['comment-content']}>
-                                            {/*<div className={styles['comment-item']}>*/}
-                                            {/*        <div className={styles['thumbnail']}>*/}
-                                            {/*            <img src={userInfo.photoUrl} alt={userInfo.displayName} />*/}
-                                            {/*        </div>*/}
-                                            {/*   <div className={styles['content']}>*/}
-                                            {/*       <div className={styles['name']}>{userInfo.displayName} </div>*/}
-                                            {/*       <div className={styles['text']}>Hehehehe</div>*/}
-                                            {/*   </div>*/}
-                                            {/*</div>*/}
+                                            {commentList.length > 0 ? commentList.map(item => (
+                                                <div className={styles['comment-item']} key={item._id}>
+                                                    <div className={styles['thumbnail']}>
+                                                        <img src={item.photoUrl} alt={item.displayName} />
+                                                    </div>
+                                                    <div className={styles['content']}>
+                                                        <div className={styles['name']}>{item.displayName} </div>
+                                                        <div className={styles['text']}>{item.commentContent}</div>
+                                                    </div>
+                                                </div>
+                                            )) : <span>Chưa có bình luận cho sản phẩm này!</span>}
                                         </div>
                                     </div>}
                             </div>

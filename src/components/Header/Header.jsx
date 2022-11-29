@@ -43,7 +43,7 @@ function Header() {
       }
     });
   }, [dispath, auth]);
-  console.log(userInfo)
+
   // api
   useEffect(() => {
     const getCategories = async () => {

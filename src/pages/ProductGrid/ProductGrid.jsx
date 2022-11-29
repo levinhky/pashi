@@ -26,7 +26,7 @@ function ProductGrid(props) {
             behavior: "smooth",
         });
     });
-    console.log(page)
+
     useEffect(() => {
         const getRows = async () => {
             let length = 0;
@@ -98,7 +98,7 @@ function ProductGrid(props) {
                 <div className={styles["product-pagination"]}>
                     <ul>
                         <li>
-                            <button
+                            {page >= pageNumbers.length && <button
                                 onClick={() => {
                                     setPage(page - 1)
                                     window.scroll({
@@ -109,7 +109,7 @@ function ProductGrid(props) {
                                 }}
                             >
                                 <i className="bx bx-chevrons-left"></i>
-                            </button>
+                            </button>}
                         </li>
                         {pageNumbers.map((number, index) => (
                             <li key={index}>
@@ -129,7 +129,7 @@ function ProductGrid(props) {
                             </li>
                         ))}
                         <li>
-                            <button
+                            {page < pageNumbers.length &&  <button
                                 onClick={() => {
                                     setPage(page + 1)
                                     window.scroll({
@@ -140,7 +140,7 @@ function ProductGrid(props) {
                                 }}
                             >
                                 <i className="bx bx-chevrons-right"></i>
-                            </button>
+                            </button>}
                         </li>
                     </ul>
                 </div>

@@ -41,7 +41,6 @@ function Home(props) {
         const getArrivals = async () => {
             const res = await axiosClient.get("products", { params: { limit: 6 } });
             setArrivals(res);
-            console.log(res)
             setLoading(false);
         };
 
