@@ -76,14 +76,14 @@ function Footer(props) {
         <div className={styles["item"]}>
           <ul>
             <li>
-              <img className='w-50' src="https://i.imgur.com/b3O0yx2.png" alt="Pashi-logo" />
+              <img className={styles['footer-logo']} src="https://i.imgur.com/b3O0yx2.png" alt="Pashi-logo" />
             </li>
           </ul>
         </div>
         <div className={styles["item"]}>
           <div className='flex'>
             <span><i className='bx bxs-home text-white text-4xl'></i></span>
-            <li className='text-white ml-2'>Lầu 1, 42 Chung cư Tôn Thất Thiệp, phường Bến Nghé, quận 1, TP.HCM.</li>
+            <li className='text-white ml-2 w-60'>Lầu 1, 42 Chung cư Tôn Thất Thiệp, phường Bến Nghé, quận 1, TP.HCM.</li>
           </div>
         </div>
         <div className={styles["item"]}>
@@ -100,7 +100,7 @@ function Footer(props) {
         </div>
       </div>
       <div className={styles['wrapper']}>
-        <div className="mx-auto">
+        <div className="mx-auto my-0">
           <img src={'https://theme.hstatic.net/1000370235/1000472578/14/payment-icon.png?v=909'} alt={'logo'}/>
         </div>
       </div>

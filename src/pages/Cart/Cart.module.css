@@ -45,8 +45,9 @@ table tr:first-child th {
   font-size: 1.5rem;
   color: #333;
   text-align: left;
-  font-weight: 400;
+  font-weight: 600;
   border-bottom: 1px solid #d1d1d1;
+  font-family: system-ui;
 }
 
 table .item td:first-child {
@@ -110,7 +111,6 @@ tbody tr:nth-child(2) td:first-child {
 .box {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
 }
 
 .total-cart {

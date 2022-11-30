@@ -45,6 +45,7 @@
   color: var(--white-color);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  font-family: system-ui;
 }
 
 .menu > li > a:hover {
@@ -77,7 +78,7 @@
   opacity: 0;
   visibility: hidden;
   padding-top: 0.5rem;
-  top: 1.6rem;
+  top: 2.6rem;
   z-index: 11;
 }
 

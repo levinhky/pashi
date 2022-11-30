@@ -82,10 +82,10 @@ function Header() {
         </Link>
         <ul className={styles["menu"]}>
           <li>
-            <Link to={`/collections/new-arrivals`}>New Arrivals</Link>
+            <Link to={`/collections/new-arrivals`}>Sản phẩm mới</Link>
           </li>
           <li className={styles["dropdown"]}>
-            <Link to={`/collections/all`}>Products</Link>
+            <Link to={`/collections/all`}>Bộ sưu tập</Link>
             <ul className={styles["sub-menu"]}>
               {categories &&
                 categories.map((category) => (
@@ -98,7 +98,7 @@ function Header() {
             </ul>
           </li>
           <li>
-            <Link to={`/collections/hot-products`}>Best seller</Link>
+            <Link to={`/collections/hot-products`}>Bán chạy</Link>
           </li>
           {userInfo.accessToken ? (
             <li>
@@ -113,7 +113,7 @@ function Header() {
             </li>
           ) : (
             <li>
-              <Link to="/account/login">Đăng ký / đăng nhập</Link>
+              <Link to="/account/login">đăng nhập</Link>
             </li>
           )}
           <li className={styles["search-btn"]}>
@@ -173,10 +173,10 @@ function Header() {
             }
           >
             <li>
-              <Link to={`/collections/new-arrivals`}>New Arrivals</Link>
+              <Link to={`/collections/new-arrivals`}>Sản phẩm mới</Link>
             </li>
             <li className={styles["dropdown"]}>
-              <Link to={`/collections/all`}>Products</Link>
+              <Link to={`/collections/all`}>Bộ sưu tập</Link>
               <b
                 className={styles["sub-menu-icon"]}
                 onClick={() => {
@@ -207,7 +207,7 @@ function Header() {
               </ul>
             </li>
             <li>
-              <Link to={`/collections/hot-products`}>Best seller</Link>
+              <Link to={`/collections/hot-products`}>Bán chạy</Link>
             </li>
             {userInfo.accessToken ? (
                 // onClick={() => {
@@ -221,7 +221,7 @@ function Header() {
               </li>
             ) : (
               <li>
-                <Link to="/account/login">Đăng ký / đăng nhập</Link>
+                <Link to="/account/login">đăng nhập</Link>
               </li>
             )}
             <div className={styles["nav-action"]}>

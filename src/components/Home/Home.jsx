@@ -70,26 +70,26 @@ function Home(props) {
             <div className={styles["container"]}>
                 <div className={styles["model"]}>
                     <div className={styles["item"]}>
-                        <Link to="/collections/2">
+                        <Link to="/collections/vay">
                             <img
                                 src="https://firebasestorage.googleapis.com/v0/b/pashi-admin.appspot.com/o/slide4.jpg?alt=media&token=f5b9039c-6d3e-4abd-9d63-813efd91ac01"
                                 alt="tops"
                             />
                         </Link>
                         <div className={styles["caption"]}>
-                            <h3>Tops</h3>
+                            <h3>Áo</h3>
                             <p>Mua Ngay</p>
                         </div>
                     </div>
                     <div className={styles["item"]}>
-                        <Link to="/collections/1">
+                        <Link to="/collections/ao">
                             <img
                                 src="https://firebasestorage.googleapis.com/v0/b/pashi-admin.appspot.com/o/slide5.jpg?alt=media&token=58c87724-8994-4fbf-9272-99b5b3e0d9a1"
                                 alt="tops"
                             />
                         </Link>
                         <div className={styles["caption"]}>
-                            <h3>Desses</h3>
+                            <h3>Váy</h3>
                             <p>Mua Ngay</p>
                         </div>
                     </div>
@@ -109,10 +109,10 @@ function Home(props) {
                                 <img src={arrival.thumbnails[0].thumbnail} alt="product" />
                             </Link>
                             <div className={styles["info"]}>
-                                <h2>
-                                    <a href="/" className={styles["name"]}>
+                                <h2 className={'mt-3'}>
+                                    <Link to={`/products/detail/?slug=${arrival.slug}`} className={styles["name"]}>
                                         {arrival.name}
-                                    </a>
+                                    </Link>
                                 </h2>
                                 <div className={styles["price"]}>
                                     <span>{vnd(arrival.price)}</span>

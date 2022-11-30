@@ -21,10 +21,11 @@
   letter-spacing: 4px;
   text-transform: capitalize;
   overflow: hidden;
+  font-family: inherit;
 }
 
 .loading::before {
-  color: #fff;
+  color: #202020;
   content: attr(data-loading-text);
 }
 
@@ -34,10 +35,10 @@
   left: 0;
   width: 0;
   opacity: 1;
-  color: #aaa;
+  color: #f1f1f1;
   overflow: hidden;
   content: attr(data-loading-text);
-  animation: loading 1s infinite;
+  animation: loading 1.3s infinite;
 }
 
 @keyframes loading {

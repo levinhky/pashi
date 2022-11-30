@@ -34,7 +34,7 @@ function Cart(props) {
                   <tr>
                     <th>Sản phẩm</th>
                     <th>Số lượng</th>
-                    <th>Tổng tiền</th>
+                    <th>Đơn giá</th>
                     <th>Xóa</th>
                   </tr>
                   {cartItems.map((product) => (
@@ -102,6 +102,7 @@ function Cart(props) {
             <div className="block py-4">
               <Link
                 to="/"
+                style={{fontFamily:'system-ui'}}
                 className="inline-block px-12 text-[16px] font-light text-white uppercase transition-all delay-300 bg-black rounded-[50px] h-[50px] leading-[50px]"
               >
                 Tiếp tục mua sắm

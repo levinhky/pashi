@@ -187,7 +187,7 @@ const Information = ({cartItems, cartTotal}) => {
     return (
         <InformationStyles>
             {isLoading && <Loading/>}
-            <form
+            {!isLoading &&  <form
                 onSubmit={handleSubmit(onSubmitHandler)}
                 className="flex flex-col flex-auto main container-form"
                 autoComplete="off"
@@ -425,7 +425,7 @@ const Information = ({cartItems, cartTotal}) => {
                         Hoàn tất đơn hàng
                     </button>
                 </div>
-            </form>
+            </form>}
         </InformationStyles>
     );
 };
