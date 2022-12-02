@@ -12,9 +12,8 @@ import styles from "./Cart.module.css";
 
 function Cart(props) {
   const { cartItems, cartTotal } = useSelector((state) => state.cart);
-
-  const dispath = useDispatch();
   console.log(cartItems)
+  const dispath = useDispatch();
   useEffect(() => {
     dispath(caculateTotal());
   }, [cartItems]);
@@ -38,7 +37,7 @@ function Cart(props) {
                     <th>Xóa</th>
                   </tr>
                   {cartItems.map((product) => (
-                    <tr className={styles["item"]} key={product.sku}>
+                    <tr className={styles["item"]} key={product._id}>
                       <td>
                         <Link to={`/products/detail/?slug=${product.slug}`}>
                           <div className={styles["product"]}>
@@ -48,7 +47,7 @@ function Cart(props) {
                               <span>{vnd(product.price)}</span>
                               {product.sizeArr.map(product => {
                                 if (product.size) {
-                                  return <h3>Size: {product.size}</h3>
+                                  return <h3 key={product.size}>Size: {product.size}, Qty: {product.quantity}</h3>
                                 }
                               })}
                             </div>

@@ -16,7 +16,6 @@ import {Carousel} from 'react-responsive-carousel';
 
 function Detail(props) {
     const [productDetail, setProductDetail] = useState({});
-    const [sizes, setSizes] = useState([]);
     const [images, setImages] = useState([]);
     const [relativeProduct, setRelativeProduct] = useState([]);
     const [quantity, setQuantity] = useState(1);
@@ -45,7 +44,6 @@ function Detail(props) {
             data.size = '';
             data.sizeArr= [];
             setProductDetail(data);
-            setSizes(data?.sizes);
             setImages(data?.thumbnails)
             setSizeS(data?.sizes[0]?.size);
             setSizeM(data?.sizes[1]?.size);
@@ -274,7 +272,7 @@ function Detail(props) {
                             <div className={styles["add-cart"]}>
                                 <button
                                     onClick={() => {
-                                        productDetail.sizeArr = [...productDetail.sizeArr,{size:sizeValue}];
+                                        productDetail.sizeArr = [...productDetail.sizeArr,{size:sizeValue,quantity:1}];
                                         productDetail.size = sizeValue;
                                         if (sizeValue === '') {
                                             toastError("Vui lòng chọn kích cỡ trước khi thêm vào giỏ hàng!");

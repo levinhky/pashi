@@ -15,11 +15,8 @@ export const cartSlice = createSlice({
       const itemIndex = state.cartItems.findIndex(item => item._id === action.payload._id);
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].quantity += 1;
-        let obj = {
-          size: action.payload.size
-        }
-       const sizeArr= state.cartItems[itemIndex].sizeArr.map(item => item.size === action.payload.size);
-       if (sizeArr[0] === false) state.cartItems[itemIndex].sizeArr.push(obj);
+       const sizeArr= state.cartItems[itemIndex].sizeArr.findIndex(item => item.size === action.payload.size);
+        sizeArr >= 0 ? state.cartItems[itemIndex].sizeArr[sizeArr].quantity += 1 :  state.cartItems[itemIndex].sizeArr.push({size:action.payload.size,quantity:1});
       }
       else {
         state.cartItems.push({ ...action.payload });

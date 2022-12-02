@@ -1,17 +1,18 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Lazy, Navigation } from "swiper";
+import {Swiper, SwiperSlide} from "swiper/react";
+import SwiperCore, {Autoplay, Lazy, Navigation} from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "swiper/css/lazy";
 
 import styles from "./Home.module.css";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
 import axiosClient from "configs/api";
-import { vnd } from "configs/functions";
+import {vnd} from "configs/functions";
 import Loading from "components/Loading/Loading";
 import Partner from "components/Partner/Partner";
+import Modal from "../Modal";
 
 function Home(props) {
     const slides = [
@@ -34,18 +35,25 @@ function Home(props) {
 
     const [arrivals, setArrivals] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [productDetail, setProductDetail] = useState({});
+    const [isModal, setIsModal] = useState(false);
 
     SwiperCore.use([Autoplay, Navigation]);
 
     useEffect(() => {
         const getArrivals = async () => {
-            const res = await axiosClient.get("products", { params: { limit: 6 } });
+            const res = await axiosClient.get("products", {params: {limit: 6}});
             setArrivals(res);
             setLoading(false);
         };
 
         getArrivals();
     }, []);
+
+    const getProductDetail = async (slug) => {
+        const data = await axiosClient.get("products/find/?slug=" + slug);
+        setProductDetail(data);
+    };
 
     return (
         <>
@@ -62,7 +70,7 @@ function Home(props) {
                 >
                     {slides.map((slide) => (
                         <SwiperSlide key={slide.id}>
-                            <img src={slide.img} alt={slide.alt} />
+                            <img src={slide.img} alt={slide.alt}/>
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -106,7 +114,7 @@ function Home(props) {
                             {/*    <img src={arrival.thumbnails[0].thumbnail} alt="product" />*/}
                             {/*</Link>*/}
                             <Link to={`/products/detail/?slug=${arrival.slug}`} className={styles["image"]}>
-                                <img src={arrival.thumbnails[0].thumbnail} alt="product" />
+                                <img src={arrival.thumbnails[0].thumbnail} alt="product"/>
                             </Link>
                             <div className={styles["info"]}>
                                 <h2 className={'mt-3'}>
@@ -118,13 +126,20 @@ function Home(props) {
                                     <span>{vnd(arrival.price)}</span>
                                 </div>
                             </div>
+                            <button id={styles['quick-view']} onClick={() => {
+                                getProductDetail(arrival.slug);
+                                setIsModal(true);
+                            }}>
+                                Xem nhanh
+                            </button>
                         </div>
                     ))}
+
+                    <Modal isModal={isModal} setIsModal={setIsModal} productDetail={productDetail} />
                 </div>
             </div>
-            {loading && <Loading />}
-
-            <Partner />
+            {loading && <Loading/>}
+            <Partner/>
         </>
     );
 }

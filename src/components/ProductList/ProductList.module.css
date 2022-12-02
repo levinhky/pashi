@@ -103,6 +103,25 @@ nav .title {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
+}
+
+.item #quick-view {
+  position: absolute;
+  bottom: 4.2rem;
+  height: 4rem;
+  width: 100%;
+  background-color: rgba(75, 63, 63, .5);
+  color: #f1f1f1;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.item:hover #quick-view {
+  opacity: 1;
+  visibility: visible;
 }
 
 .item .info {

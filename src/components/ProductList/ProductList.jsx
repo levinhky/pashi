@@ -3,12 +3,15 @@ import {vnd} from "configs/functions";
 import {useEffect, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import styles from "./ProductList.module.css";
+import Modal from "../Modal";
 
 function ProductList(props) {
     const {products, isNav, setProductList, page, limit} = props;
     const {pathname, search} = useLocation();
     const navigate = useNavigate();
+    const [modalId,setModalId] = useState('');
     const [sort,setSort] = useState('');
+    const [productDetail, setProductDetail] = useState({});
 
     useEffect(() => {
         const filter = document.querySelector(".current");
@@ -54,6 +57,11 @@ function ProductList(props) {
 
         getFilterProducts();
     }, [sort, search, limit, page, setProductList]);
+
+    const getProductDetail = async (slug) => {
+        const data = await axiosClient.get("products/find/?slug=" + slug);
+        setProductDetail(data);
+    };
 
     return (
         <>
@@ -122,8 +130,15 @@ function ProductList(props) {
                                 <span>{vnd(product.price)}</span>
                             </div>
                         </div>
+                        <button id={styles['quick-view']} onClick={() => {
+                            getProductDetail(product.slug)
+                            setModalId('productQuickView')
+                        }} data-bs-toggle="modal" data-bs-target={`#${modalId}`}>
+                            Xem nhanh
+                        </button>
                     </div>
                 ))}
+                <Modal modalId={modalId} productDetail={productDetail}/>
                 {products.length === 0 && <p>Không có sản phẩm!</p>}
             </div>
         </>
