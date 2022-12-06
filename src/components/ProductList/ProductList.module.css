@@ -137,6 +137,10 @@ nav .title {
   transform: scale(1.02);
 }
 
+.item:hover .image img {
+  transform: scale(1.02);
+}
+
 .item .info .name {
   font-size: 1.5rem;
   line-height: 1.35;

@@ -12,6 +12,7 @@ function ProductList(props) {
     const [modalId,setModalId] = useState('');
     const [sort,setSort] = useState('');
     const [productDetail, setProductDetail] = useState({});
+    const [isModal, setIsModal] = useState(false);
 
     useEffect(() => {
         const filter = document.querySelector(".current");
@@ -131,14 +132,14 @@ function ProductList(props) {
                             </div>
                         </div>
                         <button id={styles['quick-view']} onClick={() => {
-                            getProductDetail(product.slug)
-                            setModalId('productQuickView')
-                        }} data-bs-toggle="modal" data-bs-target={`#${modalId}`}>
+                            getProductDetail(product.slug);
+                            setIsModal(true);
+                        }}>
                             Xem nhanh
                         </button>
                     </div>
                 ))}
-                <ModalCustom modalId={modalId} productDetail={productDetail}/>
+                <ModalCustom isModal={isModal} setIsModal={setIsModal} productDetail={productDetail}/>
                 {products.length === 0 && <p>Không có sản phẩm!</p>}
             </div>
         </>

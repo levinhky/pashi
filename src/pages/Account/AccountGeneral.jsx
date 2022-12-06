@@ -89,7 +89,7 @@ const AccountGeneral = () => {
                     <h4 className={styles['info-text']}>Thông tin tài khoản</h4>
                     <div className={styles['person']}>
                         <span> Họ và tên: {userInfo.displayName}</span>
-                        <span>Email: {userInfo.email ? userInfo.email : 'empty'}</span>
+                        <span>Email: {userInfo.email ? userInfo.email : 'rỗng'}</span>
                     </div>
                 </div>}
                 <div className={styles['order-info']}>
@@ -110,12 +110,15 @@ const AccountGeneral = () => {
                                 <td><span>{order._id}</span></td>
                                 <td>{order.createdAt.substring(0, 10)}</td>
                                 <td className={styles['order-item']}>
-                                    <Link to={`/products/detail/?slug=${order.slug}`} title="">1. {order.name} - S</Link>
+                                    <Link to={`/products/detail/?slug=${order.slug}`} title="">1. {order.name} -
+                                        S</Link>
                                 </td>
                                 <td>{vnd(order.total)}</td>
                                 <td>{order.status}</td>
                             </tr>
-                        )) : <td className='text-center py-3'>Bạn chưa đặt mua sản phẩm nào!...</td>}
+                        )) : <tr >
+                            <td colSpan='5'><h3 className='text-center py-3 italic'>Bạn chưa đặt mua sản phẩm nào!...</h3></td>
+                        </tr>}
                         </tbody>
                     </table>
                 </div>

@@ -120,6 +120,10 @@
   transform: scale(1.02);
 }
 
+.arrivals .item:hover .image img {
+  transform: scale(1.02);
+}
+
 .arrivals .item .info .name {
   font-size: 1.6rem;
   line-height: 1.35;;
