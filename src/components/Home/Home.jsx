@@ -135,7 +135,7 @@ function Home(props) {
                         </div>
                     ))}
 
-                    <ModalCustom isModal={isModal} setIsModal={setIsModal} productDetail={productDetail} />
+                    <ModalCustom isModal={isModal} setIsModal={setIsModal} productDetail={productDetail}/>
                 </div>
             </div>
             {loading && <Loading/>}

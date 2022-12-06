@@ -129,7 +129,7 @@ function ProductGrid(props) {
                             </li>
                         ))}
                         <li>
-                            {page < pageNumbers.length &&  <button
+                            {page < pageNumbers.length && <button
                                 onClick={() => {
                                     setPage(page + 1)
                                     window.scroll({

@@ -17,6 +17,7 @@ const CheckoutPageStyles = styled.div`
   -webkit-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
+
   .wrap {
     margin: 0 auto;
     max-width: 40em;
@@ -30,6 +31,7 @@ const CheckoutPageStyles = styled.div`
       width: 90%;
       max-width: 78.57143em;
     }
+
     .content {
       /* height: 800px; */
     }
@@ -38,12 +40,15 @@ const CheckoutPageStyles = styled.div`
     .banner {
       display: block;
     }
+
     .toggle-summary {
       display: block;
     }
+
     .content-second {
       display: block;
     }
+
     .sidebar {
       width: 100%;
       box-sizing: border-box;
@@ -51,11 +56,13 @@ const CheckoutPageStyles = styled.div`
       border-bottom: 1px solid rgb(209 213 219);
       height: inherit;
     }
+
     .sidebar-content {
       /* height: 0;
       overflow: hidden; */
       padding: 0 !important;
     }
+
     .sidebar:after {
       content: "";
       margin: 10px 0;
@@ -70,17 +77,20 @@ const CheckoutPageStyles = styled.div`
       z-index: -1;
       box-shadow: 0 -1px 0 #e1e1e1 inset;
     }
+
     .line-left,
     .line-code,
     .code-sidebar {
       display: none;
     }
+
     .wrap {
       width: 100%;
       box-sizing: border-box;
       padding: 0 1em;
       flex-direction: column !important;
     }
+
     .main {
       width: 100%;
       padding: 0;

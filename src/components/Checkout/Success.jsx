@@ -15,6 +15,7 @@ const SuccessStyles = styled.div`
     .container-form {
       flex-direction: column;
     }
+
     .main {
       padding-top: 4em;
     }
@@ -26,11 +27,14 @@ const SuccessStyles = styled.div`
     .main-header {
       display: none;
     }
+
     .content {
     }
+
     .heading {
       font-size: 18px;
     }
+
     .title {
       font-size: 16px;
     }

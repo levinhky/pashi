@@ -1,15 +1,23 @@
-import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
-import { toastError, toastSuccess } from "./toast";
-import {sendPasswordResetEmail } from "firebase/auth";
+import {
+    signInWithPopup,
+    GoogleAuthProvider,
+    FacebookAuthProvider,
+    signOut,
+    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
+} from "firebase/auth";
+import {auth} from "./firebase";
+import {toastError, toastSuccess} from "./toast";
+import {sendPasswordResetEmail} from "firebase/auth";
 
 const googleAuthProvider = new GoogleAuthProvider();
 const facebookAuthProvider = new FacebookAuthProvider();
 
 export async function resetPassword(email) {
-   await sendPasswordResetEmail(auth, email)
+    await sendPasswordResetEmail(auth, email)
         .then(() => {
-           toastSuccess('Thư đặt lại mật khẩu đã gửi!');
+            toastSuccess('Thư đặt lại mật khẩu đã gửi!');
         })
         .catch((error) => {
             toastError('Có lỗi xảy ra vui lòng nhập lại!');
@@ -17,54 +25,54 @@ export async function resetPassword(email) {
 }
 
 export function signInWithGoogle() {
-  signInWithPopup(auth, googleAuthProvider)
-    .then((result) => {
-      toastSuccess('Đăng nhập thành công!');
-    }).catch((error) => {
-      toastError('Có lỗi xảy ra');
+    signInWithPopup(auth, googleAuthProvider)
+        .then((result) => {
+            toastSuccess('Đăng nhập thành công!');
+        }).catch((error) => {
+        toastError('Có lỗi xảy ra');
     });
 }
 
 export function signInWithFacebook() {
-  signInWithPopup(auth, facebookAuthProvider)
-    .then((result) => {
-      toastSuccess('Đăng nhập thành công!');
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-        toastError('Có lỗi xảy ra!');
-    });
+    signInWithPopup(auth, facebookAuthProvider)
+        .then((result) => {
+            toastSuccess('Đăng nhập thành công!');
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            toastError('Có lỗi xảy ra!');
+        });
 }
 
 export function createUser(name, email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      toastSuccess('Đăng ký thành công!');
-      setTimeout(() => toastSuccess('Tài khoản của bạn đã tự đăng nhập!'),1000)
-      const user = userCredential.user;
-      user.displayName = name;
-    })
-    .catch((error) => {
-      toastError('Có lỗi xảy ra!');
-    });
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            toastSuccess('Đăng ký thành công!');
+            setTimeout(() => toastSuccess('Tài khoản của bạn đã tự đăng nhập!'), 1000)
+            const user = userCredential.user;
+            user.displayName = name;
+        })
+        .catch((error) => {
+            toastError('Có lỗi xảy ra!');
+        });
 };
 
 export function logInUser(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-        toastSuccess('Đăng nhập thành công!');
-    })
-    .catch((error) => {
-      toastError('Thất bại! Vui lòng kiểm tra lại thông tin');
-    });
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            toastSuccess('Đăng nhập thành công!');
+        })
+        .catch((error) => {
+            toastError('Thất bại! Vui lòng kiểm tra lại thông tin');
+        });
 }
 
 export function authSignOut() {
-  signOut(auth).then(() => {
-    toastSuccess('Đăng xuất thành công!');
-  }).catch((error) => {
-    toastError('Có lỗi xảy ra!');
-  });
+    signOut(auth).then(() => {
+        toastSuccess('Đăng xuất thành công!');
+    }).catch((error) => {
+        toastError('Có lỗi xảy ra!');
+    });
 
 }

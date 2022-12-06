@@ -116,8 +116,9 @@ const AccountGeneral = () => {
                                 <td>{vnd(order.total)}</td>
                                 <td>{order.status}</td>
                             </tr>
-                        )) : <tr >
-                            <td colSpan='5'><h3 className='text-center py-3 italic'>Bạn chưa đặt mua sản phẩm nào!...</h3></td>
+                        )) : <tr>
+                            <td colSpan='5'><h3 className='text-center py-3 italic'>Bạn chưa đặt mua sản phẩm
+                                nào!...</h3></td>
                         </tr>}
                         </tbody>
                     </table>

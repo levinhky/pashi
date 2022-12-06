@@ -132,16 +132,16 @@ const ModalCustom = ({isModal, setIsModal, productDetail}) => {
                                     <div className={styles["add-cart"]}>
                                         <button
                                             onClick={() => {
-                                                productDetail.sizeArr = [...productDetail.sizeArr, {
-                                                    size: sizeValue,
-                                                    quantity: +quantity
-                                                }];
-                                                productDetail.size = sizeValue;
                                                 if (sizeValue === '') {
                                                     toastError("Vui lòng chọn kích cỡ trước khi thêm vào giỏ hàng!");
                                                 } else if (isNaN(quantity) === true) {
                                                     toastError("Số lượng không thể chứa ký tự!");
                                                 } else {
+                                                    productDetail.sizeArr = [...productDetail.sizeArr, {
+                                                        size: sizeValue,
+                                                        quantity: +quantity
+                                                    }];
+                                                    productDetail.size = sizeValue;
                                                     dispath(addToCart({...productDetail, quantity: +quantity}));
                                                     toastSuccess("Thêm sản phẩm thành công!");
                                                 }

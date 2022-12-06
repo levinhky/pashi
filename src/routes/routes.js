@@ -8,6 +8,7 @@ import Information from "components/Checkout/Information";
 import Success from "components/Checkout/Success";
 import AccountGeneral from "../pages/Account/AccountGeneral";
 import ProductSearch from "../pages/ProductSearch/ProductSearch";
+
 const Detail = React.lazy(() => import("pages/Detail/Detail"));
 
 export const routes = [

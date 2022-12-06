@@ -1,179 +1,179 @@
 nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #d1d1d1;
-  padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #d1d1d1;
+    padding-bottom: 1rem;
 }
 
 nav .title {
-  font-size: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .filter {
-  display: flex;
-  align-items: center;
-  position: relative;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 .filter-box {
-  background-color: var(--white-color);
-  border-radius: 0.5rem;
-  border: solid 0.1rem #d1d1d1;
-  cursor: pointer;
-  display: block;
-  font-size: 1.4rem;
-  font-weight: normal;
-  height: 4.2rem;
-  line-height: 4rem;
-  outline: none;
-  padding-left: 1.8rem;
-  padding-right: 3rem;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-  margin-left: 2rem;
-  user-select: none;
+    background-color: var(--white-color);
+    border-radius: 0.5rem;
+    border: solid 0.1rem #d1d1d1;
+    cursor: pointer;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: normal;
+    height: 4.2rem;
+    line-height: 4rem;
+    outline: none;
+    padding-left: 1.8rem;
+    padding-right: 3rem;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    margin-left: 2rem;
+    user-select: none;
 }
 
 .filter-box:after {
-  border-bottom: 2px solid #999;
-  border-right: 2px solid #999;
-  content: "";
-  display: block;
-  height: 5px;
-  margin-top: -4px;
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform-origin: 66% 66%;
-  transform: rotate(45deg);
-  transition: all 0.15s ease-in-out;
-  width: 5px;
+    border-bottom: 2px solid #999;
+    border-right: 2px solid #999;
+    content: "";
+    display: block;
+    height: 5px;
+    margin-top: -4px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform-origin: 66% 66%;
+    transform: rotate(45deg);
+    transition: all 0.15s ease-in-out;
+    width: 5px;
 }
 
 .filter-select {
-  background-color: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0 1px rgb(68 68 68 / 11%);
-  box-sizing: border-box;
-  margin-top: 2rem;
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 100%;
-  right: -3rem;
-  transform-origin: 50% 0;
-  transform: scale(0.75) translateY(-21px);
-  transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
-  width: 22rem;
-  padding: 0;
-  z-index: 12;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0 1px rgb(68 68 68 / 11%);
+    box-sizing: border-box;
+    margin-top: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    right: -3rem;
+    transform-origin: 50% 0;
+    transform: scale(0.75) translateY(-21px);
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    width: 22rem;
+    padding: 0;
+    z-index: 12;
 }
 
 .filter-select.active {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 .filter-select .option {
-  cursor: pointer;
-  font-weight: 400;
-  line-height: 4rem;
-  min-height: 4rem;
-  padding: 1rem 2.9rem 1rem 1.8rem;
-  text-align: left;
-  transition: all 0.2s;
-  font-size: 2rem;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 4rem;
+    min-height: 4rem;
+    padding: 1rem 2.9rem 1rem 1.8rem;
+    text-align: left;
+    transition: all 0.2s;
+    font-size: 2rem;
 }
 
 .filter-select .option:hover {
-  background-color: var(--black-color);
-  color: var(--white-color);
+    background-color: var(--black-color);
+    color: var(--white-color);
 }
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 3rem;
-  margin: 4rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin: 4rem 0;
 }
 
 .item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
 }
 
 .item #quick-view {
-  position: absolute;
-  bottom: 4.2rem;
-  height: 4rem;
-  width: 100%;
-  background-color: rgba(75, 63, 63, .5);
-  color: #f1f1f1;
-  text-transform: uppercase;
-  transition: 0.3s ease-in-out;
-  opacity: 0;
-  visibility: hidden;
+    position: absolute;
+    bottom: 4.2rem;
+    height: 4rem;
+    width: 100%;
+    background-color: rgba(75, 63, 63, .5);
+    color: #f1f1f1;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .item:hover #quick-view {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 .item .info {
-  margin-top: auto;
+    margin-top: auto;
 }
 
 .image img {
-  max-width: 100%;
-  transition: all 0.3 ease-in-out;
+    max-width: 100%;
+    transition: all 0.3 ease-in-out;
 }
 
 .image img:hover {
-  transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 .item:hover .image img {
-  transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 .item .info .name {
-  font-size: 1.5rem;
-  line-height: 1.35;
-  color: var(--black-color);
-  text-transform: capitalize;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: var(--black-color);
+    text-transform: capitalize;
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  nav {
-    padding: 0 1.5rem;
-  }
+    nav {
+        padding: 0 1.5rem;
+    }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  nav {
-    padding: 0 1.5rem;
-  }
+    nav {
+        padding: 0 1.5rem;
+    }
 
-  .product-grid {
-    padding: 0 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
+    .product-grid {
+        padding: 0 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  nav {
-    padding: 0 1.5rem;
-  }
+    nav {
+        padding: 0 1.5rem;
+    }
 
-  .product-grid {
-    padding: 0 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
+    .product-grid {
+        padding: 0 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 }

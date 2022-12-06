@@ -1,334 +1,334 @@
 .wrapper {
-  max-width: 110.7rem;
-  width: 100%;
-  margin: 8% auto 5rem;
-  display: flex;
+    max-width: 110.7rem;
+    width: 100%;
+    margin: 8% auto 5rem;
+    display: flex;
 }
 
 .box-right {
-  width: 55.5rem;
+    width: 55.5rem;
 }
 
 .box-left {
-  margin-left: 2.5rem;
+    margin-left: 2.5rem;
 }
 
 .box-right .image img {
-  width: 55.5rem;
+    width: 55.5rem;
 }
 
 .info .price,
 .info h2 {
-  font-size: 2.8rem;
-  font-weight: 400;
-  position: relative;
+    font-size: 2.8rem;
+    font-weight: 400;
+    position: relative;
 }
 
 .info h2 {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 .info h2::after {
-  content: "";
-  display: block;
-  width: 5rem;
-  height: 0.1rem;
-  background: var(--black-color);
-  margin: 2rem 0;
+    content: "";
+    display: block;
+    width: 5rem;
+    height: 0.1rem;
+    background: var(--black-color);
+    margin: 2rem 0;
 }
 
 .info .price {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .info .status {
-  font-size: 1.4rem;
-  color: #1c1c1c;
-  margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    color: #1c1c1c;
+    margin-bottom: 1.5rem;
 }
 
 .info .status span {
-  margin-left: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .info .desc {
-  font-size: 1.4rem;
-  color: var(--gray-color);
-  margin: 1rem 0 0 3rem;
+    font-size: 1.4rem;
+    color: var(--gray-color);
+    margin: 1rem 0 0 3rem;
 }
 
 .action {
-  border-top: 0.1rem solid var(--snow-color);
-  border-bottom: 0.1rem solid var(--snow-color);
-  padding: 3rem 0;
-  display: flex;
+    border-top: 0.1rem solid var(--snow-color);
+    border-bottom: 0.1rem solid var(--snow-color);
+    padding: 3rem 0;
+    display: flex;
 }
 
 .action form button,
 .action form input {
-  border-left: 0.1rem solid var(--snow-color);
-  outline: none;
-  height: 5rem;
-  width: 5rem;
-  text-align: center;
-  margin-right: 0.5rem;
-  border: 0.1rem solid var(--snow-color);
-  border-radius: 0.5rem;
-  background: var(--white-color);
-  color: #909090;
-  font-size: 1.8rem;
+    border-left: 0.1rem solid var(--snow-color);
+    outline: none;
+    height: 5rem;
+    width: 5rem;
+    text-align: center;
+    margin-right: 0.5rem;
+    border: 0.1rem solid var(--snow-color);
+    border-radius: 0.5rem;
+    background: var(--white-color);
+    color: #909090;
+    font-size: 1.8rem;
 }
 
 .action .add-cart button {
-  font-size: 1.2rem;
-  color: var(--white-color);
-  padding: 0 3rem;
-  background: var(--black-color);
-  border: 0.1rem solid;
-  border-color: var(--black-color);
-  display: inline-block;
-  height: 4.5rem;
-  line-height: 4.5rem;
-  border-radius: 5rem;
-  text-transform: uppercase;
-  margin-left: 5rem;
+    font-size: 1.2rem;
+    color: var(--white-color);
+    padding: 0 3rem;
+    background: var(--black-color);
+    border: 0.1rem solid;
+    border-color: var(--black-color);
+    display: inline-block;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    border-radius: 5rem;
+    text-transform: uppercase;
+    margin-left: 5rem;
 }
 
 .variants .title {
-  font-size: 1.8rem;
-  margin: 1rem 0;
+    font-size: 1.8rem;
+    margin: 1rem 0;
 }
 
 .variants .sizes {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .variants .sizes .size {
-  width: 3.5rem;
-  height: 3.5rem;
-  border: 0.1rem solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-left: 0.5rem;
-  cursor: pointer;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0.1rem solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-left: 0.5rem;
+    cursor: pointer;
 }
 
 .variants .sizes .size label {
-  cursor: pointer;
-  user-select: none;
+    cursor: pointer;
+    user-select: none;
 }
 
 .variants .sizes .size img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: none;
 }
 
 .variants .sizes .size-checked {
-  border: 1px solid #e4393c;
+    border: 1px solid #e4393c;
 }
 
 .not-display {
-  display: none !important;
+    display: none !important;
 }
 
 .variants .sizes .size-checked img {
-  display: block;
+    display: block;
 }
 
 .addtion {
-  padding-top: 2.5rem;
-  font-size: 1.4rem;
-  font-weight: 500;
+    padding-top: 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
 }
 
 .addtion .product-id span {
-  color: #545454;
-  margin-left: 1rem;
+    color: #545454;
+    margin-left: 1rem;
 }
 
 .tabs {
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
 }
 
 .tabs .tab-item:first-child {
-  margin-right: 5rem;
+    margin-right: 5rem;
 }
 
 .tabs .tab-item {
-  font-size: 20px;
-  color: #000;
-  font-weight: 400;
-  text-transform: capitalize;
-  line-height: 25px;
-  display: block;
-  padding: 0 0 10px 0;
-  cursor: pointer;
-  transition: all 0.5s ease;
-  position: relative;
+    font-size: 20px;
+    color: #000;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 25px;
+    display: block;
+    padding: 0 0 10px 0;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    position: relative;
 }
 
 .tabs .active::after {
-  content: "";
-  position: absolute;
-  top: 3rem;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: #484848;
+    content: "";
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #484848;
 }
 
 .size-table {
-  border-collapse: collapse;
-  width: 55.5rem;
+    border-collapse: collapse;
+    width: 55.5rem;
 }
 
 .size-table tr {
-  text-align: center;
+    text-align: center;
 }
 
 .size-table tr td {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 .size-table tr td:first-child {
-  text-align: left;
-  padding-left: 2.5rem;
-  width: 10rem;
-  min-width: 10rem;
-  max-width: 10rem;
-  word-break: break-all;
+    text-align: left;
+    padding-left: 2.5rem;
+    width: 10rem;
+    min-width: 10rem;
+    max-width: 10rem;
+    word-break: break-all;
 }
 
 .tab-content {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .comment-section {
-  position: relative;
+    position: relative;
 }
 
 #user-icon {
-  width: 3rem;
-  position: absolute;
-  top: 8px;
-  left: 8px;
+    width: 3rem;
+    position: absolute;
+    top: 8px;
+    left: 8px;
 }
 
 #user-icon img {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 #login-warn {
-  margin-bottom: 2rem;
-  text-align: center;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 #login-warn a {
-  color: #5cabe0;
-  cursor: pointer;
+    color: #5cabe0;
+    cursor: pointer;
 }
 
 .comment-section textarea {
-  width: 100%;
-  border: 1px solid #000;
-  padding: 10px 10px 10px 45px;
-  resize: none;
-  border-radius: 0.3rem;
-  transition: 0.3s ease-in-out;
+    width: 100%;
+    border: 1px solid #000;
+    padding: 10px 10px 10px 45px;
+    resize: none;
+    border-radius: 0.3rem;
+    transition: 0.3s ease-in-out;
 }
 
 .comment-section .send-icon {
-  position: absolute;
-  top: 2rem;
-  right: 0.5rem;
-  font-size: 2.5rem;
-  cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    right: 0.5rem;
+    font-size: 2.5rem;
+    cursor: pointer;
 }
 
 .comment-content {
-  height: 10rem;
-  overflow-y: scroll;
+    height: 10rem;
+    overflow-y: scroll;
 }
 
 .comment-content .comment-item {
-  display: flex;
+    display: flex;
 }
 
 .comment-content .comment-item .thumbnail img {
-  width: 3rem;
-  border-radius: 50%;
+    width: 3rem;
+    border-radius: 50%;
 }
 
 .comment-content .comment-item .content {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .comment-content::-webkit-scrollbar {
-  width: 0.5rem;
+    width: 0.5rem;
 }
 
 /* Track */
 .comment-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 5px;
+    background: #f1f1f1;
+    border-radius: 5px;
 }
 
 /* Handle */
 .comment-content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
+    background: #888;
+    border-radius: 5px;
 }
 
 /* Handle on hover */
 .comment-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
-  border-radius: 5px;
+    background: #555;
+    border-radius: 5px;
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .wrapper {
-    padding: 0 1.5rem;
-    margin-top: 10%;
-  }
+    .wrapper {
+        padding: 0 1.5rem;
+        margin-top: 10%;
+    }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .wrapper {
-    padding: 0 1.5rem;
-    margin-top: 10%;
-    flex-wrap: wrap;
-  }
+    .wrapper {
+        padding: 0 1.5rem;
+        margin-top: 10%;
+        flex-wrap: wrap;
+    }
 
-  .box-right {
-    width: 100%;
-  }
+    .box-right {
+        width: 100%;
+    }
 
-  .box-right .image img {
-    width: 100%;
-    padding: 0;
-  }
+    .box-right .image img {
+        width: 100%;
+        padding: 0;
+    }
 
-  .info {
-    margin-top: 3rem;
-  }
+    .info {
+        margin-top: 3rem;
+    }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  .wrapper {
-    padding: 0 1.5rem;
-    margin-top: 20%;
-    flex-wrap: wrap;
-  }
+    .wrapper {
+        padding: 0 1.5rem;
+        margin-top: 20%;
+        flex-wrap: wrap;
+    }
 
-  .box-right .image img {
-    width: 100%;
-    padding: 0;
-  }
+    .box-right .image img {
+        width: 100%;
+        padding: 0;
+    }
 }

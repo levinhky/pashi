@@ -93,7 +93,7 @@ const schema = yup.object({
 const Information = ({cartItems, cartTotal}) => {
     const {userInfo} = useSelector((state) => state.auth);
     const dispath = useDispatch();
-    const [isLoading,setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const {
         handleSubmit,
         formState: {errors, isValid, isSubmitting, isSubmitSuccessful},
@@ -142,15 +142,14 @@ const Information = ({cartItems, cartTotal}) => {
             }
             if (watchPayment === 'momo' || watchPayment === 'vnpay') {
                 toastError('Phương thức chưa được hỗ trợ');
-            }
-            else {
+            } else {
                 axiosClient.post('orders', order);
                 setIsLoading(true);
                 setTimeout(() => {
                     setIsLoading(false)
                     navigate('/checkout/success')
                     dispath(setBuyer(buyer))
-                },1500);
+                }, 1500);
             }
         })
         // if (!isValid) return;
@@ -187,7 +186,7 @@ const Information = ({cartItems, cartTotal}) => {
     return (
         <InformationStyles>
             {isLoading && <Loading/>}
-            {!isLoading &&  <form
+            {!isLoading && <form
                 onSubmit={handleSubmit(onSubmitHandler)}
                 className="flex flex-col flex-auto main container-form"
                 autoComplete="off"

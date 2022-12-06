@@ -5,68 +5,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
 
 @font-face {
-  font-family: SVN-Veneer;
-  src: url(../../assets/config/SVN-Veneer/SVN-Veneer.ttf);
+    font-family: SVN-Veneer;
+    src: url(../../assets/config/SVN-Veneer/SVN-Veneer.ttf);
 }
 
 :root {
-  --black-color: #000;
-  --white-color: #fff;
-  --snow-color: #eee;
-  --gray-color: var(--gray-color);
+    --black-color: #000;
+    --white-color: #fff;
+    --snow-color: #eee;
+    --gray-color: var(--gray-color);
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 10px;
+    font-size: 10px;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 button {
-  border: none;
-  outline: none;
-  cursor: pointer;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 input {
-  border: none;
-  outline: none;
+    border: none;
+    outline: none;
 }
 
 img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 body {
-  font-family: "Mukta", sans-serif;
-  /* font-family: "Plus Jakarta Sans", sans-serif; */
-  font-size: 1.6rem;
-  line-height: 2.5rem;
-  text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-  width: 100%;
+    font-family: "Mukta", sans-serif;
+    /* font-family: "Plus Jakarta Sans", sans-serif; */
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 @media only screen and (max-width: 1024px) {
-  html {
-    font-size: 9px;
-  }
+    html {
+        font-size: 9px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
-  html {
-    font-size: 8px;
-  }
+    html {
+        font-size: 8px;
+    }
 }

@@ -13,9 +13,9 @@ function ProductSearch(props) {
     const [loading, setLoading] = useState(true);
 
     const {search} = useLocation();
-    const {category,value} = useParams();
+    const {category, value} = useParams();
     const navigate = useNavigate();
-    console.log( useParams())
+    console.log(useParams())
     const pageNumbers = Array.from({length: totalPages}, (v, i) => i + 1);
     const searchValue = new URLSearchParams(search).get("q");
 
@@ -31,7 +31,7 @@ function ProductSearch(props) {
         const getRows = async () => {
             let length = 0;
             if (value) {
-                length = await axiosClient.get('products',{params:{page,q:value}})
+                length = await axiosClient.get('products', {params: {page, q: value}})
             }
             setTotalPages(Math.ceil(length.length / limit));
         }

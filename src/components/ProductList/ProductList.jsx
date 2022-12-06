@@ -9,8 +9,8 @@ function ProductList(props) {
     const {products, isNav, setProductList, page, limit} = props;
     const {pathname, search} = useLocation();
     const navigate = useNavigate();
-    const [modalId,setModalId] = useState('');
-    const [sort,setSort] = useState('');
+    const [modalId, setModalId] = useState('');
+    const [sort, setSort] = useState('');
     const [productDetail, setProductDetail] = useState({});
     const [isModal, setIsModal] = useState(false);
 
