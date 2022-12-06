@@ -110,12 +110,12 @@ const AccountGeneral = () => {
                                 <td><span>{order._id}</span></td>
                                 <td>{order.createdAt.substring(0, 10)}</td>
                                 <td className={styles['order-item']}>
-                                    <a href="/products/layla-dress" title="">1. {order.name} - S</a>
+                                    <Link to={`/products/detail/?slug=${order.slug}`} title="">1. {order.name} - S</Link>
                                 </td>
                                 <td>{vnd(order.total)}</td>
                                 <td>{order.status}</td>
                             </tr>
-                        )) : <h3 className='text-center py-3'>Bạn chưa có đơn hàng nào !</h3>}
+                        )) : <td className='text-center py-3'>Bạn chưa đặt mua sản phẩm nào!...</td>}
                         </tbody>
                     </table>
                 </div>

@@ -12,8 +12,16 @@
     cursor: pointer;
 }
 
+.close-icon {
+    color: #1c1c1c;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 4rem;
+}
+
 .content {
-    width: 70rem;
+    max-width: 70rem;
     margin: 0 auto;
     background-color: #eaeaea;
     border-radius: 0.5rem;
@@ -66,4 +74,88 @@
 .info .desc {
     font-size: 1.4rem;
     color: var(--gray-color);
+}
+
+.variants .title {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}
+
+.variants .sizes {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.variants .sizes .size {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0.1rem solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.variants .sizes .size:not(:first-child) {
+    margin-left: 0.7rem;
+}
+
+.variants .sizes .size label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.variants .sizes .size img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+
+.variants .sizes .size-checked {
+    border: 1px solid #e4393c;
+}
+
+.not-display {
+    display: none !important;
+}
+
+.variants .sizes .size-checked img {
+    display: block;
+}
+
+.add-cart button {
+    font-size: 1.2rem;
+    color: var(--white-color);
+    padding: 0 3rem;
+    background: var(--black-color);
+    border: 0.1rem solid;
+    border-color: var(--black-color);
+    display: inline-block;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    border-radius: 5rem;
+    text-transform: uppercase;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .content {
+        margin: 0 1rem;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .content {
+        margin: 0 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .content {
+        margin: 0 1.5rem;
+    }
 }

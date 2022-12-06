@@ -12,7 +12,7 @@ import axiosClient from "configs/api";
 import {vnd} from "configs/functions";
 import Loading from "components/Loading/Loading";
 import Partner from "components/Partner/Partner";
-import Modal from "../Modal";
+import ModalCustom from "../Modal";
 
 function Home(props) {
     const slides = [
@@ -135,7 +135,7 @@ function Home(props) {
                         </div>
                     ))}
 
-                    <Modal isModal={isModal} setIsModal={setIsModal} productDetail={productDetail} />
+                    <ModalCustom isModal={isModal} setIsModal={setIsModal} productDetail={productDetail} />
                 </div>
             </div>
             {loading && <Loading/>}

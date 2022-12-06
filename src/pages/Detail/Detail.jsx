@@ -42,7 +42,7 @@ function Detail(props) {
         const getProductDetail = async () => {
             const data = await axiosClient.get("products/find/?slug=" + slug);
             data.size = '';
-            data.sizeArr= [];
+            data.sizeArr = [];
             setProductDetail(data);
             setImages(data?.thumbnails)
             setSizeS(data?.sizes[0]?.size);
@@ -81,10 +81,6 @@ function Detail(props) {
         });
     }, [dispath, auth]);
 
-    const addSuccess = () => {
-        toastSuccess("Thêm sản phẩm thành công!");
-    };
-
     useEffect(() => {
         const getRelative = async () => {
             const products = await axiosClient.get('products', {params: {limit: 6}})
@@ -100,7 +96,7 @@ function Detail(props) {
         }
 
         getComments();
-    },[productDetail._id, commentList])
+    }, [productDetail._id, commentList])
 
     const handlePostComment = async () => {
         const content = {
@@ -113,7 +109,7 @@ function Detail(props) {
         if (commentContent === '') {
             toastError('Vui lòng nhập nội dung!');
         } else {
-            await axiosClient.post('comments',content).then(res => {
+            await axiosClient.post('comments', content).then(res => {
                 toastSuccess('Bình luận của bạn đã được gửi!');
                 setCommentContent('');
                 setCommentList(res);
@@ -216,13 +212,14 @@ function Detail(props) {
                                             <h3 id={styles['login-warn']}>Vui lòng <Link to='/account/login'>đăng
                                                 nhập</Link> để bình luận</h3>
                                         }
-                                        {userInfo.uid && <span onClick={handlePostComment} className={styles['send-icon']}><i
-                                            className='bx bxs-send'></i></span>}
+                                        {userInfo.uid &&
+                                            <span onClick={handlePostComment} className={styles['send-icon']}><i
+                                                className='bx bxs-send'></i></span>}
                                         <div className={styles['comment-content']}>
                                             {commentList.length > 0 ? commentList.map(item => (
                                                 <div className={styles['comment-item']} key={item._id}>
                                                     <div className={styles['thumbnail']}>
-                                                        <img src={item.photoUrl} alt={item.displayName} />
+                                                        <img src={item.photoUrl} alt={item.displayName}/>
                                                     </div>
                                                     <div className={styles['content']}>
                                                         <div className={styles['name']}>{item.displayName} </div>
@@ -272,13 +269,18 @@ function Detail(props) {
                             <div className={styles["add-cart"]}>
                                 <button
                                     onClick={() => {
-                                        productDetail.sizeArr = [...productDetail.sizeArr,{size:sizeValue,quantity:1}];
+                                        productDetail.sizeArr = [...productDetail.sizeArr, {
+                                            size: sizeValue,
+                                            quantity: +quantity
+                                        }];
                                         productDetail.size = sizeValue;
                                         if (sizeValue === '') {
                                             toastError("Vui lòng chọn kích cỡ trước khi thêm vào giỏ hàng!");
+                                        } else if (isNaN(quantity) === true) {
+                                            toastError("Số lượng không thể chứa ký tự!");
                                         } else {
-                                            dispath(addToCart({...productDetail, quantity}));
-                                            addSuccess();
+                                            dispath(addToCart({...productDetail, quantity: +quantity}));
+                                            toastSuccess("Thêm sản phẩm thành công!");
                                         }
                                     }}
                                 >

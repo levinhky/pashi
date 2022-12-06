@@ -3,7 +3,7 @@ import {vnd} from "configs/functions";
 import {useEffect, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import styles from "./ProductList.module.css";
-import Modal from "../Modal";
+import ModalCustom from "../Modal";
 
 function ProductList(props) {
     const {products, isNav, setProductList, page, limit} = props;
@@ -138,7 +138,7 @@ function ProductList(props) {
                         </button>
                     </div>
                 ))}
-                <Modal modalId={modalId} productDetail={productDetail}/>
+                <ModalCustom modalId={modalId} productDetail={productDetail}/>
                 {products.length === 0 && <p>Không có sản phẩm!</p>}
             </div>
         </>

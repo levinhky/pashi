@@ -38,7 +38,7 @@
 
 .account-main-content {
     padding: 0 1rem;
-    width: 100%;
+    max-width: 100%;
 }
 
 .account-main-content .head {
@@ -110,4 +110,81 @@
 .account-main-content .order-info table tr .order-item {
     display: flex;
     flex-direction: column;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+    .wrapper {
+        flex-wrap: wrap;
+        margin: 8rem 1.5rem 0;
+    }
+
+    .account-sidebar {
+        width: 95%;
+    }
+
+    .account-main-content .head {
+        width: 31.5rem;
+    }
+
+    .account-main-content {
+        padding: 1rem 0 0;
+    }
+
+    thead tr th:first-child,
+    tbody tr td:first-child {
+        width: 10rem;
+        min-width: 10rem;
+        max-width: 10rem;
+        word-break: break-all;
+    }
+
+    .account-main-content .order-info table {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .wrapper {
+        flex-wrap: wrap;
+        margin: 10rem 1.5rem 0;
+    }
+
+    .account-sidebar {
+        width: 97%;
+    }
+
+    .account-main-content {
+        padding: 1rem 0 0
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .wrapper {
+        flex-wrap: wrap;
+        margin: 8rem 1.5rem 0;
+    }
+
+    .account-sidebar {
+        width: 95%;
+    }
+
+    .account-main-content .head {
+        width: 31.5rem;
+    }
+
+    .account-main-content {
+        padding: 1rem 0 0;
+    }
+
+    thead tr th:first-child,
+    tbody tr td:first-child {
+        width: 10rem;
+        min-width: 10rem;
+        max-width: 10rem;
+        word-break: break-all;
+    }
+
+    .account-main-content .order-info table {
+        width: 95%;
+    }
 }

@@ -15,7 +15,7 @@
     "@types/react-dom": "^18.0.5",
     "axios": "^0.27.2",
     "firebase": "^9.9.1",
-    "node-sass": "^7.0.3",
+    "node-sass": "^6.0.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
