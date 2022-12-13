@@ -104,7 +104,8 @@ function Detail(props) {
             userId: userInfo.uid,
             commentContent,
             photoUrl: userInfo.photoUrl,
-            productId: productDetail._id
+            productId: productDetail._id,
+            productName: productDetail.name
         };
         if (commentContent === '') {
             toastError('Vui lòng nhập nội dung!');
@@ -113,7 +114,6 @@ function Detail(props) {
                 toastSuccess('Bình luận của bạn đã được gửi!');
                 setCommentContent('');
                 setCommentList(res);
-                console.log(res)
             });
         }
     };
