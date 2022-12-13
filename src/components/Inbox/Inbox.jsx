@@ -16,9 +16,14 @@ function Inbox(props) {
                     <form>
                         <input type="email" placeholder="Nhập email của bạn..."
                                onChange={(e) => setValue(e.target.value)}/>
-                        <button type={'button'} onClick={() => value === "" ?
-                            toastError('Vui lòng nhập email của bạn!') :
-                            toastSuccess('Cảm ơn bạn đã đăng ký!')}>Đăng kí
+                        <button type={'button'} onClick={() => {
+                            const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/
+                            value === "" ?
+                                toastError('Vui lòng nhập email của bạn!') : !regex.test(value) ?
+                                    toastError('Email sai định dạng!') :
+                                    toastSuccess('Cảm ơn bạn đã đăng ký!')
+                        }
+                        }>Đăng kí
                         </button>
                     </form>
                 </div>

@@ -17,7 +17,7 @@ import {toastError, toastSuccess} from "../../configs/toast";
 import Radio from "./components/Radio";
 import axiosClient from "../../configs/api";
 import Loading from "../Loading/Loading";
-import {setBuyer} from "../../slices/cartSlice";
+import {setBuyer, setEmptyCart} from "../../slices/cartSlice";
 
 const InformationStyles = styled.div`
   @media screen and (min-width: 1000px) {
@@ -149,6 +149,7 @@ const Information = ({cartItems, cartTotal}) => {
                     setIsLoading(false)
                     navigate('/checkout/success')
                     dispath(setBuyer(buyer))
+                    dispath(setEmptyCart())
                 }, 1500);
             }
         })
@@ -352,50 +353,6 @@ const Information = ({cartItems, cartTotal}) => {
                                     ></Radio>
                                 </div>
                             </div>
-                            {/*<div className="grid grid-cols-3 gap-x-2 select">*/}
-                            {/*  <div>*/}
-                            {/*    <Select*/}
-                            {/*      control={control}*/}
-                            {/*      setValue={setValue}*/}
-                            {/*      name="province"*/}
-                            {/*      data={dataSelect}*/}
-                            {/*      selectLabel="Chọn tỉnh / thành"*/}
-                            {/*    ></Select>*/}
-                            {/*    {errors.province && (*/}
-                            {/*      <p className="mb-4 text-2xl text-red-500">*/}
-                            {/*        {errors.province.message}*/}
-                            {/*      </p>*/}
-                            {/*    )}*/}
-                            {/*  </div>*/}
-                            {/*  <div>*/}
-                            {/*    <Select*/}
-                            {/*      control={control}*/}
-                            {/*      setValue={setValue}*/}
-                            {/*      name="district"*/}
-                            {/*      data={dataSelect}*/}
-                            {/*      selectLabel="Chọn quận / huyện"*/}
-                            {/*    ></Select>*/}
-                            {/*    {errors.district && (*/}
-                            {/*      <p className="mb-4 text-2xl text-red-500">*/}
-                            {/*        {errors.district.message}*/}
-                            {/*      </p>*/}
-                            {/*    )}*/}
-                            {/*  </div>*/}
-                            {/*  <div>*/}
-                            {/*    <Select*/}
-                            {/*      control={control}*/}
-                            {/*      setValue={setValue}*/}
-                            {/*      name="wards"*/}
-                            {/*      data={dataSelect}*/}
-                            {/*      selectLabel="Chọn phường / xã"*/}
-                            {/*    ></Select>*/}
-                            {/*    {errors.wards && (*/}
-                            {/*      <p className="mb-4 text-2xl text-red-500">*/}
-                            {/*        {errors.wards.message}*/}
-                            {/*      </p>*/}
-                            {/*    )}*/}
-                            {/*  </div>*/}
-                            {/*</div>*/}
                         </div>
                     </div>
                 </div>
@@ -403,18 +360,6 @@ const Information = ({cartItems, cartTotal}) => {
                     <Link to="/cart" className="text-[#338dbc] hover:brightness-125">
                         Giỏ hàng
                     </Link>
-                    {/*<button*/}
-                    {/*  className={`w-[200px] p-4 bg-[#338dbc] text-white rounded-lg mt-5 font-semibold ${*/}
-                    {/*    isSubmitting ? "opacity-50" : ""*/}
-                    {/*  }`}*/}
-                    {/*  disabled={isSubmitting}*/}
-                    {/*>*/}
-                    {/*  {isSubmitting ? (*/}
-                    {/*    <LoadingSpinner></LoadingSpinner>*/}
-                    {/*  ) : (*/}
-                    {/*    "Tiếp tục thanh toán"*/}
-                    {/*  )}*/}
-                    {/*</button>*/}
                     <button
                         type="submit"
                         className={`w-[200px] p-4 bg-[#338dbc] text-white rounded-lg mt-5 font-semibold ${

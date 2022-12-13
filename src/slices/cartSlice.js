@@ -48,6 +48,9 @@ export const cartSlice = createSlice({
         },
         setBuyer(state, action) {
             state.buyer = action.payload;
+        },
+        setEmptyCart(state, action) {
+            state.cartItems = [];
         }
 
     },
@@ -59,7 +62,8 @@ export const {
     increaseQuantity,
     decreaseQuantity,
     caculateTotal,
-    setBuyer
+    setBuyer,
+    setEmptyCart
 } = cartSlice.actions
 
 export default cartSlice.reducer

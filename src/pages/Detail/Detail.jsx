@@ -113,6 +113,7 @@ function Detail(props) {
                 toastSuccess('Bình luận của bạn đã được gửi!');
                 setCommentContent('');
                 setCommentList(res);
+                console.log(res)
             });
         }
     };
@@ -202,7 +203,7 @@ function Detail(props) {
                                         {userInfo.uid ?
                                             <div>
                                                 <div id={styles['user-icon']}>
-                                                    <img src={userInfo.photoUrl} alt={userInfo.displayName}/>
+                                                    <img src={userInfo.photoUrl} alt={'error'}/>
                                                 </div>
                                                 <textarea name="comment-box" rows="1" cols="50"
                                                           value={commentContent}
@@ -217,9 +218,9 @@ function Detail(props) {
                                                 className='bx bxs-send'></i></span>}
                                         <div className={styles['comment-content']}>
                                             {commentList.length > 0 ? commentList.map(item => (
-                                                <div className={styles['comment-item']} key={item._id}>
+                                                item.display && <div className={styles['comment-item']} key={item._id}>
                                                     <div className={styles['thumbnail']}>
-                                                        <img src={item.photoUrl} alt={item.displayName}/>
+                                                        <img src={item.photoUrl} alt={'error'}/>
                                                     </div>
                                                     <div className={styles['content']}>
                                                         <div className={styles['name']}>{item.displayName} </div>

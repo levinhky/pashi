@@ -23,10 +23,10 @@ function Footer(props) {
                     <h3>Thông tin</h3>
                     <ul>
                         <li>
-                            <a href="/">Giới thiệu</a>
+                            <Link to="/gioi-thieu">Giới thiệu</Link>
                         </li>
                         <li>
-                            <a href="/">Thông tin cửa hàng</a>
+                            <Link to="/he-thong-cua-hang">Hệ thống cửa hàng</Link>
                         </li>
                     </ul>
                 </div>
@@ -47,13 +47,13 @@ function Footer(props) {
                     <h3>Chính sách</h3>
                     <ul>
                         <li>
-                            <a href="/">Chính sách và quy định chung</a>
+                            <Link to="/dieu-khoan-dich-vu">Chính sách và quy định chung</Link>
                         </li>
                         <li>
-                            <a href="/">Hướng dẫn mua hàng</a>
+                            <Link to="/huong-dan-mua-hang">Hướng dẫn mua hàng</Link>
                         </li>
                         <li>
-                            <a href="/">Hướng dẫn thanh toán</a>
+                            <Link to="/huong-dan-thanh-toan">Hướng dẫn thanh toán</Link>
                         </li>
                     </ul>
                 </div>
@@ -61,13 +61,10 @@ function Footer(props) {
                     <h3>Khác</h3>
                     <ul>
                         <li>
-                            <a href="/">Blog</a>
+                            <Link to="/lien-he">Liên hệ</Link>
                         </li>
                         <li>
-                            <a href="/">Liên hệ</a>
-                        </li>
-                        <li>
-                            <a href="/">Tuyển dụng</a>
+                            <Link to="/tuyen-dung">Tuyển dụng</Link>
                         </li>
                     </ul>
                 </div>
