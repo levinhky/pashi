@@ -241,7 +241,7 @@ const CheckoutPage = ({ children }) => {
                 <div className="flex items-center justify-between bill-ship">
                   <span>Phí vận chuyển</span>
                   <span className="text-[#4b4b4b] font-semibold text-3xl">
-                    —
+                    0 VNĐ
                   </span>
                 </div>
               </div>
