@@ -95,7 +95,7 @@ function Footer(props) {
                 <div className={styles["item"]}>
                     <div className='flex'>
                         <span><i className='bx bxs-phone text-white text-4xl'></i></span>
-                        <li className='text-white ml-2'>Phone: 0998777999</li>
+                        <li className='text-white ml-2'>Số Điện Thoại: 0998777999</li>
                     </div>
                 </div>
             </div>
