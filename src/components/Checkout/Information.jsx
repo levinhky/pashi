@@ -331,7 +331,7 @@ const Information = ({cartItems, cartTotal}) => {
                                         defaultChecked={true}
                                         checked={watchPayment === "cod"}
                                     ></Radio>
-                                    <Radio
+                                    {/* <Radio
                                         control={control}
                                         id="momo"
                                         name="payment"
@@ -340,8 +340,8 @@ const Information = ({cartItems, cartTotal}) => {
                                         text="Ví Momo"
                                         defaultChecked={true}
                                         checked={watchPayment === "momo"}
-                                    ></Radio>
-                                    <Radio
+                                    ></Radio> */}
+                                    {/* <Radio
                                         control={control}
                                         id="vnpay"
                                         name="payment"
@@ -350,7 +350,7 @@ const Information = ({cartItems, cartTotal}) => {
                                         text="Thẻ ATM/Visa/Master/JCB/QR Pay qua cổng VNPAY"
                                         defaultChecked={true}
                                         checked={watchPayment === "vnpay"}
-                                    ></Radio>
+                                    ></Radio> */}
                                 </div>
                             </div>
                         </div>
