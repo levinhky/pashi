@@ -156,11 +156,11 @@ function Detail(props) {
                                     <table>
                                         <tbody>
                                         <tr>
-                                            <td>Size</td>
+                                            <td>Kích thước</td>
                                             <td>Chiều cao (cm)</td>
                                             <td>Cân nặng (kg)</td>
                                             <td>Ngực (cm)</td>
-                                            <td>Eo (cm)</td>
+                                            <td>Vòng Eo (cm)</td>
                                             <td>Mông (cm)</td>
                                         </tr>
                                         <tr style={{backgroundColor: "#eee"}}>
@@ -290,7 +290,7 @@ function Detail(props) {
                             </div>
                         </div>
                         <div className={styles["variants"]}>
-                            <div className={styles["title"]}>Size</div>
+                            <div className={styles["title"]}>Kích Thước</div>
                             <div className={styles["sizes"]}>
                                 {sizeS && <div
                                     className={checked === 1 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
