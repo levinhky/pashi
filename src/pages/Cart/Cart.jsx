@@ -47,8 +47,14 @@ function Cart(props) {
                                                         <span>{vnd(product.price)}</span>
                                                         {product.sizeArr.map(product => {
                                                             if (product.size) {
-                                                                return <h3 key={product.size}>Size: {product.size},
-                                                                    Qty: {product.quantity}</h3>
+                                                                return <div>
+                                                                    <h3 key={product.size}>Kích Thước: {product.size}
+                                                                    </h3>
+                                                                    <h3>Qty: {product.quantity}</h3>
+                                                                </div>
+
+                                                                
+                                                                    
                                                             }
                                                         })}
                                                     </div>
