@@ -104,7 +104,7 @@ function Home(props) {
                 </div>
 
                 <div className={styles["title"]}>
-                    <h1 className={styles["title-heading"]}>New arrivals</h1>
+                    <h1 className={styles["title-heading"]}>Sản Phẩm Mới</h1>
                 </div>
 
                 <div className={styles["arrivals"]}>
