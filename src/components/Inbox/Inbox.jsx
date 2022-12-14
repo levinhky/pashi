@@ -7,7 +7,7 @@ function Inbox(props) {
     return (
         <>
             <div className={styles["title"]}>
-                <h1 className={styles["title-heading"]}>treat your inbox</h1>
+                <h1 className={styles["title-heading"]}>gửi thông báo tới tôi</h1>
             </div>
 
             <div className={styles["news-email-box"]}>
@@ -23,7 +23,7 @@ function Inbox(props) {
                                     toastError('Email sai định dạng!') :
                                     toastSuccess('Cảm ơn bạn đã đăng ký!')
                         }
-                        }>Đăng kí
+                        }>Gửi
                         </button>
                     </form>
                 </div>
