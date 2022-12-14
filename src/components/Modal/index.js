@@ -81,7 +81,7 @@ const ModalCustom = ({isModal, setIsModal, productDetail}) => {
                                         onChange={(e) => setQuantity(e.target.value)}/>
                                 </div>
                                 <div className={styles["variants"]}>
-                                    <div className={styles["title"]}>Size</div>
+                                    <div className={styles["title"]}>Kích Thước</div>
                                     <div className={styles["sizes"]}>
                                         {sizeS && <div
                                             className={checked === 1 ? `${styles["size"]} ${styles["size-checked"]}` : styles["size"]}
