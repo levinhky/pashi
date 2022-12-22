@@ -110,8 +110,9 @@ const AccountGeneral = () => {
                                 <tr key={order._id}>
                                     <td><span>{order._id}</span></td>
                                     <td>{order.createdAt.substring(0, 10)}</td>
-                                    {order.products.map((product,i) => (<td className={styles['order-item']}>
-                                        <Link to={`/products/detail/?slug=${product.slug}`} title="">{i+1}. {product.name} -
+                                    {order.products.map((product, i) => (<td className={styles['order-item']}>
+                                        <Link to={`/products/detail/?slug=${product.slug}`}
+                                              title="">{i + 1}. {product.name} -
                                             {product.sizes.map(item => item.size)}</Link>
                                     </td>))}
                                     <td>{vnd(order.total)}</td>
