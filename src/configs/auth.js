@@ -60,7 +60,7 @@ export function createUser(name, email, password) {
 };
 
 function verify() {
-    sendEmailVerification(auth.currentUser).then(() =>  toastSuccess('Đã gửi email xác thực!')).catch(() => toastError('co cai loz'))
+    sendEmailVerification(auth.currentUser).then(() =>  toastSuccess('Đã gửi email xác thực!')).catch(() => toastError('Có lỗi xảy ra'))
 }
 
 export function logInUser(email, password) {
