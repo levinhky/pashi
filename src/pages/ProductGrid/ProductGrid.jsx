@@ -16,7 +16,7 @@ function ProductGrid(props) {
     const {category} = useParams();
     const navigate = useNavigate();
 
-    const pageNumbers = Array.from({length: totalPages}, (v, i) => i + 1);
+    const pageNumbers = Array.from({length: Math.ceil(productList.length / 2)}, (v, i) => i + 1);
     const searchValue = new URLSearchParams(search).get("q");
 
     useEffect(() => {
@@ -61,14 +61,13 @@ function ProductGrid(props) {
             } else if (category === "new-arrivals") {
                 data = await axiosClient.get("products", {
                     params: {
-                        limit, page,
-                        sort: "asc"
+                        limit: 2, page:2
                     },
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else if (category === "hot-products") {
                 data = await axiosClient.get("products", {
-                    params: {limit, page, sort: "desc"},
+                    params: {limit: 2, page},
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else {

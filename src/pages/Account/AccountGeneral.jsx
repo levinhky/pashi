@@ -42,7 +42,7 @@ const AccountGeneral = () => {
 
         if (userInfo.uid) getOrders();
     }, [userInfo.uid])
-
+    orders.map(item => console.log(item.products))
     return (
         <div className={styles['wrapper']}>
             <div className={styles['account-sidebar']}>
@@ -105,18 +105,20 @@ const AccountGeneral = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {orders.length > 0 ? orders.map(order => (
-                            <tr key={order._id}>
-                                <td><span>{order._id}</span></td>
-                                <td>{order.createdAt.substring(0, 10)}</td>
-                                <td className={styles['order-item']}>
-                                    <Link to={`/products/detail/?slug=${order.slug}`} title="">1. {order.name} -
-                                        S</Link>
-                                </td>
-                                <td>{vnd(order.total)}</td>
-                                <td>{order.status}</td>
-                            </tr>
-                        )) : <tr>
+                        {orders.length > 0 ? orders.map(order => {
+                            return (
+                                <tr key={order._id}>
+                                    <td><span>{order._id}</span></td>
+                                    <td>{order.createdAt.substring(0, 10)}</td>
+                                    {order.products.map((product,i) => (<td className={styles['order-item']}>
+                                        <Link to={`/products/detail/?slug=${product.slug}`} title="">{i+1}. {product.name} -
+                                            {product.sizes.map(item => item.size)}</Link>
+                                    </td>))}
+                                    <td>{vnd(order.total)}</td>
+                                    <td>{order.status}</td>
+                                </tr>
+                            )
+                        }) : <tr>
                             <td colSpan='5'><h3 className='text-center py-3 italic'>Bạn chưa đặt mua sản phẩm
                                 nào!...</h3></td>
                         </tr>}

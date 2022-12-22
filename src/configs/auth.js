@@ -4,6 +4,7 @@ import {
     FacebookAuthProvider,
     signOut,
     onAuthStateChanged,
+    sendEmailVerification,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword
 } from "firebase/auth";
@@ -48,14 +49,19 @@ export function createUser(name, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             toastSuccess('Đăng ký thành công!');
-            setTimeout(() => toastSuccess('Tài khoản của bạn đã tự đăng nhập!'), 1000)
+            setTimeout(() => toastSuccess('Tài khoản của bạn đã tự đăng nhập!'), 2000)
             const user = userCredential.user;
             user.displayName = name;
+            verify();
         })
         .catch((error) => {
             toastError('Có lỗi xảy ra!');
         });
 };
+
+function verify() {
+    sendEmailVerification(auth.currentUser).then(() =>  toastSuccess('Đã gửi email xác thực!')).catch(() => toastError('co cai loz'))
+}
 
 export function logInUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)

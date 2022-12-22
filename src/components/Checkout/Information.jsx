@@ -115,8 +115,27 @@ const Information = ({cartItems, cartTotal}) => {
 
     const onSubmitHandler = async (value) => {
         const email = value.email ? value.email : 'empty'
-        cartItems.map(product => {
-            const order = {
+        const products = cartItems.map(product => {
+            return {
+                name: product.name,
+                price: product.price,
+                sku: product.sku,
+                slug: product.slug,
+                sizes: product.sizeArr,
+                quantity: product.quantity,
+            }
+        });
+        const buyer = {
+            fullName: value.fullname,
+            phoneNumber: value.phoneNumber,
+            email,
+            address: value.address,
+            paymentMethod: value.payment
+        }
+        if (watchPayment === 'momo' || watchPayment === 'vnpay') {
+            toastError('Phương thức chưa được hỗ trợ');
+        } else {
+            axiosClient.post('orders', {
                 userId: userInfo.uid,
                 fullName: value.fullname,
                 phoneNumber: value.phoneNumber,
@@ -124,46 +143,18 @@ const Information = ({cartItems, cartTotal}) => {
                 address: value.address,
                 deliveryMethod: value.payment,
                 shipping: value.shipping,
-                name: product.name,
-                price: product.price,
-                sku: product.sku,
-                slug: product.slug,
-                sizes: product.sizeArr,
-                quantity: product.quantity,
-                status: 'Đang giao hàng',
-                total: +cartTotal
-            }
-            const buyer = {
-                fullName: value.fullname,
-                phoneNumber: value.phoneNumber,
-                email,
-                address: value.address,
-                paymentMethod: value.payment
-            }
-            if (watchPayment === 'momo' || watchPayment === 'vnpay') {
-                toastError('Phương thức chưa được hỗ trợ');
-            } else {
-                axiosClient.post('orders', order);
-                setIsLoading(true);
-                setTimeout(() => {
-                    setIsLoading(false)
-                    navigate('/checkout/success')
-                    dispath(setBuyer(buyer))
-                    dispath(setEmptyCart())
-                }, 1500);
-            }
-        })
-        // if (!isValid) return;
-        // return new Promise((resolve) => {
-        //   setTimeout(() => {
-        //     resolve();
-        //   }, 5000);
-        //   if (!userInfo.uid) {
-        //     toastError("Vui lòng đăng nhập trước khi tiếp tục");
-        //   } else {
-        //     navigate("/checkout/success");
-        //   }
-        // });
+                status: 'Chờ xử lý',
+                total: +cartTotal,
+                products
+            });
+            setIsLoading(true);
+            setTimeout(() => {
+                setIsLoading(false)
+                navigate('/checkout/success')
+                dispath(setBuyer(buyer))
+                dispath(setEmptyCart())
+            }, 1500);
+        }
     };
     //auth
     useEffect(() => {
