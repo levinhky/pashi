@@ -53,7 +53,7 @@ function ProductList(props) {
                     sort
                 },
             });
-            setProductList(data);
+            setProductList(data.products);
         };
 
         getFilterProducts();
@@ -76,7 +76,7 @@ function ProductList(props) {
             </span>
                         <ul className={`${styles["filter-select"]} select`}>
                             <li
-                                onClick={() => setSort('desc')}
+                                onClick={() => setSort('asc')}
                                 className={`${styles["option"]} option`}
                                 text="Sản phẩm nổi bật"
                             >
@@ -116,7 +116,7 @@ function ProductList(props) {
             )}
 
             <div className={styles["product-grid"]}>
-                {products.map((product) => (
+                {products.length > 0 && products.map((product) => (
                     <div className={styles["item"]} key={product._id}>
                         <Link to={`/products/detail?slug=${product.slug}`} className={styles["image"]}>
                             <img src={product.thumbnails[0].thumbnail} alt="product"/>

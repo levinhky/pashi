@@ -16,7 +16,7 @@ function ProductGrid(props) {
     const {category} = useParams();
     const navigate = useNavigate();
 
-    const pageNumbers = Array.from({length: Math.ceil(productList.length / 2)}, (v, i) => i + 1);
+    const pageNumbers = Array.from({length: totalPages}, (v, i) => i + 1);
     const searchValue = new URLSearchParams(search).get("q");
 
     useEffect(() => {
@@ -25,29 +25,6 @@ function ProductGrid(props) {
             left: 0,
             behavior: "smooth",
         });
-    });
-
-    useEffect(() => {
-        const getRows = async () => {
-            let length = 0;
-            if (category === "all") {
-                length = await axiosClient.get("products", {params: {page}});
-            } else if (category === "new-arrivals") {
-                length = await axiosClient.get("products", {
-                    params: {page},
-                });
-            } else if (category === "hot-products") {
-                length = await axiosClient.get("products", {
-                    params: {page},
-                });
-            } else {
-                length = await axiosClient.get("products/find/category", {
-                    params: {page, name: category},
-                });
-            }
-            setTotalPages(Math.ceil(length.length / limit));
-        }
-        getRows();
     });
 
     useEffect(() => {
@@ -61,13 +38,13 @@ function ProductGrid(props) {
             } else if (category === "new-arrivals") {
                 data = await axiosClient.get("products", {
                     params: {
-                        limit: 2, page:2
+                        limit, page, sort:'name-asc'
                     },
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else if (category === "hot-products") {
                 data = await axiosClient.get("products", {
-                    params: {limit: 2, page},
+                    params: {limit, page, sort: 'desc'},
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else {
@@ -76,7 +53,10 @@ function ProductGrid(props) {
                 });
             }
 
-            setProductList(data);
+            if (data) {
+                setProductList(data.products);
+                setTotalPages(data.totalPages);
+            }
             setLoading(false);
         };
 
@@ -97,7 +77,7 @@ function ProductGrid(props) {
                 <div className={styles["product-pagination"]}>
                     <ul>
                         <li>
-                            {page >= pageNumbers.length && <button
+                            {page > pageNumbers.length && <button
                                 onClick={() => {
                                     setPage(page - 1)
                                     window.scroll({

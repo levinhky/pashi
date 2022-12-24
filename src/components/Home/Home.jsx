@@ -43,7 +43,7 @@ function Home(props) {
     useEffect(() => {
         const getArrivals = async () => {
             const res = await axiosClient.get("products", {params: {limit: 6}});
-            setArrivals(res);
+            setArrivals(res.products);
             setLoading(false);
         };
 
