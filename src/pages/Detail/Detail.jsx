@@ -83,8 +83,8 @@ function Detail(props) {
 
     useEffect(() => {
         const getRelative = async () => {
-            const products = await axiosClient.get('products', {params: {limit: 6}})
-            setRelativeProduct(products);
+            const response = await axiosClient.get('products', {params: {limit: 6}})
+            setRelativeProduct(response.products);
         }
         getRelative();
     }, []);

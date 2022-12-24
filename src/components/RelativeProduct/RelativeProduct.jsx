@@ -60,7 +60,7 @@ function RelativeProduct({products}) {
                 slidesPerView={5}
             >
                 <div className={styles["product-grid"]}>
-                    {products.map((product) => (
+                    {products.length > 0 && products.map((product) => (
                         <SwiperSlide key={product._id}>
                             <div className={styles["item"]} key={product._id}>
                                 <Link to={`/products/detail?slug=${product.slug}`} className={styles["image"]}>

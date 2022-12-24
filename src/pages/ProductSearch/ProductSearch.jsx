@@ -15,7 +15,6 @@ function ProductSearch(props) {
     const {search} = useLocation();
     const {category, value} = useParams();
     const navigate = useNavigate();
-    console.log(useParams())
     const pageNumbers = Array.from({length: totalPages}, (v, i) => i + 1);
     const searchValue = new URLSearchParams(search).get("q");
 
@@ -26,17 +25,6 @@ function ProductSearch(props) {
             behavior: "smooth",
         });
     });
-    console.log(page)
-    useEffect(() => {
-        const getRows = async () => {
-            let length = 0;
-            if (value) {
-                length = await axiosClient.get('products', {params: {page, q: value}})
-            }
-            setTotalPages(Math.ceil(length.length / limit));
-        }
-        getRows();
-    });
 
     useEffect(() => {
         const getProductList = async () => {
@@ -44,8 +32,9 @@ function ProductSearch(props) {
             data = await axiosClient.get("products", {
                 params: {limit, page, q: value},
             });
-            console.log(data)
-            setProductList(data);
+
+            setProductList(data.products);
+            setTotalPages(1);
             setLoading(false);
         };
 
@@ -66,7 +55,7 @@ function ProductSearch(props) {
                 <div className={styles["product-pagination"]}>
                     <ul>
                         <li>
-                            <button
+                            {page > pageNumbers.length && <button
                                 onClick={() => {
                                     setPage(page - 1)
                                     window.scroll({
@@ -77,7 +66,7 @@ function ProductSearch(props) {
                                 }}
                             >
                                 <i className="bx bx-chevrons-left"></i>
-                            </button>
+                            </button>}
                         </li>
                         {pageNumbers.map((number, index) => (
                             <li key={index}>
@@ -97,7 +86,7 @@ function ProductSearch(props) {
                             </li>
                         ))}
                         <li>
-                            <button
+                            {page < pageNumbers.length && <button
                                 onClick={() => {
                                     setPage(page + 1)
                                     window.scroll({
@@ -108,7 +97,7 @@ function ProductSearch(props) {
                                 }}
                             >
                                 <i className="bx bx-chevrons-right"></i>
-                            </button>
+                            </button>}
                         </li>
                     </ul>
                 </div>
