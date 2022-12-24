@@ -12,7 +12,6 @@ import styles from "./Cart.module.css";
 
 function Cart(props) {
     const {cartItems, cartTotal} = useSelector((state) => state.cart);
-    console.log(cartItems)
     const dispath = useDispatch();
     useEffect(() => {
         dispath(caculateTotal());

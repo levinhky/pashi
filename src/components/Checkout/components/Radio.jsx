@@ -21,8 +21,9 @@ const Radio = ({control, className, text, price, children, ...props}) => {
                 checked={props.checked}
                 // className="hidden"
                 className="hidden"
+                disabled={true}
             />
-            <div className="h-8 mx-4 transition-all border rounded-full w-9"></div>
+            <div className="h-8 mx-4 transition-all border rounded-full w-10"></div>
             <img
                 src={props.img}
                 alt={props.imgAlt}

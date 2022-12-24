@@ -45,23 +45,6 @@ const InformationStyles = styled.div`
     }
   }
 `;
-const dataSelect = [
-    {
-        id: 1,
-        text: "TP.HCM",
-        value: "hcm",
-    },
-    {
-        id: 2,
-        text: "Hà Nội",
-        value: "hanoi",
-    },
-    {
-        id: 3,
-        text: "Thừa Thiên Huế",
-        value: "hue",
-    },
-];
 
 const schema = yup.object({
     fullname: yup.string().required("Vui lòng nhập họ tên của bạn."),
@@ -74,18 +57,6 @@ const schema = yup.object({
         .phone("VN", true, "Vui lòng nhập đúng số điện thoại của bạn.")
         .required("Vui lòng nhập đúng số điện thoại của bạn."),
     address: yup.string().required("Vui lòng nhập địa chỉ của bạn."),
-    // province: yup
-    //   .string()
-    //   .required("Vui lòng chọn tỉnh / thành")
-    //   .oneOf(["hcm", "hanoi", "hue"]),
-    // district: yup
-    //   .string()
-    //   .required("Vui lòng chọn quận / huyện")
-    //   .oneOf(["hcm", "hanoi", "hue"]),
-    // wards: yup
-    //   .string()
-    //   .required("Vui lòng chọn phường / xã")
-    //   .oneOf(["hcm", "hanoi", "hue"]),
 });
 
 const Information = ({cartItems, cartTotal}) => {
@@ -172,7 +143,7 @@ const Information = ({cartItems, cartTotal}) => {
             }
         });
     }, [dispath, auth]);
-    // console.log(userInfo);
+
     return (
         <InformationStyles>
             {isLoading && <Loading/>}
