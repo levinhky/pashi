@@ -63,6 +63,8 @@ const Information = ({cartItems, cartTotal}) => {
     const {userInfo} = useSelector((state) => state.auth);
     const dispath = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
+    let notes = sessionStorage.getItem("notes");
+
     const {
         handleSubmit,
         formState: {errors, isValid, isSubmitting, isSubmitSuccessful},
@@ -104,7 +106,19 @@ const Information = ({cartItems, cartTotal}) => {
         if (watchPayment === 'momo' || watchPayment === 'vnpay') {
             toastError('Phương thức chưa được hỗ trợ');
         } else {
-            axiosClient.post('orders', {
+            await axiosClient.post('orders/sendmail', {
+                fullName: value.fullname,
+                products,
+                address: value.address,
+                total: +cartTotal,
+                shippingMethod: value.payment,
+                notes
+            }, {
+                params: {
+                    to: value.email
+                }
+            });
+            await axiosClient.post('orders', {
                 userId: userInfo.uid,
                 fullName: value.fullname,
                 phoneNumber: value.phoneNumber,
@@ -114,14 +128,15 @@ const Information = ({cartItems, cartTotal}) => {
                 shipping: value.shipping,
                 status: 'Chờ xử lý',
                 total: +cartTotal,
+                notes,
                 products
             });
             setIsLoading(true);
             setTimeout(() => {
                 setIsLoading(false)
                 navigate('/checkout/success')
-                dispath(setBuyer(buyer))
-                dispath(setEmptyCart())
+                dispath(setBuyer(buyer));
+                dispath(setEmptyCart());
             }, 1500);
         }
     };
@@ -287,11 +302,11 @@ const Information = ({cartItems, cartTotal}) => {
                                         name="payment"
                                         value="cod"
                                         img="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1"
-                                        text="Giao hàng khi nhận hàng (COD)"
+                                        text="Thanh toán khi nhận hàng (COD)"
                                         defaultChecked={true}
                                         checked={watchPayment === "cod"}
                                     ></Radio>
-                                     <Radio
+                                    <Radio
                                         control={control}
                                         id="momo"
                                         name="payment"
@@ -301,7 +316,7 @@ const Information = ({cartItems, cartTotal}) => {
                                         defaultChecked={true}
                                         checked={watchPayment === "momo"}
                                     ></Radio>
-                                     <Radio
+                                    <Radio
                                         control={control}
                                         id="vnpay"
                                         name="payment"
@@ -325,6 +340,7 @@ const Information = ({cartItems, cartTotal}) => {
                         className={`w-[200px] p-4 bg-[#338dbc] text-white rounded-lg mt-5 font-semibold ${
                             isSubmitting ? "opacity-50" : ""
                         }`}
+                        onClick={() => sessionStorage.removeItem("notes")}
                     >
                         Hoàn tất đơn hàng
                     </button>

@@ -13,6 +13,7 @@ import styles from "./Cart.module.css";
 function Cart(props) {
     const {cartItems, cartTotal} = useSelector((state) => state.cart);
     const dispath = useDispatch();
+    const [notes, setNotes] = useState('');
     useEffect(() => {
         dispath(caculateTotal());
     }, [cartItems]);
@@ -51,9 +52,6 @@ function Cart(props) {
                                                                     </h3>
                                                                     <h3>Qty: {product.quantity}</h3>
                                                                 </div>
-
-                                                                
-                                                                    
                                                             }
                                                         })}
                                                     </div>
@@ -124,13 +122,19 @@ function Cart(props) {
                                         <span>{vnd(cartTotal)}</span>
                                     </div>
                                     <div className={styles["pay"]}>
-                                        <Link to="/checkout/information">Thanh toán</Link>
+                                        <Link to="/checkout/information" onClick={() => {
+                                            sessionStorage.setItem("notes", notes ? notes : '');
+                                        }
+                                        }>Thanh toán</Link>
                                     </div>
                                 </div>
                                 <div className={styles["note-item"]}>
                                     <label>Ghi chú</label>
                                     <textarea
                                         className={styles["k-note"]}
+                                        onChange={(event) => {
+                                            setNotes(event.target.value)
+                                        }}
                                         placeholder="Bạn muốn mô tả rõ hơn về đơn hàng..."
                                     ></textarea>
                                 </div>

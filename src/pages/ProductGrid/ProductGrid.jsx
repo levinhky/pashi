@@ -52,7 +52,7 @@ function ProductGrid(props) {
                     params: {limit, page, name: category},
                 });
             }
-
+            console.log(data)
             if (data) {
                 setProductList(data.products);
                 setTotalPages(data.totalPages);
