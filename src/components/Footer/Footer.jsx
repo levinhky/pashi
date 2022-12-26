@@ -89,7 +89,7 @@ function Footer(props) {
                 <div className={styles["item"]}>
                     <div className='flex'>
                         <span><i className='bx bxs-envelope text-white text-4xl'></i></span>
-                        <li className='text-white ml-2'>Email: pashicareer@pashi.com</li>
+                        <li className='text-white ml-2'>Email: pashion.shopping@gmail.com</li>
                     </div>
                 </div>
                 <div className={styles["item"]}>

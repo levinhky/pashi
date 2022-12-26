@@ -34,7 +34,7 @@ const Recruit = () => {
                     <li>Lương cứng + trợ cấp + thưởng hoa hồng ++….</li>
                     <li>Chính sách trao đổi trực tiếp khi phỏng vấn.</li>
                 </ul>
-                <p>Thông tin ứng tuyển gửi về <a href={'mailto:pashi@job.com.'}>pashi@job.com.</a></p>
+                <p>Thông tin ứng tuyển gửi về <a href={'mailto:pashion.shopping@gmail.com.'}>pashion.shopping@gmail.com.</a></p>
             </div>
         </div>
     )

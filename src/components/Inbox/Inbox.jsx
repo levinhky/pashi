@@ -11,7 +11,8 @@ function Inbox(props) {
             params: {
                 to: value
             }
-        })
+        });
+        setValue('');
         toastSuccess('Cảm ơn bạn đã đăng ký!');
     }
 

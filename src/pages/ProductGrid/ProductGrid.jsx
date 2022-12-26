@@ -77,7 +77,7 @@ function ProductGrid(props) {
                 <div className={styles["product-pagination"]}>
                     <ul>
                         <li>
-                            {page > pageNumbers.length && <button
+                            {page > 1 && <button
                                 onClick={() => {
                                     setPage(page - 1)
                                     window.scroll({
