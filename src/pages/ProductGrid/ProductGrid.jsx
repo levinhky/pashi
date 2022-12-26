@@ -32,19 +32,19 @@ function ProductGrid(props) {
             let data = null;
             if (category === "all") {
                 data = await axiosClient.get("products", {
-                    params: {limit, page},
+                    params: {limit, page, sort:'name-asc'},
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else if (category === "new-arrivals") {
                 data = await axiosClient.get("products", {
                     params: {
-                        limit, page, sort:'name-asc'
+                        limit, page, sort: 'desc'
                     },
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else if (category === "hot-products") {
                 data = await axiosClient.get("products", {
-                    params: {limit, page, sort: 'desc'},
+                    params: {limit, page, sort: 'asc'},
                 });
                 document.querySelector(".current").innerHTML = "Sản phẩm nổi bật";
             } else {

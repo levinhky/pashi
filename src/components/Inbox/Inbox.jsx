@@ -1,9 +1,20 @@
 import styles from "./Inbox.module.css";
 import {toastError, toastSuccess} from "../../configs/toast";
 import {useState} from "react";
+import axiosClient from "../../configs/api";
 
 function Inbox(props) {
     const [value, setValue] = useState('');
+
+    const handlePost = async () => {
+        await axiosClient.post('orders/sendregister', {}, {
+            params: {
+                to: value
+            }
+        })
+        toastSuccess('Cảm ơn bạn đã đăng ký!');
+    }
+
     return (
         <>
             <div className={styles["title"]}>
@@ -21,7 +32,7 @@ function Inbox(props) {
                             value === "" ?
                                 toastError('Vui lòng nhập email của bạn!') : !regex.test(value) ?
                                     toastError('Email sai định dạng!') :
-                                    toastSuccess('Cảm ơn bạn đã đăng ký!')
+                                    handlePost()
                         }
                         }>Gửi
                         </button>

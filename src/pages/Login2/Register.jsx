@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 // ICONS
 import {HiMail} from "react-icons/hi";
 import {GiPadlock} from "react-icons/gi";
@@ -9,6 +9,8 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Input from "./components/input/Input";
 import {createUser} from "../../configs/auth";
+import {AiOutlineEyeInvisible} from "@react-icons/all-files/ai/AiOutlineEyeInvisible";
+import {AiOutlineEye} from "@react-icons/all-files/ai/AiOutlineEye";
 
 const schema = yup.object({
     username: yup.string().required("Vui lòng nhập họ và tên"),
@@ -41,6 +43,7 @@ const Register = () => {
     });
     console.log(isSubmitting);
     console.log(errors);
+    const [isShowPassword, setIsShowPassword] = useState(false);
 
     const onSubmitRegister = (value) => {
         if (!isValid) return;
@@ -107,11 +110,18 @@ const Register = () => {
           <span className="absolute top-3 right-1 text-[#ed1846] text-3xl z-1">
             *
           </span>
+                    <span className="absolute top-4 right-6 text-[#000] text-3xl z-1">
+
+                                    {!isShowPassword ? <AiOutlineEyeInvisible className={'cursor-pointer'}
+                                                                              onClick={() => setIsShowPassword(true)}></AiOutlineEyeInvisible> :
+                                        <AiOutlineEye className={'cursor-pointer'}
+                                                      onClick={() => setIsShowPassword(false)}></AiOutlineEye>}
+                </span>
                     <span className="absolute inline-block top-2 left-3">
             <GiPadlock size="22"></GiPadlock>
           </span>
                     <Input
-                        type="password"
+                        type={isShowPassword ? 'text' : 'password'}
                         control={control}
                         name="password"
                         placeholder="Mật khẩu"
